@@ -4,9 +4,9 @@
 [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)
 
 
-This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled running on docker.
+This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled on **docker executor runner** in **gitlab**.
 
-You can safely use this for testing purposes in **gitlab ci environments**, especially via gitlab ci runners.
+You can easily use this for testing purposes in **gitlab ci environments**.
 
 ### **What's included?**
 
