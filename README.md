@@ -88,6 +88,6 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 
 - in my scenario using `yarn run dev` instead of `npm run dev`  was **really faster**, but this might not work out of the box and you may need to adapt your project.
-- This is automated docker build, however it is not seen in docker hub. You can always find more information regarding this repo on [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general) or [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci) 
+- This is automated docker build, although you don't see it in docker hub. You can always find more information regarding this repo on [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general) or [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci) 
 
 
