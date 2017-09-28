@@ -6,7 +6,7 @@ This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** 
 
 You can safely use this for testing purposes in **gitlab ci environments**, especially via gitlab ci runners.
 
-##### **What's included?**
+### **What's included?**
 
 | FRAMEWORK | VERSION |
 | --------- | ------- |
@@ -21,13 +21,13 @@ You can safely use this for testing purposes in **gitlab ci environments**, espe
 | NODE-SASS | 4.5.3   |
 | GULP      | 3.9.1   |
 
-##### **Available additional commands:**
+### **Available additional commands:**
 
 `configure-laravel` - sets up file permissions, generates laravel key, migrates and seeds db
 
 `start-nginx-ci-project` - configures and starts nginx with php-fpm
 
-##### **Databases:**
+### **Databases:**
 
 This build is tested with **mysql**, but also works with other docker db engines
 
@@ -39,7 +39,7 @@ To successfully run mysql add to your test routine:
 
 And in your .env mark mysql as the corresponding resource (**DB_HOST=mysql**)
 
-##### **Usage:**
+### **Usage:**
 
 In your .gitlab-ci.yml use this image like:
 
@@ -59,7 +59,7 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 ------
 
-Further example script commands (if needed in your case):
+#####Further example script commands (if needed in your case):
 
 `- yarn --network-concurrency 1` # when you have problems with slow connection
 
@@ -72,15 +72,16 @@ Further example script commands (if needed in your case):
 
 `./vendor/phpunit/phpunit/phpunit -v --coverage-text --colors --stderr`# to run phpunit with version specified in your project
 
-##### **Examples:**
+### **Examples:**
 
 **[gitlab-ci.yml](examples/.gitlab-ci.yml)** with stages, cache, and artifacts, assuming you are using scripts like "dev" in package.json.
 
-##### **Caveats:**
+### **Caveats:**
 
 - In your dusk tests remember to use -**>waitFor()** to make sure page is rendered properly, before test fails.
 - This docker has been tested with **gitlab-multi-runner** 9.5.0 version
 
 
 - in my scenario using `yarn run dev` instead of `npm run dev`  was much faster, but this might not work out of the box and you may need to adapt your project.
+
 
