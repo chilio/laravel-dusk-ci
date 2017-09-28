@@ -1,0 +1,59 @@
+stages:
+  - build
+  - test
+
+# Variables
+variables:
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_USER: homestead
+  MYSQL_PASSWORD: secret
+  MYSQL_DATABASE: homestead
+  DB_HOST: mysql
+  DB_CONNECTION: mysql
+
+build:
+  stage: build
+  services:
+     - mysql:5.7
+
+  image: chilio/laravel-dusk-ci:stable
+  script:
+    - yarn
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - yarn run dev
+  cache:
+      key: ${CI_BUILD_REF_NAME}
+      paths:
+        - vendor
+        - node_modules
+        - public
+        - resources
+
+
+test:
+  stage: test
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - vendor
+      - node_modules
+
+  services:
+    - mysql:5.7
+
+  image: chilio/laravel-dusk-ci:stable
+  script:
+    - cp .env.example .env
+    - cp phpunit.xml.ci phpunit.xml
+    - configure-laravel
+    - start-nginx-ci-project
+    - ./vendor/phpunit/phpunit/phpunit -v --coverage-text --colors --stderr
+    - php artisan dusk --colors --debug
+
+  artifacts:
+    paths:
+      - ./storage/logs # for debugging
+      - ./tests/Browser/screenshots
+      - ./tests/Browser/console
+    expire_in: 1 days
+    when: always
