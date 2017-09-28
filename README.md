@@ -59,7 +59,7 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 ------
 
-##### Further example script commands (if needed in your case):
+#### Further example script commands (if needed in your case):
 
 `- yarn --network-concurrency 1` # when you have problems with slow connection
 
