@@ -84,8 +84,10 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 - In your dusk tests remember to use -**>waitFor()** to make sure page is rendered properly, before test fails.
 - This docker has been tested with **gitlab-multi-runner** 9.5.0 version
+- By default all dusk browser tests are run with resolution 1920x720 with color depth 24 (bits), if you need to change that, you only need to add/modify that in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 
 
-- in my scenario using `yarn run dev` instead of `npm run dev`  was much faster, but this might not work out of the box and you may need to adapt your project.
+- in my scenario using `yarn run dev` instead of `npm run dev`  was **really faster**, but this might not work out of the box and you may need to adapt your project.
+- This is automated docker build, however it is not seen in docker hub. You can always find more information regarding this repo on [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general) or [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci) 
 
 
