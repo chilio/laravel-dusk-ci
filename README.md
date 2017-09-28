@@ -1,7 +1,7 @@
 # This is docker image for running Laravel 5.5 Dusk tests
 
 
-[![Docker automated](https://img.shields.io/docker/automated/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker build](https://img.shields.io/docker/build/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)
+[![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)
 
 
 This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled running on docker.
@@ -84,8 +84,10 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 - In your dusk tests remember to use -**>waitFor()** to make sure page is rendered properly, before test fails.
 - This docker has been tested with **gitlab-multi-runner** 9.5.0 version
+- By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, you only need to add/modify that in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 
 
-- in my scenario using `yarn run dev` instead of `npm run dev`  was much faster, but this might not work out of the box and you may need to adapt your project.
+- in my scenario using `yarn run dev` instead of `npm run dev`  was **really faster**, but this might not work out of the box and you may need to adapt your project.
+- This is automated docker build, although you don't see it in docker hub. You can always find more information regarding this repo on [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general) or [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci) 
 
 
