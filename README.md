@@ -6,7 +6,7 @@
 
 This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled on **docker executor runner** in **gitlab**.
 
-You can easily use this for testing purposes in **gitlab ci environments**.
+You are encouraged to use this for testing purposes in **gitlab ci environments**.
 
 ### **What's included?**
 
