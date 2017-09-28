@@ -35,9 +35,9 @@ To successfully run mysql add to your test routine:
 
 `services:`
 
-​	`mysql:latest` #or any other version you need for example `mysql:5.7`
+​	`mysql:latest` #or specify version you need for example `mysql:5.7`
 
-And in your .env mark mysql as the corresponding resource (DB_HOST=mysql)
+And in your .env mark mysql as the corresponding resource (**DB_HOST=mysql**)
 
 ##### **Usage:**
 
@@ -47,7 +47,7 @@ In your .gitlab-ci.yml use this image like:
 
 add script lines:
 
-`- cp .env.example .env`  # remember to have APP_URL=http://localhost AND DB_HOST=mysql
+`- cp .env.example .env`  # remember to have **APP_URL=http://localhost** and **DB_HOST=mysql**
 
 `- configure-laravel` # preparations to run project
 
