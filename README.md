@@ -1,6 +1,8 @@
 # This is docker image for running Laravel 5.5 Dusk tests
 
-[![Docker automated](https://img.shields.io/docker/automated/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker build](https://img.shields.io/docker/build/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chilio/laravel-dusk-ci/master/LICENSE)
+
+[![Docker automated](https://img.shields.io/docker/automated/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker build](https://img.shields.io/docker/build/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)
+
 
 This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled running on docker.
 
@@ -74,7 +76,9 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 ### **Examples:**
 
-**[gitlab-ci.yml](examples/.gitlab-ci.yml)** with stages, cache, and artifacts, assuming you are using scripts like "dev" in package.json.
+
+**[gitlab-ci.yml](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/.gitlab-ci.yml)** with stages, cache, and artifacts, assuming you are using scripts like "dev" in package.json.
+
 
 ### **Caveats:**
 
