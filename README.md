@@ -45,7 +45,7 @@ And in your .env mark mysql as the corresponding resource (**DB_HOST=mysql**)
 
 In your .gitlab-ci.yml use this image like:
 
-`image: chilio/laravel-dusk-ci:stable`
+`image: chilio/laravel-dusk-ci:stable`# you can experiment with other images, which might address your needs.
 
 add script lines:
 
