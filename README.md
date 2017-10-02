@@ -104,7 +104,6 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 
 
-###**Possible problems:**
+### **Possible problems:**
 - By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, you only need to add/modify that in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate phpunit files are updated, especially `bootstrap="vendor/autoload.php"`
-- 
