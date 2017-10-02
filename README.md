@@ -11,7 +11,7 @@ This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** 
 
 **Gitlab Continous Integration CI** ? Find more on [gitlab-runner](https://hub.docker.com/r/gitlab/gitlab-runner/)
 
-You are encouraged to use this for testing purposes in **gitlab ci environments**, and anywhere else, **MIT license**.
+You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, and anywhere else, with **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
 
 This works out of the box, and is really simple, to set up your own **CI testing environment**
 
