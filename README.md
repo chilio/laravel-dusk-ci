@@ -7,9 +7,9 @@ This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** 
 
 Laravel dusk? Find more on [laravel site](https://laravel.com/docs/5.5/dusk) ...
 
-You are encouraged to use this for testing purposes in **gitlab ci environments**, and anywhere else, but check this **MIT license**.
+You are encouraged to use this for testing purposes in **gitlab ci environments**, and anywhere else, **MIT license**.
 
-This works out of the box, and is really simple, to set up your own **CI** testing environment, however you might need to update your project according to this documentation, so please read carefully....
+This works out of the box, and is really simple, to set up your own **CI testing environment**, however you might need to update your project according to this documentation, so please read carefully....
 
 ### **What's included?**
 
@@ -106,7 +106,4 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 ###**Possible problems:**
 - By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, you only need to add/modify that in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
-- if you experience /bootstrap/autoload.php errors make sure your appropriate phpunit files are updated, especially `bootstrap="vendor/autoload.php"`
-
-
-
+- if you experience **/bootstrap/autoload.php** errors, make sure your appropriate phpunit files are updated, especially `bootstrap="vendor/autoload.php"`
