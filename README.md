@@ -85,7 +85,7 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 `- ./vendor/phpunit/phpunit/phpunit -v --coverage-text --colors --stderr`# to run phpunit with version specified in your project
 
-`- cp phpunit.xml.ci phpunit.xml` # In case you don't want to interfere with your local test environment, `you` can apply this approach for ci tests. Make sure to create phpunit.xml.ci in your project and phpunit.dusk.xml. You can specify 2 separate files for your tests, one for phpunit and one for dusk, you can use examples from this repo or modify them to suite your needs.
+`- cp phpunit.xml.ci phpunit.xml` # In case you don't want to interfere with your local test environment, you can apply this approach for ci tests. Make sure to create phpunit.xml.ci in your project and phpunit.dusk.xml. You can specify 2 separate files for your tests, one for phpunit and one for dusk, you can use examples from this repo or modify them to suite your needs.
 
 ### **Examples:**
 
