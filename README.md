@@ -11,7 +11,7 @@ This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** 
 
 **Gitlab Continous Integration CI** ? Find more on [gitlab-runner](https://hub.docker.com/r/gitlab/gitlab-runner/)
 
-You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, and anywhere else, with **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
+You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, or anywhere else. **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
 
 This works out of the box, and is really simple, to set up your own **CI testing environment**
 
@@ -110,6 +110,6 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 
 
-### **Possible problems:**
+### **Troubleshooting:**
 - By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, you only need to add/modify that in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially `bootstrap="vendor/autoload.php"`
