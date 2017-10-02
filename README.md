@@ -13,7 +13,9 @@ This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** 
 
 You are encouraged to use this for testing purposes in **gitlab ci environments**, and anywhere else, **MIT license**.
 
-This works out of the box, and is really simple, to set up your own **CI testing environment**, however you might need to update your project according to this documentation, so please read carefully....
+This works out of the box, and is really simple, to set up your own **CI testing environment**
+
+However, you might need to update your project, according to this documentation, so please read carefully....
 
 ### **What's included?**
 
