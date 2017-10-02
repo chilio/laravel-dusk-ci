@@ -48,7 +48,7 @@ To successfully run mysql add to your test routine:
 
 ​	`mysql:latest` #or specify version you need for example `mysql:5.7`
 
-And in your .env  or your candidate to use, mark mysql as the corresponding resource (**DB_HOST=mysql**)
+And in your .env  or your .env candidate file to use, mark mysql as the corresponding resource (**DB_HOST=mysql**)
 
 ### **Usage:**
 
@@ -91,9 +91,9 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)** # with all modifications to successfully run php artisan dusk tests
 
-**[phpunit.dusk.xml](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/phpunit.dusk.xml)**  # in case, you want to define for your project any custom variables like DBs, Caches etc.
+**[phpunit.dusk.xml](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/phpunit.dusk.xml)**  # If exists in project root, this file will be automatically injected when dusk is run, in case, you want to define for your tests any custom variables like DBs, Caches etc.
 
-**[phpunit.xml.ci](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/phpunit.xml.ci)** # in case, you want to customize phpunit tests like above.
+**[phpunit.xml.ci](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/phpunit.xml.ci)** # in case, you want to customize phpunit tests in CI , remember to copy this to phpunit.xml by adding `- cp phpunit.xml.ci phpunit.xml` to your gitlab-ci.yml.
 
 **[gitlab-ci.yml](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/.gitlab-ci.yml)** # with stages, cache, and artifacts, assuming you are using scripts like "dev" in package.json.
 
@@ -102,8 +102,7 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 ### **Caveats:**
 
-- In your dusk tests remember to use -**>waitFor()** to make sure pages are rendered properly, before test fails.
-- This docker has been tested with **gitlab-multi-runner** 9.5.0 version, just for your reference.
+- This docker has been tested with **gitlab-multi-runner** 9.5.0 and **gitlab-runner** 10.0.1.
 - in my scenario using `yarn run dev` instead of `npm run dev`  was **really faster**, but this might not work out of the box and you may need to adapt your project.
 - This is automated docker build, although you don't see it in docker hub. You can always find more information regarding this repo on [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general), [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci), or on [github](https://github.com/chilio/laravel-dusk-ci)
 
@@ -111,5 +110,6 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 
 ### **Troubleshooting:**
-- By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, you only need to add/modify that in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
-- if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially `bootstrap="vendor/autoload.php"`
+- In your dusk tests remember to use -**>waitFor()** extensively, to make sure pages are rendered properly, before test fails. CI test environments are much slower than production or your local dev, cause they need to build caches from scratch.
+- By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
+- if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
