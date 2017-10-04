@@ -17,7 +17,7 @@ This works out of the box, and is really simple to set up for your own **CI test
 
 However, **you might need to update your project**, according to this documentation, so please read carefully....
 
-If this is helpful to you, you can always add star on docker hub, to make it more visible to other users. [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)
+If this is helpful to you, you can always add **star** on docker hub, to make it more visible to other users. [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)
 
 
 
