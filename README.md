@@ -17,7 +17,7 @@ This works out of the box, and is really simple, to set up your own **CI testing
 
 However, you might need to update your project, according to this documentation, so please read carefully....
 
-If it is helpful to you, you can always add star on docker hub, to make it more visible to other users. [![Docker add-star](https://img.shields.io/badge/add%20star-for%20this%20project-brightgreen.svg)](https://hub.docker.com/v2/repositories/chilio/laravel-dusk-ci/stars/)
+If this is helpful to you, you can always add star on docker hub, to make it more visible to other users. [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)
 
 
 
@@ -108,7 +108,7 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 - This docker has been tested with **gitlab-multi-runner** 9.5.0 and **gitlab-runner** 10.0.1.
 - in my scenario using `yarn run dev` instead of `npm run dev`  was **really faster**, but this might not work out of the box and you may need to adapt your project.
-- This is automated docker build, although you don't see it in docker hub. You can always find more information regarding this repo on [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general), [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci), or on [github](https://github.com/chilio/laravel-dusk-ci)
+- This is automated docker build, although you don't see it in docker hub. You can always find more information regarding this repo on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general), [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci), or on [github](https://github.com/chilio/laravel-dusk-ci)
 
 
 
