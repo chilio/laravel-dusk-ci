@@ -1,7 +1,7 @@
 # This is docker image for running Laravel 5.5 Dusk tests in gitlab
 
 
-[![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)
+[![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)  
 
 This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled on **docker executor runner** in **gitlab**.
 
@@ -13,9 +13,13 @@ This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** 
 
 You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, or anywhere else. **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
 
-This works out of the box, and is really simple, to set up your own **CI testing environment**
+This works out of the box, and is really simple, to set up your own **CI testing environment**.
 
 However, you might need to update your project, according to this documentation, so please read carefully....
+
+If it is helpful to you, you can always add star on docker hub, to make it more visible to other users. [![Docker add-star](https://img.shields.io/badge/add%20star-laravel--dusk--ci-brightgreen.svg)](https://hub.docker.com/v2/repositories/chilio/laravel-dusk-ci/stars/)
+
+
 
 ### **What's included?**
 
