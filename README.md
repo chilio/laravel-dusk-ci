@@ -5,6 +5,8 @@
 
 This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled on **docker executor runner** in **gitlab**.
 
+Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ )[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+
 **Laravel dusk**? Find more on [laravel site](https://laravel.com/docs/5.5/dusk) 
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
@@ -25,14 +27,14 @@ If this is helpful to you, you can always add **star** on docker hub, to make it
 
 | FRAMEWORK | VERSION |
 | --------- | ------- |
-| PHP       | 7.1.9.1 |
+| PHP       | 7.1.10  |
 | Xdebug    | 2.5.5   |
 | NGINX     | 1.10.3  |
-| NODEJS    | 6.11.3  |
+| NODEJS    | 6.11.4  |
 | NPM       | 3.10.10 |
-| YARN      | 1.1.0   |
+| YARN      | 1.2.1   |
 | BOWER     | 1.8.2   |
-| PHPUNIT   | 6.3.1   |
+| PHPUNIT   | 6.4.1   |
 | NODE-SASS | 4.5.3   |
 | GULP      | 3.9.1   |
 
