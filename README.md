@@ -15,7 +15,7 @@ Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk
 
 You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, or anywhere else. **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
 
-This works out of the box for laravel 5.5 and probably for next versions (you can always try other tags in the future).
+This works out of the box for laravel 5.5 and probably for next versions (you can always try other tags/versions in the future).
 
 This is really simple to set up for your own **CI testing environment**.
 
