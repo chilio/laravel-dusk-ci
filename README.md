@@ -1,7 +1,7 @@
 # This is docker image for running Laravel 5.5 Dusk tests in gitlab
 
 
-[![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)  [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE) 
+[![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)  [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub last commit](https://img.shields.io/github/last-commit/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/chilio/laravel-dusk-ci.svg?style=social&label=Stars)](https://github.com/chilio/laravel-dusk-ci)
 
 This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled on **docker executor runner** in **gitlab**.
 
@@ -27,18 +27,19 @@ If this is helpful to you, you can always add **star** on docker hub, to make it
 
 ### **What's included?**
 
-| FRAMEWORK | VERSION |
-| --------- | ------- |
-| PHP       | 7.1.10  |
-| Xdebug    | 2.5.5   |
-| NGINX     | 1.10.3  |
-| NODEJS    | 6.11.4  |
-| NPM       | 3.10.10 |
-| YARN      | 1.2.1   |
-| BOWER     | 1.8.2   |
-| PHPUNIT   | 6.4.1   |
-| NODE-SASS | 4.5.3   |
-| GULP      | 3.9.1   |
+| FRAMEWORK    | VERSION |
+| ------------ | ------- |
+| PHP          | 7.1.10  |
+| Xdebug       | 2.5.5   |
+| NGINX        | 1.10.3  |
+| Chromedriver | 2.32    |
+| NODEJS       | 6.11.4  |
+| NPM          | 3.10.10 |
+| YARN         | 1.2.1   |
+| BOWER        | 1.8.2   |
+| PHPUNIT      | 6.4.1   |
+| NODE-SASS    | 4.5.3   |
+| GULP         | 3.9.1   |
 
 ### **Available additional commands:**
 
@@ -77,6 +78,15 @@ add script lines:
 Finally you can run all your tests served by nginx | php-fpm via:
 
 `- php artisan dusk`
+
+####Note on using chromedriver versions:
+
+Laravel Dusk ships with included chromedriver for linux, mac and windows. The examples here enable you to run dusk tests with this chromedriver. 
+
+However if you encounter problems, especially errors with incorrect chromedriver version, you can use this package inbuilt own chromedriver. To do that you need to make 2 script modifications:
+
+1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`
+2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk`
 
 ------
 
@@ -121,3 +131,4 @@ Finally you can run all your tests served by nginx | php-fpm via:
 - In your dusk tests remember to use -**>waitFor()** extensively, to make sure pages are rendered properly, before test fails. CI test environments are much slower than production or your local dev, cause they need to build caches from scratch.
 - By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
+- if you get errors about wrong chromedriver version check **Note on using chromedriver versions** 
