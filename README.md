@@ -79,7 +79,7 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 `- php artisan dusk`
 
-####Note on using chromedriver versions:
+#### Note on using chromedriver versions:
 
 Laravel Dusk ships with included chromedriver for linux, mac and windows. The examples here enable you to run dusk tests with this chromedriver. 
 
