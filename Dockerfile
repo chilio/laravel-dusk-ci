@@ -111,5 +111,5 @@ RUN gulp --version
 
 EXPOSE 80 9515
 
-CMD ["php7.1-fpm", "-g", "daemon off;"]
+CMD ["php7.2-fpm", "-g", "daemon off;"]
 CMD ["nginx", "-g", "daemon off;"]
