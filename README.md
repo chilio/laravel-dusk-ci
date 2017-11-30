@@ -12,15 +12,15 @@ You can easily use this for testing purposes in **gitlab ci environments**.
 
 | FRAMEWORK | VERSION |
 | --------- | ------- |
-| PHP       | 7.1.9.1 |
+| PHP       | 7.2.0 |
 | Xdebug    | 2.5.5   |
 | NGINX     | 1.10.3  |
-| NODEJS    | 6.11.3  |
+| NODEJS    | 6.12.9  |
 | NPM       | 3.10.10 |
-| YARN      | 1.1.0   |
+| YARN      | 1.3.2   |
 | BOWER     | 1.8.2   |
-| PHPUNIT   | 6.3.1   |
-| NODE-SASS | 4.5.3   |
+| PHPUNIT   | 6.4.4   |
+| NODE-SASS | 4.7.2   |
 | GULP      | 3.9.1   |
 
 ### **Available additional commands:**
