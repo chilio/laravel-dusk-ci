@@ -81,11 +81,11 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 #### Note on using chromedriver versions:
 
-**Laravel Dusk** ships with included **chromedriver** for linux, mac and windows. The examples here allows you to run dusk tests with this chromedriver. 
+**Laravel Dusk** ships with included **chromedriver** for linux, mac and windows. The examples here allow you to run dusk tests with these included chromedrivers. 
 
-However, if you encounter problems, especially errors with incorrect chromedriver version on your local machine, you can use this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome, on its own, is updated much more often, then chromedriver.  So in order to do that, you need to make 2 script modifications:
+However, if you encounter problems, especially errors with incorrect chromedriver version on your local machine, you can use, this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome is updated much more often, then chromedriver.  So in order to do that, you need to make only 2 script modifications:
 
-1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`.  In that case, to make your local development working , you need to install proper chromedriver version manually, and make sure your chromedriver is running on your local machine, before issuing `php artisan dusk` command. Due to different systems and configurations that's beyond the scope of this documentation.
+1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`.  In that case, to make your local development working , you need to install proper chromedriver version manually, and make sure your chromedriver version matches Chrome running on your local machine, before issuing `php artisan dusk` command. And what's more important you need to make sure chromedriver is started/running. Due to different systems and configurations that's beyond the scope of this documentation. Just to make clear here, in this case you are responsible for updating your own chromedriver for your current installation of Chrome. Since Chrome updates are pretty often, that's the suggested way to go, to keep your local dev running, while other packages are little behind...
 2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk` this will start system inbuilt chromedriver and not the one that is shipped with laravel dusk, cause it might be outdated and causing problems with your local development.
 
 ------
@@ -137,5 +137,5 @@ However, if you encounter problems, especially errors with incorrect chromedrive
 
 ### **Updates:**
 
-- 2017-12-01 - php 7.2 support added, latest tag refers still to php 7.1 for now, so if you want to use 7.2, please choose exact docker tag : chilio/laravel-dusk-ci:php-7.2
-- 2017-09-10 - initial release, with php 7.1 for laravel 5.5
+- 2017-12-01 - **php 7.2** support added, latest tag refers still to php 7.1 for now, so if you want to use 7.2, please choose exact docker tag : **chilio/laravel-dusk-ci:php-7.2**
+- 2017-09-10 - initial release, with **php 7.1** for laravel 5.5
