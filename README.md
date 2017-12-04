@@ -5,7 +5,7 @@
 
 This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled on **docker executor runner** in **gitlab**.
 
-Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 **Laravel dusk**? Find more on [laravel site](https://laravel.com/docs/5.5/dusk) 
 
@@ -25,21 +25,21 @@ If this is helpful to you, you can always add **star** on docker hub, to make it
 
 
 
-### **What's included?**
+### **What's included (depends on image/tag)?**
 
-| FRAMEWORK    | VERSION |
-| ------------ | ------- |
-| PHP          | 7.1.10  |
-| Xdebug       | 2.5.5   |
-| NGINX        | 1.10.3  |
-| Chromedriver | 2.32    |
-| NODEJS       | 6.11.4  |
-| NPM          | 3.10.10 |
-| YARN         | 1.2.1   |
-| BOWER        | 1.8.2   |
-| PHPUNIT      | 6.4.1   |
-| NODE-SASS    | 4.5.3   |
-| GULP         | 3.9.1   |
+| FRAMEWORK    | VERSION    |
+| ------------ | ---------- |
+| PHP          | >= 7.1.10  |
+| Xdebug       | >= 2.5.5   |
+| NGINX        | >= 1.10.3  |
+| Chromedriver | >= 2.32    |
+| NODEJS       | >= 6.11.4  |
+| NPM          | >= 3.10.10 |
+| YARN         | >= 1.2.1   |
+| BOWER        | >= 1.8.2   |
+| PHPUNIT      | >= 6.4.1   |
+| NODE-SASS    | >= 4.5.3   |
+| GULP         | >= 3.9.1   |
 
 ### **Available additional commands:**
 
@@ -81,12 +81,12 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 #### Note on using chromedriver versions:
 
-Laravel Dusk ships with included chromedriver for linux, mac and windows. The examples here enable you to run dusk tests with this chromedriver. 
+**Laravel Dusk** ships with included **chromedriver** for linux, mac and windows. The examples here allows you to run dusk tests with this chromedriver. 
 
-However if you encounter problems, especially errors with incorrect chromedriver version, you can use this package inbuilt own chromedriver. To do that you need to make 2 script modifications:
+However, if you encounter problems, especially errors with incorrect chromedriver version on your local machine, you can use this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome, on its own, is updated much more often, then chromedriver.  So in order to do that, you need to make 2 script modifications:
 
-1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`
-2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk`
+1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`.  In that case, to make your local development working , you need to install proper chromedriver version manually, and make sure your chromedriver is running on your local machine, before issuing `php artisan dusk` command. Due to different systems and configurations that's beyond the scope of this documentation.
+2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk` this will start system inbuilt chromedriver and not the one that is shipped with laravel dusk, cause it might be outdated and causing problems with your local development.
 
 ------
 
@@ -128,7 +128,14 @@ However if you encounter problems, especially errors with incorrect chromedriver
 
 
 ### **Troubleshooting:**
-- In your dusk tests remember to use -**>waitFor()** extensively, to make sure pages are rendered properly, before test fails. CI test environments are much slower than production or your local dev, cause they need to build caches from scratch.
+- In your dusk tests remember to use -**>waitFor()** extensively, to make sure pages are rendered properly, before test fails. Usually **CI** test environments are much slower than production or your local dev, cause they need to build caches from scratch.
 - By default all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
-- if you get errors about wrong chromedriver version check **Note on using chromedriver versions** 
+- if you get errors, about wrong chromedriver version on your local machine, check **Note on using chromedriver versions** 
+
+
+
+### **Updates:**
+
+- 2017-12-01 - php 7.2 support added, latest tag refers still to php 7.1 for now, so if you want to use 7.2, please choose exact docker tag : chilio/laravel-dusk-ci:php-7.2
+- 2017-09-10 - initial release, with php 7.1 for laravel 5.5
