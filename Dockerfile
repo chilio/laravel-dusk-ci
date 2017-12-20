@@ -23,8 +23,10 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get install -yq libgd-tools
-RUN apt-get install -yq --fix-missing php7.1-fpm php7.1-cli php7.1-xml php7.1-zip php7.1-curl php7.1-bcmath php7.1-json \
-    php7.1-mbstring php7.1-pgsql php7.1-mysql php7.1-mcrypt php7.1-gd php-xdebug php-imagick imagemagick nginx
+
+RUN apt-get install -yq --fix-missing  php7.2-fpm php7.2-cli php7.2-xml php7.2-zip php7.2-curl php7.2-bcmath php7.2-json \
+    php7.2-mbstring php7.2-pgsql php7.2-mysql php7.2-gd php-xdebug php-imagick imagemagick nginx
+
 
 RUN apt-get install -yq mc lynx mysql-client bzip2 make g++
 
@@ -125,5 +127,5 @@ ARG BUILD_DATE
 
 EXPOSE 80 9515
 
-CMD ["php7.1-fpm", "-g", "daemon off;"]
+CMD ["php7.2-fpm", "-g", "daemon off;"]
 CMD ["nginx", "-g", "daemon off;"]
