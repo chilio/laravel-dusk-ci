@@ -24,8 +24,17 @@ However, **you might need to update your project**, according to this documentat
 If this is helpful to you, you can always add **star** on docker hub, to make it more visible to other users. [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)
 
 
+### **Updates:**
 
-### **What's included (depends on image/tag)?**
+- 2017-12-20 - **chilio/laravel-dusk-ci:latest** uses php 7.2 from now on, as it is marked as working without issues
+- 2017-12-01 - **php 7.2** support added, latest tag refers still to php 7.1 for now, so if you want to use 7.2, please choose exact docker tag : **chilio/laravel-dusk-ci:php-7.2**
+- 2017-09-10 - initial release, with **php 7.1** for laravel 5.5
+
+
+## **Documentation**
+
+
+### **What's included? (depends on image/tag)**
 
 | FRAMEWORK    | VERSION    |
 | ------------ | ---------- |
@@ -81,9 +90,9 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 #### Note on using chromedriver versions:
 
-**Laravel Dusk** ships with included **chromedriver** for linux, mac and windows. The examples here allow you to run dusk tests with these included chromedrivers. 
+**Laravel Dusk** ships with included **chromedriver** for linux, mac and windows. The examples here allow you to run dusk tests with these included chromedrivers (for linux in this case). 
 
-However, if you encounter problems, especially errors with incorrect chromedriver version on your local machine, you can use, this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome is updated much more often, then chromedriver.  So in order to do that, you need to make only 2 script modifications:
+However, if you encounter problems, especially errors with incorrect chromedriver version on your local machine or this docker image, you can use, this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome is updated much more often, then chromedriver.  So in order to do that, you need to make only 2 script modifications:
 
 1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`.  In that case, to make your local development working , you need to install proper chromedriver version manually, and make sure your chromedriver version matches Chrome running on your local machine, before issuing `php artisan dusk` command. And what's more important you need to make sure chromedriver is started/running. Due to different systems and configurations that's beyond the scope of this documentation. Just to make clear here, in this case you are responsible for updating your own chromedriver for your current installation of Chrome. Since Chrome updates are pretty often, that's the suggested way to go, to keep your local dev running, while other packages are little behind...
 2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk` this will start system inbuilt chromedriver and not the one that is shipped with laravel dusk, cause it might be outdated and causing problems with your local development.
@@ -120,8 +129,6 @@ However, if you encounter problems, especially errors with incorrect chromedrive
 
 ### **Caveats:**
 
-- This docker has been tested with **gitlab-multi-runner** 9.5.0 and **gitlab-runner** 10.0.1.
-- in my scenario using `yarn run dev` instead of `npm run dev`  was **really faster**, but this might not work out of the box and you may need to adapt your project.
 - This is automated docker build, although you don't see it in docker hub. You can always find more information regarding this repo on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general), [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci), or on [github](https://github.com/chilio/laravel-dusk-ci)
 
 
@@ -135,7 +142,3 @@ However, if you encounter problems, especially errors with incorrect chromedrive
 
 
 
-### **Updates:**
-
-- 2017-12-01 - **php 7.2** support added, latest tag refers still to php 7.1 for now, so if you want to use 7.2, please choose exact docker tag : **chilio/laravel-dusk-ci:php-7.2**
-- 2017-09-10 - initial release, with **php 7.1** for laravel 5.5
