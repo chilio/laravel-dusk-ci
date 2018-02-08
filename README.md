@@ -38,16 +38,16 @@ If this is helpful to you, you can always add **star** on docker hub, to make it
 
 | FRAMEWORK    | VERSION    |
 | ------------ | ---------- |
-| PHP          | >= 7.1.10  |
-| Xdebug       | >= 2.5.5   |
+| PHP          | >= 7.2.2   |
+| Xdebug       | >= 2.6.0   |
 | NGINX        | >= 1.10.3  |
-| Chromedriver | >= 2.32    |
-| NODEJS       | >= 6.11.4  |
+| Chromedriver | >= 2.35    |
+| NODEJS       | >= 6.12.3  |
 | NPM          | >= 3.10.10 |
-| YARN         | >= 1.2.1   |
+| YARN         | >= 1.3.2   |
 | BOWER        | >= 1.8.2   |
-| PHPUNIT      | >= 6.4.1   |
-| NODE-SASS    | >= 4.5.3   |
+| PHPUNIT      | >= 7.0.0   |
+| NODE-SASS    | >= 4.7.2   |
 | GULP         | >= 3.9.1   |
 
 ### **Available additional commands:**
