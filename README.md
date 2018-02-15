@@ -1,9 +1,9 @@
-# This is docker image for running Laravel 5.5 Dusk tests in gitlab
+# This is docker image for running Laravel Dusk tests in gitlab
 
 
 [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)  [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub last commit](https://img.shields.io/github/last-commit/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/chilio/laravel-dusk-ci.svg?style=social&label=Stars)](https://github.com/chilio/laravel-dusk-ci)
 
-This is **complete** test suite for **Laravel 5.5** with **Dusk browser tests** enabled on **docker executor runner** in **gitlab**.
+This is a **complete test suite** for running **browser tests** on **Laravel Dusk** with **docker executor runner** in **gitlab**.
 
 Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
@@ -13,9 +13,15 @@ Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk
 
 **Gitlab Continous Integration CI** ? Find more on [gitlab-runner](https://hub.docker.com/r/gitlab/gitlab-runner/)
 
-You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, or anywhere else. **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
+### **Compatibility**
 
-This works out of the box for laravel 5.5 and probably for next versions (you can always try other tags/versions in the future).
+| LARAVEL VERSION    | COMPATIBLE    |
+| ------------ | ---------- |
+| 5.6          | YES   |
+| 5.5          | YES   |
+| 5.4 and below        | not tested  |
+
+You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, or anywhere else. **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
 
 This is really simple to set up for your own **CI testing environment**.
 
@@ -26,6 +32,7 @@ If this is helpful to you, you can always add **star** on docker hub, to make it
 
 ### **Updates:**
 
+- 2018-02-15 - **chilio/laravel-dusk-ci:latest** - tested with **Laravel 5.6** and **dusk 3.0**
 - 2017-12-20 - **chilio/laravel-dusk-ci:latest** uses php 7.2 from now on, as it is marked as working without issues
 - 2017-12-01 - **php 7.2** support added, latest tag refers still to php 7.1 for now, so if you want to use 7.2, please choose exact docker tag : **chilio/laravel-dusk-ci:php-7.2**
 - 2017-09-10 - initial release, with **php 7.1** for laravel 5.5
@@ -92,10 +99,10 @@ Finally you can run all your tests served by nginx | php-fpm via:
 
 **Laravel Dusk** ships with included **chromedriver** for linux, mac and windows. The examples here allow you to run dusk tests with these included chromedrivers (for linux in this case). 
 
-However, if you encounter problems, especially errors with incorrect chromedriver version on your local machine or this docker image, you can use, this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome is updated much more often, then chromedriver.  So in order to do that, you need to make only 2 script modifications:
+However, if you encounter problems, especially errors, with incorrect chromedriver version on your local machine, or this docker image, you can use, this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome is updated much more often, then chromedriver.  So in order to do that, you need to make only 2 script modifications:
 
-1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`.  In that case, to make your local development working , you need to install proper chromedriver version manually, and make sure your chromedriver version matches Chrome running on your local machine, before issuing `php artisan dusk` command. And what's more important you need to make sure chromedriver is started/running. Due to different systems and configurations that's beyond the scope of this documentation. Just to make clear here, in this case you are responsible for updating your own chromedriver for your current installation of Chrome. Since Chrome updates are pretty often, that's the suggested way to go, to keep your local dev running, while other packages are little behind...
-2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk` this will start system inbuilt chromedriver and not the one that is shipped with laravel dusk, cause it might be outdated and causing problems with your local development.
+1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`.  In that case, to make your local development working, before issuing `php artisan dusk` command, you need to install proper chromedriver version manually, and make sure your chromedriver version matches Chrome, running on your local machine. You need to make sure chromedriver is started/running also. Due to different systems and configurations, that's beyond the scope of this documentation. Just to make clear here, in this case you are responsible for updating your own chromedriver with your current installation of Chrome. Since Chrome updates are pretty often, that's the suggested way to go, to keep your local dev running, while other packages are a little behind...
+2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk`. This will start system inbuilt chromedriver and not the one, that is shipped with laravel dusk, cause it might be outdated and causing problems with your local development.
 
 ------
 
