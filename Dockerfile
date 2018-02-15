@@ -98,10 +98,13 @@ RUN \
 ADD commands/xvfb.init.sh /etc/init.d/xvfb 
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
+RUN chmod +x /usr/bin/start-nginx-ci-project
+
+ADD commands/versions /usr/bin/versions
+RUN chmod +x /usr/bin/versions
 
 ADD configs/.bowerrc /root/.bowerrc
 
-RUN chmod +x /usr/bin/start-nginx-ci-project
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
 
 RUN chmod +x /usr/bin/configure-laravel
@@ -155,15 +158,7 @@ RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN apt-get upgrade
 RUN apt-get autoremove
 
-RUN php --version
-RUN yarn --version
-RUN nginx -v
-RUN nodejs --version
-RUN npm --version
-RUN bower --version
-RUN phpunit --version
-RUN node-sass --version
-RUN gulp --version
+RUN versions
 
 ARG BUILD_DATE
     ARG VCS_REF
