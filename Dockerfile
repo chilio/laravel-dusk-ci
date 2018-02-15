@@ -154,9 +154,10 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 VOLUME [ "/var/log/supervisor" ]
 
+# Clean system up
+RUN apt-get -yq upgrade
+RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-get upgrade
-RUN apt-get autoremove
 
 RUN versions
 
