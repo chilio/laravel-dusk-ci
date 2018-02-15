@@ -68,7 +68,6 @@ RUN apt-get install -yq --fix-missing \
     php-yaml \
     php-memcached \
     php-memcache \
-    php-gmagick \ 
     php-tideways \
     php-mailparse \
     php-raphf \
