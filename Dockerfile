@@ -23,7 +23,7 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get install -yq libgd-tools
-
+# Install PHP 
 RUN apt-get install -yq --fix-missing \
     php7.2 \
     php7.2-bcmath \
@@ -79,6 +79,9 @@ RUN apt-get install -yq --fix-missing \
 
 
 RUN apt-get install -yq mc lynx mysql-client bzip2 make g++
+
+# Install Redis, Memcached, Beanstalk
+RUN apt-get install -yq redis-server memcached beanstalkd
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
