@@ -1,4 +1,4 @@
-# This is docker image for running Laravel Dusk tests in gitlab
+# Docker image for running Laravel Dusk tests in gitlab
 
 
 [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci) [![Docker stars](https://img.shields.io/docker/stars/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/)  [![GitHub tag](https://img.shields.io/github/tag/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/tags) [![GitHub last commit](https://img.shields.io/github/last-commit/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci) [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/chilio/laravel-dusk-ci.svg?style=social&label=Stars)](https://github.com/chilio/laravel-dusk-ci)
@@ -31,7 +31,7 @@ If this is helpful to you, you can always add **star** on docker hub, to make it
 
 
 ### **Updates:**
-
+- 2018-02-16 - New command introduced - **versions** - works only in **chilio/laravel-dusk-ci:latest** for now
 - 2018-02-15 - **chilio/laravel-dusk-ci:latest** - tested with **Laravel 5.6** and **dusk 3.0**
 - 2017-12-20 - **chilio/laravel-dusk-ci:latest** uses php 7.2 from now on, as it is marked as working without issues
 - 2017-12-01 - **php 7.2** support added, latest tag refers still to php 7.1 for now, so if you want to use 7.2, please choose exact docker tag : **chilio/laravel-dusk-ci:php-7.2**
@@ -62,6 +62,8 @@ If this is helpful to you, you can always add **star** on docker hub, to make it
 `configure-laravel` - sets up file permissions, generates laravel key, migrates and seeds db
 
 `start-nginx-ci-project` - configures and starts nginx with php-fpm
+
+`versions` - shows versions of included packages and enabled php modules. You can add it, to your `.gitlab_ci.yml` to get more detailed info about your testing environment. Note that this command works only in **chilio/laravel-dusk-ci:latest** for now...
 
 ### **Databases:**
 
