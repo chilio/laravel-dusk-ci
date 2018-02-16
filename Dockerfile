@@ -23,12 +23,65 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get install -yq libgd-tools
-
-RUN apt-get install -yq --fix-missing  php7.2-fpm php7.2-cli php7.2-xml php7.2-zip php7.2-curl php7.2-bcmath php7.2-json \
-    php7.2-mbstring php7.2-pgsql php7.2-mysql php7.2-gd php-xdebug php-imagick imagemagick nginx
+# Install PHP 
+RUN apt-get install -yq --fix-missing \
+    php7.2 \
+    php7.2-bcmath \
+    php7.2-bz2  \
+    php7.2-cli \
+    php7.2-common \
+    php7.2-curl \
+    php7.2-fpm \
+    php7.2-gd \
+    php7.2-gmp \
+    php7.2-imap \
+    php7.2-interbase \
+    php7.2-intl \
+    php7.2-json \
+    php7.2-ldap \
+    php7.2-mbstring \
+    php7.2-mysql \
+    php7.2-opcache \
+    php7.2-pgsql \
+    php7.2-phpdbg \
+    php7.2-pspell \
+    php7.2-readline \
+    php7.2-recode \
+    php7.2-snmp \
+    php7.2-soap \
+    php7.2-sqlite3 \
+    php7.2-sybase \
+    php7.2-tidy \
+    php7.2-xml \
+    php7.2-xmlrpc \
+    php7.2-zip \
+    php7.2-xsl \
+    php-geoip \
+    php-mongodb\
+    php-redis \
+    php-ssh2 \
+    php-uuid \
+    php-zmq \
+    php-radius \
+    php-http \
+    php-uploadprogress \
+    php-yaml \
+    php-memcached \
+    php-memcache \
+    php-tideways \
+    php-mailparse \
+    php-raphf \
+    php-stomp \
+    php-ds \
+    php-sass \
+    php-lua \
+    php-xdebug php-imagick imagemagick nginx
 
 
 RUN apt-get install -yq mc lynx mysql-client bzip2 make g++
+
+# Install Redis, Memcached, Beanstalk
+RUN apt-get install -yq redis-server memcached beanstalkd
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -45,10 +98,13 @@ RUN \
 ADD commands/xvfb.init.sh /etc/init.d/xvfb 
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
+RUN chmod +x /usr/bin/start-nginx-ci-project
+
+ADD commands/versions /usr/bin/versions
+RUN chmod +x /usr/bin/versions
 
 ADD configs/.bowerrc /root/.bowerrc
 
-RUN chmod +x /usr/bin/start-nginx-ci-project
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
 
 RUN chmod +x /usr/bin/configure-laravel
@@ -98,19 +154,12 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 VOLUME [ "/var/log/supervisor" ]
 
+# Clean system up
+RUN apt-get -yq upgrade
+RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-get upgrade
-RUN apt-get autoremove
 
-RUN php --version
-RUN yarn --version
-RUN nginx -v
-RUN nodejs --version
-RUN npm --version
-RUN bower --version
-RUN phpunit --version
-RUN node-sass --version
-RUN gulp --version
+RUN versions
 
 ARG BUILD_DATE
     ARG VCS_REF
