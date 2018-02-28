@@ -4,28 +4,83 @@ MAINTAINER Chilio
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
-ENV LC_ALL=en_US.UTF-8
+
 ENV DISPLAY :99
 ENV SCREEN_RESOLUTION 1920x720x24
 ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
 
-RUN apt-get update -y
-RUN apt-get install -yq apt-utils zip unzip
-RUN apt-get install -yq openssl language-pack-en-base
-RUN apt-get install -yq software-properties-common curl
+RUN apt-get update && apt-get install -yq apt-utils
+RUN apt-get update && apt-get install -yq language-pack-en-base
+ENV LC_ALL=en_US.UTF-8
+RUN apt-get update && apt-get install -yq openssl
+RUN apt-get update && apt-get install -yq zip unzip
+RUN apt-get update && apt-get install -yq software-properties-common curl
 RUN add-apt-repository ppa:ondrej/php
 RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -yq
-RUN apt-get install -yq libgd-tools
+RUN apt-get update && apt-get install -yq libgd-tools
+# Install PHP 
+RUN apt-get update && apt-get install -yq --fix-missing \
+    php7.2 \
+    php7.2-bcmath \
+    php7.2-bz2  \
+    php7.2-cli \
+    php7.2-common \
+    php7.2-curl \
+    php7.2-fpm \
+    php7.2-gd \
+    php7.2-gmp \
+    php7.2-imap \
+    php7.2-interbase \
+    php7.2-intl \
+    php7.2-json \
+    php7.2-ldap \
+    php7.2-mbstring \
+    php7.2-mysql \
+    php7.2-opcache \
+    php7.2-pgsql \
+    php7.2-phpdbg \
+    php7.2-pspell \
+    php7.2-readline \
+    php7.2-recode \
+    php7.2-snmp \
+    php7.2-soap \
+    php7.2-sqlite3 \
+    php7.2-sybase \
+    php7.2-tidy \
+    php7.2-xml \
+    php7.2-xmlrpc \
+    php7.2-zip \
+    php7.2-xsl \
+    php-geoip \
+    php-mongodb\
+    php-redis \
+    php-ssh2 \
+    php-uuid \
+    php-zmq \
+    php-radius \
+    php-http \
+    php-uploadprogress \
+    php-yaml \
+    php-memcached \
+    php-memcache \
+    php-tideways \
+    php-mailparse \
+    php-raphf \
+    php-stomp \
+    php-ds \
+    php-sass \
+    php-lua \
+    php-xdebug php-imagick imagemagick nginx
 
-RUN apt-get install -yq --fix-missing  php7.2-fpm php7.2-cli php7.2-xml php7.2-zip php7.2-curl php7.2-bcmath php7.2-json \
-    php7.2-mbstring php7.2-pgsql php7.2-mysql php7.2-gd php-xdebug php-imagick imagemagick nginx
 
+RUN apt-get update && apt-get install -yq mc lynx mysql-client bzip2 make g++
 
-RUN apt-get install -yq mc lynx mysql-client bzip2 make g++
+# Install Redis, Memcached, Beanstalk
+RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -42,10 +97,10 @@ RUN \
 ADD commands/xvfb.init.sh /etc/init.d/xvfb 
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
+RUN chmod +x /usr/bin/start-nginx-ci-project
 
 ADD configs/.bowerrc /root/.bowerrc
 
-RUN chmod +x /usr/bin/start-nginx-ci-project
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
 
 RUN chmod +x /usr/bin/configure-laravel
@@ -66,12 +121,11 @@ RUN \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
 
-RUN apt-get install -yq apt-transport-https
-RUN apt-get install -yq  python-software-properties
+RUN apt-get update && apt-get install -yq apt-transport-https
+RUN apt-get update && apt-get install -yq  python-software-properties
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get update
-RUN apt-get install -yq nodejs
-RUN apt-get install -yq git
+RUN apt-get update && apt-get install -yq nodejs
+RUN apt-get update && apt-get install -yq git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
@@ -87,7 +141,7 @@ RUN npm install -g node-gyp
 RUN npm install -g node-sass
 RUN npm install -g gulp
 
-RUN apt-get install -y supervisor
+RUN apt-get update && apt-get install -y supervisor
 
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
@@ -95,19 +149,25 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 VOLUME [ "/var/log/supervisor" ]
 
+# Clean system up
+RUN apt-get -yq upgrade
+RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-get upgrade
-RUN apt-get autoremove
 
-RUN php --version
-RUN yarn --version
-RUN nginx -v
-RUN nodejs --version
-RUN npm --version
-RUN bower --version
-RUN phpunit --version
-RUN node-sass --version
-RUN gulp --version
+RUN versions
+
+ARG BUILD_DATE
+    ARG VCS_REF
+    ARG VERSION
+    LABEL org.label-schema.build-date=$BUILD_DATE \
+          org.label-schema.name="Laravel Dusk CI Docker" \
+          org.label-schema.description="Test suite for Laravel Dusk in gitlab CI" \
+          org.label-schema.url="https://hub.docker.com/r/chilio/laravel-dusk-ci/" \
+          org.label-schema.vcs-ref=$VCS_REF \
+          org.label-schema.vcs-url="https://github.com/chilio/laravel-dusk-ci" \
+          org.label-schema.vendor="Chilio" \
+          org.label-schema.version=$VERSION \
+          org.label-schema.schema-version="1.0.0"
 
 EXPOSE 80 9515
 
