@@ -18,9 +18,9 @@ build:
 
   image: chilio/laravel-dusk-ci:stable
   script:
-    - yarn
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
-    - yarn run dev
+    # - npm install # if you need to install additional modules from your projects package.json
+    # - npm run dev # if you need to run dev scripts for example laravel mix 
   cache:
       key: ${CI_BUILD_REF_NAME}
       paths:
@@ -44,10 +44,11 @@ test:
   image: chilio/laravel-dusk-ci:stable
   script:
     - cp .env.example .env
-    - cp phpunit.xml.ci phpunit.xml
+    # - cp phpunit.xml.ci phpunit.xml # if you are using custom config for your phpunit tests in CI
     - configure-laravel
     - start-nginx-ci-project
     - ./vendor/phpunit/phpunit/phpunit -v --coverage-text --colors --stderr
+    # - phpunit -v --coverage-text --colors --stderr # if you want to use preinstalled phpunit
     - php artisan dusk --colors --debug
 
   artifacts:
@@ -55,5 +56,5 @@ test:
       - ./storage/logs # for debugging
       - ./tests/Browser/screenshots
       - ./tests/Browser/console
-    expire_in: 1 days
+    expire_in: 7 days
     when: always
