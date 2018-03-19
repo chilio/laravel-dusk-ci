@@ -20,6 +20,8 @@ printf "${GREEN}NODE-SASS: ${NC}\n"
 node-sass --version
 printf "${GREEN}GULP: ${NC}"
 gulp --version
+printf "${GREEN}CHROMEDRIVER: ${NC}"
+chromedriver --version
 printf "${GREEN}PHP MODULES:${YELLOW}\n"
 dpkg --get-selections | grep -v deinstall | grep php | awk 'NF{NF-=1};1'
 printf "${NC}"

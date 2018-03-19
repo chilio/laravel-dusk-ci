@@ -18,12 +18,10 @@ ENV LC_ALL=en_US.UTF-8
 RUN apt-get update && apt-get install -yq openssl
 RUN apt-get update && apt-get install -yq zip unzip
 RUN apt-get update && apt-get install -yq software-properties-common curl
-
 RUN add-apt-repository ppa:ondrej/php
 RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -yq
-
 RUN apt-get update && apt-get install -yq libgd-tools
 # Install PHP 
 RUN apt-get update && apt-get install -yq --fix-missing \
@@ -80,15 +78,13 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-xdebug php-imagick imagemagick nginx
 
 
-
 RUN apt-get update && apt-get install -yq mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
 RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
 
-
 # Install Redis, Memcached, Beanstalk
-RUN apt-get install -yq redis-server memcached beanstalkd
+RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
