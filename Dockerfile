@@ -83,9 +83,6 @@ RUN apt-get update && apt-get install -yq mc lynx mysql-client bzip2 make g++
 # Install Redis, Memcached, Beanstalk
 RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
 
-# Install Redis, Memcached, Beanstalk
-RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
-
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV PATH "$COMPOSER_HOME:$COMPOSER_HOME/vendor/bin:$PATH"
