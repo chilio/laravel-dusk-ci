@@ -11,6 +11,7 @@ ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
 
+
 RUN apt-get update && apt-get install -yq apt-utils
 RUN apt-get update && apt-get install -yq language-pack-en-base
 ENV LC_ALL=en_US.UTF-8
@@ -78,6 +79,9 @@ RUN apt-get update && apt-get install -yq --fix-missing \
 
 
 RUN apt-get update && apt-get install -yq mc lynx mysql-client bzip2 make g++
+
+# Install Redis, Memcached, Beanstalk
+RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
 
 # Install Redis, Memcached, Beanstalk
 RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
