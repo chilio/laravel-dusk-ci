@@ -16,7 +16,7 @@ php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LAR
 COMPATIBLE=`php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LARAVELCHROMEDRIVER} 0`
 if [ ${COMPATIBLE} == "INCOMPATIBLE" ]
 then
-`chromedriver &`
+exec chromedriver &
 printf "${GREEN}System inbuilt Chromedriver version (${SYSTEMCHROMEDRIVER}) started and listening on PORT 9515\n"
 fi
 printf "${NC}"
