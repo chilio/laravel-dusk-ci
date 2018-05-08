@@ -30,6 +30,7 @@ However, **you might need to update your project**, according to this documentat
 If this is helpful to you, you can always add **star** on docker hub, or on git hub, to make it more visible to other users...
 
 ### **Updates:**
+- 2018-05-08 - Automatic **Chrome** and **chromedriver** versions check and fix - works only in **chilio/laravel-dusk-ci:latest** for now, if you experience errors with this please use **chilio/laravel-dusk-ci:stable** or **chilio/laravel-dusk-ci:php-7.2**
 - 2018-02-16 - New command introduced - **versions** - works only in **chilio/laravel-dusk-ci:latest** for now
 - 2018-02-15 - **chilio/laravel-dusk-ci:latest** - tested with **Laravel 5.6** and **dusk 3.0**
 - 2017-12-20 - **chilio/laravel-dusk-ci:latest** uses php 7.2 from now on, as it is marked as working without issues
@@ -44,21 +45,22 @@ If this is helpful to you, you can always add **star** on docker hub, or on git 
 
 | FRAMEWORK    | VERSION    |
 | ------------ | ---------- |
-| PHP          | >= 7.2.2   |
+| PHP          | >= 7.2.5   |
 | Xdebug       | >= 2.6.0   |
 | NGINX        | >= 1.10.3  |
-| Chromedriver | >= 2.35    |
-| NODEJS       | >= 6.12.3  |
+| Chromedriver | >= 2.38    |
+| Chrome       | >= 66      |
+| NODEJS       | >= 6.14.2  |
 | NPM          | >= 3.10.10 |
-| YARN         | >= 1.3.2   |
-| BOWER        | >= 1.8.2   |
-| PHPUNIT      | >= 7.0.0   |
-| NODE-SASS    | >= 4.7.2   |
+| YARN         | >= 1.6.0   |
+| BOWER        | >= 1.8.4   |
+| PHPUNIT      | >= 7.1.5   |
+| NODE-SASS    | >= 4.9.0   |
 | GULP         | >= 3.9.1   |
 
 ### **Available additional commands:**
 
-`configure-laravel` - sets up file permissions, generates laravel key, migrates and seeds db
+`configure-laravel` - sets up file permissions, generates laravel key, migrates and seeds db, checks and enforces chromedriver compatibility
 
 `start-nginx-ci-project` - configures and starts nginx with php-fpm
 
@@ -99,6 +101,8 @@ Finally you can run all your tests served by nginx | php-fpm via:
 #### Note on using chromedriver versions:
 
 **Laravel Dusk** ships with included **chromedriver** for linux, mac and windows. The examples here allow you to run dusk tests with these included chromedrivers (for linux in this case). 
+
+As of 2018-05-08 this package (**latest tag only**) automatically adapts to eventual problems with chrome versions in your laravel dusk installation and following steps should not be necessary.
 
 However, if you encounter problems, especially errors, with incorrect chromedriver version on your local machine, or this docker image, you can use, this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome is updated much more often, then chromedriver.  So in order to do that, you need to make only 2 script modifications:
 
@@ -144,6 +148,7 @@ You can always find more information about this on [docker hub](https://hub.dock
 
 
 ### **Troubleshooting:**
+- If you encounter problems try different versions in this order: **chilio/laravel-dusk-ci:latest**, **chilio/laravel-dusk-ci:php-7.2**, **chilio/laravel-dusk-ci:stable**
 - In your dusk tests remember to use -**>waitFor()** extensively, to make sure, your pages are rendered properly, before test fails. Usually **CI** test environments are much slower, than production or your local dev, cause they need to build caches from scratch.
 - By default, all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`

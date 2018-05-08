@@ -2,6 +2,7 @@
 GREEN='\033[0;32m'
 NC='\033[0m'
 YELLOW='\033[1;33m'
+RED='\033[1;31m'
 printf "${GREEN}PHP: ${NC}"
 php --version
 printf "${GREEN}YARN: ${NC}"
@@ -20,6 +21,8 @@ printf "${GREEN}NODE-SASS: ${NC}\n"
 node-sass --version
 printf "${GREEN}GULP: ${NC}"
 gulp --version
+printf "${GREEN}CHROME: ${NC}"
+google-chrome --version
 printf "${GREEN}CHROMEDRIVER: ${NC}"
 chromedriver --version
 printf "${GREEN}PHP MODULES:${YELLOW}\n"

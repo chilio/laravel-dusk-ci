@@ -109,6 +109,15 @@ ADD commands/configure-laravel.sh /usr/bin/configure-laravel
 
 RUN chmod +x /usr/bin/configure-laravel
 
+ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
+RUN chmod +x /usr/bin/chrome-system-check
+
+ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
+RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
+ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
+RUN chmod +x /usr/bin/dusk-versions-check.php
+
+
 RUN \
   apt-get install -yq xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
@@ -157,6 +166,8 @@ VOLUME [ "/var/log/supervisor" ]
 RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN systemctl enable xvfb
 
 RUN versions
 
