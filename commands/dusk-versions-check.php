@@ -7,6 +7,7 @@ $nocolor="\033[0m";
 $system_chrome = $argv[1];
 $system_chromedriver = $argv[2];
 $laravel_chromediver = $argv[3];
+$print_info_only = $argv[4];
 
 $compatible = FALSE;
 if ($system_chromedriver == $laravel_chromediver) {
@@ -19,6 +20,7 @@ if ($system_chromedriver == $laravel_chromediver) {
         }
     }
 }
+if ($print_info_only) {
 if ($compatible) {
     print $green."Chromedriver check OK.".PHP_EOL;
 } else {
@@ -28,8 +30,10 @@ if ($compatible) {
     print "2. Start system inbuilt chromedriver manually by adding 'chromedriver &' in your .gitlab.ci.yml".PHP_EOL;
     print "3. Run your tests as usual by adding 'php artisan dusk' in your .gitlab.ci.yml".PHP_EOL;
     print $yellow."Read more about running tests with system inbuilt chromedriver in laravel-dusk-ci docs.".$nocolor.PHP_EOL;
-    exec("chromedriver &");
-    print $green."System inbuilt chromedriver v.(".$system_chromedriver.") started on port 9515".PHP_EOL;
+//    exec("chromedriver &");
+//    print $green."System inbuilt chromedriver v.(".$system_chromedriver.") started on port 9515".PHP_EOL;
 }
 print $nocolor;
-
+} else {
+    print ($compatible?"OK":"INCOMPATIBLE");
+}
