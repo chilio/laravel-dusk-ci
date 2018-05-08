@@ -22,7 +22,7 @@ if ($system_chromedriver == $laravel_chromediver) {
 if ($compatible) {
     print $green."Chromedriver check OK.".PHP_EOL;
 } else {
-    print $red."Chromedriver shipped with your laravel installation is not compatible with system chrome!".PHP_EOL;
+    print $red."Chromedriver shipped with your Laravel installation is NOT compatible with system chrome!".PHP_EOL;
     print $yellow."You can still use this package to run dusk tests, but in order to do that you need to apply these steps:".PHP_EOL;
     print $nocolor."1. Modify your DuskTestCase.php to NOT start chromedriver".PHP_EOL;
     print "2. Start system inbuilt chromedriver manually by adding 'chromedriver &' in your .gitlab.ci.yml".PHP_EOL;

@@ -5,3 +5,4 @@ chmod 775 bootstrap/cache
 chown -R www-data ./
 php artisan key:generate
 php artisan migrate:fresh --seed
+chrome-system-check
