@@ -28,6 +28,8 @@ if ($compatible) {
     print "2. Start system inbuilt chromedriver manually by adding 'chromedriver &' in your .gitlab.ci.yml".PHP_EOL;
     print "3. Run your tests as usual by adding 'php artisan dusk' in your .gitlab.ci.yml".PHP_EOL;
     print $yellow."Read more about running tests with system inbuilt chromedriver in laravel-dusk-ci docs.".PHP_EOL;
+    exec $nocolor."chromedriver &";
+    print $green."System inbuilt chromedriver v.(".$system_chromedriver.") started on port 9515".PHP_EOL;
 }
 print $nocolor;
 
