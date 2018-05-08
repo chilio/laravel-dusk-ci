@@ -21,6 +21,8 @@ printf "${GREEN}NODE-SASS: ${NC}\n"
 node-sass --version
 printf "${GREEN}GULP: ${NC}"
 gulp --version
+printf "${GREEN}CHROME: ${NC}"
+google-chrome --version
 printf "${GREEN}CHROMEDRIVER: ${NC}"
 chromedriver --version
 printf "${GREEN}PHP MODULES:${YELLOW}\n"
