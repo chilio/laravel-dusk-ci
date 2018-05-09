@@ -29,7 +29,9 @@ However, **you might need to update your project**, according to this documentat
 
 If this is helpful to you, you can always add **star** on docker hub, or on git hub, to make it more visible to other users...
 
-### **Updates:**
+
+### **Changelog**
+
 - 2018-05-08 - Automatic **Chrome** and **chromedriver** versions check and fix - works only in **chilio/laravel-dusk-ci:latest** for now, if you experience errors with this please use **chilio/laravel-dusk-ci:stable** or **chilio/laravel-dusk-ci:php-7.2**
 - 2018-02-16 - New command introduced - **versions** - works only in **chilio/laravel-dusk-ci:latest** for now
 - 2018-02-15 - **chilio/laravel-dusk-ci:latest** - tested with **Laravel 5.6** and **dusk 3.0**
