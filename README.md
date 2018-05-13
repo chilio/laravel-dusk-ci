@@ -15,11 +15,11 @@ Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk
 
 ### **Compatibility**
 
-| LARAVEL VERSION    | COMPATIBLE    |
-| ------------ | ---------- |
-| 5.6          | YES   |
-| 5.5          | YES   |
-| 5.4 and below        | not tested  |
+| LARAVEL VERSION | COMPATIBLE |
+| --------------- | ---------- |
+| 5.6             | YES        |
+| 5.5             | YES        |
+| 5.4 and below   | not tested |
 
 You are encouraged to use this **docker image** for testing purposes in **gitlab ci environments**, or anywhere else. **[MIT license](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)**.
 
@@ -32,6 +32,8 @@ If this is helpful to you, you can always add **star** on docker hub, or on git 
 
 ### **Changelog**
 
+- 2018-05-14 - **chilio/laravel-dusk-ci:stable** ships now with php 7.2 and chrome versions check enabled
+- 2018-05-14 - **chilio/laravel-dusk-ci:stable** moved to **chilio/laravel-dusk-ci:old-stable**. If you encounter any problems use the old one, or post issues...
 - 2018-05-08 - Automatic **Chrome** and **chromedriver** versions check and fix - works only in **chilio/laravel-dusk-ci:latest** for now, if you experience errors with this please use **chilio/laravel-dusk-ci:stable** or **chilio/laravel-dusk-ci:php-7.2**
 - 2018-02-16 - New command introduced - **versions** - works only in **chilio/laravel-dusk-ci:latest** for now
 - 2018-02-15 - **chilio/laravel-dusk-ci:latest** - tested with **Laravel 5.6** and **dusk 3.0**
@@ -144,7 +146,7 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 ### **Caveats:**
 
 - Although you don't see it in docker hub, this is automated docker build. 
-You can always find more information about this on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general), [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci), or on [github](https://github.com/chilio/laravel-dusk-ci)
+  You can always find more information about this on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general), [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci), or on [github](https://github.com/chilio/laravel-dusk-ci)
 
 
 
