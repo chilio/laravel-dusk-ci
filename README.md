@@ -5,7 +5,7 @@
 
 This is a **complete test suite** for running **browser tests** on **Laravel Dusk** with **docker executor runner** in **gitlab**.
 
-Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:dev.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 **Laravel dusk**? Find more on [laravel site](https://laravel.com/docs/5.6/dusk) 
 
