@@ -160,6 +160,8 @@ ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default 
 
+RUN composer global require hirak/prestissimo
+
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
