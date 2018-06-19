@@ -162,6 +162,8 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 RUN composer global require hirak/prestissimo
 
+RUN npm set progress=false
+
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
