@@ -153,6 +153,7 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 RUN npm install -g node-gyp
 RUN npm install -g node-sass
 RUN npm install -g gulp
+RUN npm install -g bower-away
 
 RUN apt-get update && apt-get install -y supervisor
 
