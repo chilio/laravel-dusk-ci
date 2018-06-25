@@ -24,11 +24,12 @@ build:
   cache:
       key: ${CI_BUILD_REF_NAME}
       paths:
+        # these are only examples, you should modify them according to your project, 
+        # or remove cache routines entirely, if they are causing any problems on your next builds..
+        # below are 2 safe ones if you use composer install and npm install in your stage script
         - vendor
         - node_modules
-        - public
-        - resources
-
+         # - /resources/assets/vendors  # for example if you put your vendor node-libraries there
 
 test:
   stage: test
@@ -37,7 +38,8 @@ test:
     paths:
       - vendor
       - node_modules
-
+    policy: pull
+    
   services:
     - mysql:5.7
 
