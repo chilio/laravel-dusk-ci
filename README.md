@@ -32,6 +32,7 @@ However, in case of problems, according to this **documentation**, you might nee
 
 ### **Changelog**
 
+- 2018-07-08 - As of a emerging  **mysql 8.0** (aka mysql:latest) a small note needs to be done - mysql 8.0 brakes dependency so far and therefore **does not work** with any images in this repo anymore. **You should not run** your tests against it. If you get errors with mysql, make sure you are using latest supported version of mysql for this package, which is **mysql:5.7** or downwards and make sure you are **not using mysql:latest** in your **.gilab-ci.yml**
 - 2018-05-14 - **chilio/laravel-dusk-ci:stable** ships now with php 7.2 and chrome versions check enabled
 - 2018-05-14 - **chilio/laravel-dusk-ci:stable** moved to **chilio/laravel-dusk-ci:old-stable**. If you encounter any problems use the old one, or post issues...
 - 2018-05-08 - Automatic **Chrome** and **chromedriver** versions check and fix - works only in **chilio/laravel-dusk-ci:latest** for now, if you experience errors with this please use **chilio/laravel-dusk-ci:stable** or **chilio/laravel-dusk-ci:php-7.2**
@@ -78,7 +79,7 @@ To successfully run mysql add to your test routine:
 
 `services:`
 
-​	`mysql:latest` #or specify version you need for example `mysql:5.7`
+​	`mysql:5.7` #or specify any downwards version of mysql. As of mysql 8.0 release mysql:latest does not work any more. I will track this issue, to bring compatibility to mysql:8:0, but for now latest supported version of this package with mysql is **5.7**. Please check changelog in the first place (always)...
 
 And in your .env  or your .env candidate file to use, mark mysql as the corresponding resource (**DB_HOST=mysql**)
 
