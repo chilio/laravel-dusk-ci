@@ -12,17 +12,17 @@ ENV CHROMEDRIVER_PORT 9515
 ENV TMPDIR=/tmp
 
 
-RUN apt-get update && apt-get install -yq apt-utils
-RUN apt-get update && apt-get install -yq language-pack-en-base
+RUN apt-get update && apt-get install -yq --fix-missing apt-utils
+RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
 ENV LC_ALL=en_US.UTF-8
-RUN apt-get update && apt-get install -yq openssl
-RUN apt-get update && apt-get install -yq zip unzip
-RUN apt-get update && apt-get install -yq software-properties-common curl
+RUN apt-get update && apt-get install -yq --fix-missing openssl
+RUN apt-get update && apt-get install -yq --fix-missing zip unzip
+RUN apt-get update && apt-get install -yq --fix-missing software-properties-common curl
 RUN add-apt-repository ppa:ondrej/php
 RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -yq
-RUN apt-get update && apt-get install -yq libgd-tools
+RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 # Install PHP 
 RUN apt-get update && apt-get install -yq --fix-missing \
     php7.2 \
@@ -78,10 +78,10 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-xdebug php-imagick imagemagick nginx
 
 
-RUN apt-get update && apt-get install -yq mc lynx mysql-client bzip2 make g++
+RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
-RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
+RUN apt-get update && apt-get install -yq --fix-missing redis-server memcached beanstalkd
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -134,17 +134,17 @@ RUN \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
 
-RUN apt-get update && apt-get install -yq apt-transport-https
-RUN apt-get update && apt-get install -yq  python-software-properties
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
+RUN apt-get update && apt-get install -yq --fix-missing python-software-properties
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get update && apt-get install -yq nodejs
-RUN apt-get update && apt-get install -yq git
+RUN apt-get update && apt-get install -yq --fix-missing nodejs
+RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -yq yarn
+RUN apt-get update && apt-get install -yq --fix-missing yarn
 RUN yarn global add bower --network-concurrency 1
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
