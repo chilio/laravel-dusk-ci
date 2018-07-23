@@ -32,6 +32,31 @@ However, in case of problems, according to this **documentation**, you might nee
 
 ### **Changelog**
 
+- 2018-07-24 - **mysql 8.0** and **mysql:latest** are now supported, but you need to make some modifications to your `.gitlab-ci.yml`. Unfortunately for now you cannot simply run mysql in services, as it was before. 
+
+   Simple workaround, is to change in services: (everywhere you call mysql service) to: 
+```
+services:
+     - name: mysql:latest
+       command: ["--default-authentication-plugin=mysql_native_password"]
+```
+   You need to make sure your Laravel `config/database.php` has these **modes** array also:
+```
+'mysql' => [
+            ...
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+            'modes'       => [
+                'ONLY_FULL_GROUP_BY',
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+                'NO_ENGINE_SUBSTITUTION',
+            ],
+        ],
+```
 - 2018-07-08 - As of a emerging  **mysql 8.0** (aka mysql:latest) a small note needs to be done - mysql 8.0 brakes dependency so far and therefore **does not work** with any images in this repo anymore. **You should not run** your tests against it. If you get errors with mysql, make sure you are using latest supported version of mysql for this package, which is **mysql:5.7** or downwards and make sure you are **not using mysql:latest** in your **.gilab-ci.yml**
 - 2018-05-14 - **chilio/laravel-dusk-ci:stable** ships now with php 7.2 and chrome versions check enabled
 - 2018-05-14 - **chilio/laravel-dusk-ci:stable** moved to **chilio/laravel-dusk-ci:old-stable**. If you encounter any problems use the old one, or post issues...
