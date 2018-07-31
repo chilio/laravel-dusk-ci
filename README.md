@@ -57,7 +57,6 @@ services:
             ],
         ],
 ```
-- 2018-07-08 - As of a emerging  **mysql 8.0** (aka mysql:latest) a small note needs to be done - mysql 8.0 brakes dependency so far and therefore **does not work** with any images in this repo anymore. **You should not run** your tests against it. If you get errors with mysql, make sure you are using latest supported version of mysql for this package, which is **mysql:5.7** or downwards and make sure you are **not using mysql:latest** in your **.gilab-ci.yml**
 - 2018-05-14 - **chilio/laravel-dusk-ci:stable** ships now with php 7.2 and chrome versions check enabled
 - 2018-05-14 - **chilio/laravel-dusk-ci:stable** moved to **chilio/laravel-dusk-ci:old-stable**. If you encounter any problems use the old one, or post issues...
 - 2018-05-08 - Automatic **Chrome** and **chromedriver** versions check and fix - works only in **chilio/laravel-dusk-ci:latest** for now, if you experience errors with this please use **chilio/laravel-dusk-ci:stable** or **chilio/laravel-dusk-ci:php-7.2**
@@ -104,7 +103,7 @@ To successfully run mysql add to your test routine:
 
 `services:`
 
-​	`mysql:5.7` #or specify any downwards version of mysql. As of mysql 8.0 release mysql:latest does not work any more. I will track this issue, to bring compatibility to mysql:8:0, but for now latest supported version of this package with mysql is **5.7**. Please check changelog in the first place (always)...
+​	`mysql:5.7` #or specify any downwards version of mysql. **mysql:latest** will not work out of the box, therefore please check changelog
 
 And in your .env  or your .env candidate file to use, mark mysql as the corresponding resource (**DB_HOST=mysql**)
 
@@ -178,7 +177,7 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 
 
 ### **Troubleshooting:**
-- If you encounter problems, try different versions in this order: **chilio/laravel-dusk-ci:latest**,  **chilio/laravel-dusk-ci:stable**, **chilio/laravel-dusk-ci:old-stable**
+- If you encounter problems, try different versions in this order: **chilio/laravel-dusk-ci:latest**,  **chilio/laravel-dusk-ci:stable**, **chilio/laravel-dusk-ci:old-stable**, and finally **chilio/laravel-dusk-ci:dev** which should solve your issues straight away...
 - In your dusk tests remember to use -**>waitFor()** extensively, to make sure, your pages are rendered properly, before test fails. Usually, **CI** test environments are much slower, than production or your local dev, cause they need to build caches from scratch.
 - By default, all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
