@@ -144,8 +144,6 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 
 `- cp phpunit.xml.ci phpunit.xml` # In case ,you don't want to interfere, with your local test environment, you can apply this approach for ci tests. Make sure, to create phpunit.xml.ci, in your project and phpunit.dusk.xml. You can specify, 2 separate files for your tests, one for phpunit and one for dusk, you can use examples, from this repo or modify them to suite your needs...
 
-`- yarn --network-concurrency 1` # when you have errors with slow connections
-
 `- composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts`
 
 `- bower install --quiet`
