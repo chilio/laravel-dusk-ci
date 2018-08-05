@@ -135,6 +135,7 @@ RUN \
   && apt-get -yq update && apt-get -yq --fix-missing install google-chrome-stable x11vnc
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
+RUN apt-get update && apt-get install -yq --fix-missing libpng16-16
 RUN apt-get update && apt-get install -yq --fix-missing python-software-properties
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
