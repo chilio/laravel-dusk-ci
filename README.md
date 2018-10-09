@@ -19,6 +19,7 @@ If this package, is helpful to you, you can add **star** on [docker hub](https:/
 
 | LARAVEL VERSION | COMPATIBLE |
 | --------------- | ---------- |
+| 5.7             | YES        |
 | 5.6             | YES        |
 | 5.5             | YES        |
 | 5.4 and below   | not tested |
@@ -80,7 +81,7 @@ services:
 | NGINX        | >= 1.10.3  |
 | Chromedriver | >= 2.38    |
 | Chrome       | >= 66      |
-| NODEJS       | >= 6.14.2  |
+| NODEJS       | >= 8.12.0  |
 | NPM          | >= 3.10.10 |
 | YARN         | >= 1.6.0   |
 | BOWER        | >= 1.8.4   |
