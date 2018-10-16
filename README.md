@@ -32,6 +32,7 @@ However, in case of problems, according to this **documentation**, you might nee
 
 
 ### **Changelog**
+- 2018-10-09 - Updated to nodejs v8
 - 2018-10-06 - Latest chromedriver compatibility updated
 
 - 2018-07-24 - **mysql 8.0** and **mysql:latest** are now supported, but you need to make some modifications to your `.gitlab-ci.yml`. Unfortunately for now you cannot simply run mysql in services, as it was before. 
