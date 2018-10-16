@@ -1,5 +1,5 @@
 
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Chilio 
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -75,9 +75,14 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-ds \
     php-sass \
     php-lua \
+    php-geos \
     php-xdebug php-imagick imagemagick nginx
 
-
+RUN update-alternatives --set php /usr/bin/php7.2
+RUN update-alternatives --set phar /usr/bin/phar7.2
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+# RUN update-alternatives --set phpize /usr/bin/phpize7.2
+# RUN update-alternatives --set php-config /usr/bin/php-config7.2
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
@@ -135,7 +140,6 @@ RUN \
   && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
-RUN apt-get update && apt-get install -yq --fix-missing python-software-properties
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
