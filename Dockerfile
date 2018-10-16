@@ -75,9 +75,10 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-ds \
     php-sass \
     php-lua \
+    php-geos \
     php-xdebug php-imagick imagemagick nginx
 
-
+RUN ln -nfs /usr/bin/php7.2 php
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
