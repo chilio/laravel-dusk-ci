@@ -1,5 +1,5 @@
 
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Chilio 
 
 ENV DEBIAN_FRONTEND noninteractive
