@@ -32,7 +32,7 @@ However, in case of problems, according to this **documentation**, you might nee
 
 
 ### **Changelog**
-- 2018-10-24 - Update to ubuntu:bionic (18.04), Install php-geos and link defualt `php` command to `php7.2`
+- 2018-10-24 - Update to ubuntu:bionic (18.04), Install php-geos and link default `php` command to `php7.2` in **latest tag**
 - 2018-10-09 - Updated to nodejs v8
 - 2018-10-06 - Latest chromedriver compatibility updated
 
