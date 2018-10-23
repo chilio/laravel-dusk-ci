@@ -124,7 +124,7 @@ RUN chmod +x /usr/bin/dusk-versions-check.php
 
 
 RUN \
-  apt-get install -yq xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+  apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
   && chmod +x /etc/init.d/xvfb \
   && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
@@ -137,7 +137,7 @@ RUN \
   && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
+  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
