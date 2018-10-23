@@ -77,7 +77,11 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-lua \
     php-xdebug php-imagick imagemagick nginx
 
-
+RUN update-alternatives --set php /usr/bin/php7.2
+RUN update-alternatives --set phar /usr/bin/phar7.2
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+# RUN update-alternatives --set phpize /usr/bin/phpize7.2
+# RUN update-alternatives --set php-config /usr/bin/php-config7.2
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
@@ -132,7 +136,7 @@ RUN \
   && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get -yq update && apt-get -yq --fix-missing install google-chrome-stable x11vnc
+  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
 RUN apt-get update && apt-get install -yq --fix-missing python-software-properties
@@ -177,9 +181,9 @@ RUN systemctl enable xvfb
 RUN versions
 
 ARG BUILD_DATE
-    ARG VCS_REF
-    ARG VERSION
-    LABEL org.label-schema.build-date=$BUILD_DATE \
+ARG VCS_REF
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.name="Laravel Dusk CI Docker" \
           org.label-schema.description="Test suite for Laravel Dusk in gitlab CI" \
           org.label-schema.url="https://hub.docker.com/r/chilio/laravel-dusk-ci/" \
@@ -189,7 +193,7 @@ ARG BUILD_DATE
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-EXPOSE 80 9515
+EXPOSE 80 443 9515
 
 CMD ["php7.2-fpm", "-g", "daemon off;"]
 CMD ["nginx", "-g", "daemon off;"]
