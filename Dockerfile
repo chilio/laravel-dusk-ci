@@ -176,9 +176,9 @@ RUN systemctl enable xvfb
 RUN versions
 
 ARG BUILD_DATE
-    ARG VCS_REF
-    ARG VERSION
-    LABEL org.label-schema.build-date=$BUILD_DATE \
+ARG VCS_REF
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.name="Laravel Dusk CI Docker" \
           org.label-schema.description="Test suite for Laravel Dusk in gitlab CI" \
           org.label-schema.url="https://hub.docker.com/r/chilio/laravel-dusk-ci/" \
@@ -188,7 +188,7 @@ ARG BUILD_DATE
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-EXPOSE 80 9515
+EXPOSE 80 443 9515
 
 CMD ["php7.2-fpm", "-g", "daemon off;"]
 CMD ["nginx", "-g", "daemon off;"]
