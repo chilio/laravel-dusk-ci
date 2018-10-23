@@ -158,7 +158,7 @@ RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
 RUN npm install -g gulp
 
-RUN apt-get update && apt-get install -y supervisor
+RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
