@@ -155,6 +155,10 @@ RUN npm install --unsafe-perm -g node-sass
 RUN npm install -g gulp
 RUN npm install -g bower-away
 
+RUN mkdir /etc/nginx/ssl
+
+RUN openssl req -subj '/CN=localhost' -x509 -newkey rsa:4096 -nodes -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem -days 365
+
 RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
