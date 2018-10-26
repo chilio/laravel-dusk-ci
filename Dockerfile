@@ -1,4 +1,3 @@
-
 FROM ubuntu:bionic
 MAINTAINER Chilio 
 
@@ -139,7 +138,6 @@ RUN \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
-RUN apt-get update && apt-get install -yq --fix-missing python-software-properties
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
