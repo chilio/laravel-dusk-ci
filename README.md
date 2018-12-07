@@ -111,6 +111,12 @@ To successfully run mysql add to your test routine:
 
 And in your .env  or your .env candidate file to use, mark mysql as the corresponding resource (**DB_HOST=mysql**)
 
+If you receive errors like
+```
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known
+```
+probably you have other mysql instance running in your host system with that name. In this case you may need to provide db-alias for your test. More info [here](https://github.com/chilio/laravel-dusk-ci/issues/21#issuecomment-444836027)
+
 ### **Usage:**
 
 Make sure your **DuskTestCase** class in /tests/DuskTestCase.php matches all attributes, like drive options, host url, and port, like in this example **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**  # there are some modifications which **you need to apply!**, these changes should not affect your local dev environment, otherwise there might be something else wrong with your project.
