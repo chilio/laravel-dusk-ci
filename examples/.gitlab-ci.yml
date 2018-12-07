@@ -8,13 +8,14 @@ variables:
   MYSQL_USER: homestead
   MYSQL_PASSWORD: secret
   MYSQL_DATABASE: homestead
-  DB_HOST: mysql
+  DB_HOST: mysql-test
   DB_CONNECTION: mysql
 
 build:
   stage: build
   services:
-     - mysql:5.7
+     - name: mysql:5.7
+       alias: mysql-test # this config is for more robust boilerplate. You may need to change it, if this mysql-test db-host is used on your system (remember to modify DB_HOST and other mysql services also)
 
   image: chilio/laravel-dusk-ci:stable
   script:
@@ -41,8 +42,9 @@ test:
     policy: pull
     
   services:
-    - mysql:5.7
-
+    - name: mysql:5.7
+      alias: mysql-test
+      
   image: chilio/laravel-dusk-ci:stable
   script:
     - cp .env.example .env
