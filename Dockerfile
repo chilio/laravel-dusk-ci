@@ -27,10 +27,13 @@ RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing \
     php7.3 \
     php7.3-bcmath \
-    php7.3-bz2  \
+    php7.3-bz2 \
+    php7.3-cgi \
     php7.3-cli \
     php7.3-common \
     php7.3-curl \
+    php7.3-dba \
+    php7.3-enchant \
     php7.3-fpm \
     php7.3-gd \
     php7.3-gmp \
@@ -41,6 +44,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.3-ldap \
     php7.3-mbstring \
     php7.3-mysql \
+    php7.3-odbc \
     php7.3-opcache \
     php7.3-pgsql \
     php7.3-phpdbg \
@@ -55,28 +59,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.3-xml \
     php7.3-xmlrpc \
     php7.3-zip \
-    php7.3-xsl \
-    php-geoip \
-    php-mongodb\
-    php-redis \
-    php-ssh2 \
-    php-uuid \
-    php-zmq \
-    php-radius \
-    php-http \
-    php-uploadprogress \
-    php-yaml \
-    php-memcached \
-    php-memcache \
-    php-tideways \
-    php-mailparse \
-    php-raphf \
-    php-stomp \
-    php-ds \
-    php-sass \
-    php-lua \
-    php-xdebug php-imagick imagemagick nginx
-
+    php7.3-xsl
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
