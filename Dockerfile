@@ -59,7 +59,8 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.3-xml \
     php7.3-xmlrpc \
     php7.3-zip \
-    php7.3-xsl
+    php7.3-xsl \
+    nginx
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
