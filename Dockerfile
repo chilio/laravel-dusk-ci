@@ -182,6 +182,7 @@ RUN systemctl enable xvfb
 
 RUN versions
 
+USER root
 RUN umount /dev/shm
 RUN mount -t tmpfs -o rw,nosuid,nodev,noexec,relatime,size=512M tmpfs /dev/shm
 
