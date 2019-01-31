@@ -22,7 +22,8 @@ If this package, is helpful to you, you can add **star** on [docker hub](https:/
 | 5.7             | YES        |
 | 5.6             | YES        |
 | 5.5             | YES        |
-| 5.4 and below   | not tested |
+| 5.4             | Reported working |
+| 5.3 and below   | Not tested |
 
 This is a **plug and play** package, for your **CI testing environment** in **Gitlab**. 
 
