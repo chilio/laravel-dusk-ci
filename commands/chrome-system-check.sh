@@ -18,7 +18,7 @@ if [ ${COMPATIBLE} == "INCOMPATIBLE" ]
 then
 exec chromedriver &
 printf "${GREEN}Scheduled start of inbuilt Chromedriver (${SYSTEMCHROMEDRIVER}). Chromedriver will be ready soon...\n"
-printf "Waiting chromedriver to launch on 9515...\n"
+printf "Waiting for inbuilt chromedriver to launch on port 9515...\n"
 
 while ! nc -z localhost 9515; do
   sleep 0.1 # wait for 1/10 of the second before check again
