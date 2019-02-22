@@ -21,14 +21,14 @@ if ($system_chromedriver == $laravel_chromediver) {
     }
 }
 if ($print_info_only) {
-if ($compatible) {
-    print $green."Chromedriver check OK.".PHP_EOL;
-} else {
-    print $red."Chromedriver shipped with your Laravel installation is NOT compatible with this systems chrome version!".PHP_EOL;
-    print $green."Don't worry, we are fixing this right now, so you will be able, to test your app anyway.".$nocolor.PHP_EOL;
-    print $yellow."You can always read more about running tests with system inbuilt chromedriver in laravel-dusk-ci docs.".$nocolor.PHP_EOL;
-}
-print $nocolor;
+    if ($compatible) {
+        print $green."Chromedriver check PASSED OK. No modfications needed. Your project is capable of using Laravel Dusk features with Chromedriver version = ".$laravel_chromedriver.PHP_EOL;
+    } else {
+        print $red."Chromedriver shipped with your Laravel installation is NOT compatible with current system chrome version!".PHP_EOL;
+        print $green."Don't worry, we are fixing this right now, so you will be able, to test your app anyway.".$nocolor.PHP_EOL;
+        print $yellow."You can always read more about running tests with system inbuilt chromedriver in laravel-dusk-ci docs.".$nocolor.PHP_EOL;
+    }
+    print $nocolor;
 } else {
     print ($compatible?"OK":"INCOMPATIBLE");
 }
