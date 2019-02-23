@@ -6,15 +6,15 @@ $red="\033[1;31m";
 $nocolor="\033[0m";
 $system_chrome = $argv[1];
 $system_chromedriver = $argv[2];
-$laravel_chromediver = $argv[3];
+$laravel_chromedriver = $argv[3];
 $print_info_only = $argv[4];
 
 $compatible = FALSE;
-if ($system_chromedriver == $laravel_chromediver) {
+if ($system_chromedriver == $laravel_chromedriver) {
     $compatible = TRUE;
 } else {
     foreach ($compatibilityMatrix as $compatPair) {
-        if ($compatPair[0] == $laravel_chromediver && $compatPair[1] == $system_chrome){
+        if ($compatPair[0] == $laravel_chromedriver && $compatPair[1] == $system_chrome){
             $compatible = TRUE;
             break;
         }
