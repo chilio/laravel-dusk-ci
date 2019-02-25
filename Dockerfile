@@ -11,8 +11,7 @@ ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
 
-
-RUN apt-get update && apt-get install -yq apt-utils
+RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
 RUN apt-get update && apt-get install -yq language-pack-en-base
 ENV LC_ALL=en_US.UTF-8
 RUN apt-get update && apt-get install -yq openssl
