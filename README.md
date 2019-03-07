@@ -19,6 +19,7 @@ If this package, is helpful to you, you can add **star** on [docker hub](https:/
 
 | LARAVEL VERSION | COMPATIBLE |
 | --------------- | ---------- |
+| 5.8             | YES        |
 | 5.7             | YES        |
 | 5.6             | YES        |
 | 5.5             | YES        |
