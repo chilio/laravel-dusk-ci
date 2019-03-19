@@ -190,4 +190,3 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 EXPOSE 80 443 9515
 
 CMD ["php7.2-fpm", "-g", "daemon off;"]
-CMD ["nginx", "-g", "daemon off;"]
