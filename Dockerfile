@@ -1,5 +1,4 @@
-
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Chilio 
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -12,18 +11,16 @@ ENV CHROMEDRIVER_PORT 9515
 ENV TMPDIR=/tmp
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
-RUN apt-get update && apt-get install -yq language-pack-en-base
+RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
 ENV LC_ALL=en_US.UTF-8
-RUN apt-get update && apt-get install -yq openssl
-RUN apt-get update && apt-get install -yq zip unzip
-RUN apt-get update && apt-get install -yq software-properties-common curl
-
+RUN apt-get update && apt-get install -yq --fix-missing openssl
+RUN apt-get update && apt-get install -yq --fix-missing zip unzip
+RUN apt-get update && apt-get install -yq --fix-missing software-properties-common curl
 RUN add-apt-repository ppa:ondrej/php
 RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -yq
-
-RUN apt-get update && apt-get install -yq libgd-tools
+RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 # Install PHP 
 RUN apt-get update && apt-get install -yq --fix-missing \
     php7.2 \
@@ -76,18 +73,18 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-ds \
     php-sass \
     php-lua \
+    php-geos \
     php-xdebug php-imagick imagemagick nginx
 
-
-
-RUN apt-get update && apt-get install -yq mc lynx mysql-client bzip2 make g++
+RUN update-alternatives --set php /usr/bin/php7.2
+RUN update-alternatives --set phar /usr/bin/phar7.2
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+# RUN update-alternatives --set phpize /usr/bin/phpize7.2
+# RUN update-alternatives --set php-config /usr/bin/php-config7.2
+RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
-RUN apt-get update && apt-get install -yq redis-server memcached beanstalkd
-
-
-# Install Redis, Memcached, Beanstalk
-RUN apt-get install -yq redis-server memcached beanstalkd
+RUN apt-get update && apt-get install -yq --fix-missing redis-server memcached beanstalkd
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -115,8 +112,17 @@ ADD commands/configure-laravel.sh /usr/bin/configure-laravel
 
 RUN chmod +x /usr/bin/configure-laravel
 
+ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
+RUN chmod +x /usr/bin/chrome-system-check
+
+ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
+RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
+ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
+RUN chmod +x /usr/bin/dusk-versions-check.php
+
+
 RUN \
-  apt-get install -yq xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+  apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
   && chmod +x /etc/init.d/xvfb \
   && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
@@ -129,33 +135,36 @@ RUN \
   && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
+  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc
 
-RUN apt-get update && apt-get install -yq apt-transport-https
-RUN apt-get update && apt-get install -yq  python-software-properties
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get update && apt-get install -yq nodejs
-RUN apt-get update && apt-get install -yq git
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && apt-get install -yq --fix-missing nodejs
+RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -yq yarn
+RUN apt-get update && apt-get install -yq --fix-missing yarn
 RUN yarn global add bower --network-concurrency 1
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
 RUN npm install -g node-gyp
-RUN npm install -g node-sass
+RUN npm install --unsafe-perm -g node-sass
 RUN npm install -g gulp
 
-RUN apt-get update && apt-get install -y supervisor
+RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default 
+
+RUN composer global require hirak/prestissimo
+
+RUN npm set progress=false
 
 VOLUME [ "/var/log/supervisor" ]
 
@@ -164,12 +173,14 @@ RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN systemctl enable xvfb
+
 RUN versions
 
 ARG BUILD_DATE
-    ARG VCS_REF
-    ARG VERSION
-    LABEL org.label-schema.build-date=$BUILD_DATE \
+ARG VCS_REF
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.name="Laravel Dusk CI Docker" \
           org.label-schema.description="Test suite for Laravel Dusk in gitlab CI" \
           org.label-schema.url="https://hub.docker.com/r/chilio/laravel-dusk-ci/" \
@@ -179,7 +190,6 @@ ARG BUILD_DATE
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-EXPOSE 80 9515
+EXPOSE 80 443 9515
 
-CMD ["php7.2-fpm", "-g", "daemon off;"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["php-fpm7.2", "-F"]
