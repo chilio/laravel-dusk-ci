@@ -1,4 +1,3 @@
-
 FROM ubuntu:bionic
 MAINTAINER Chilio 
 
@@ -138,7 +137,7 @@ RUN \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc
 
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
@@ -162,6 +161,10 @@ RUN apt-get update && apt-get install -yq --fix-missing supervisor
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default 
+
+RUN composer global require hirak/prestissimo
+
+RUN npm set progress=false
 
 VOLUME [ "/var/log/supervisor" ]
 

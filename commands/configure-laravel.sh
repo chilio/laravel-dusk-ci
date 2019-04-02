@@ -10,4 +10,3 @@ else
     php artisan migrate:fresh --seed
 fi
 chrome-system-check
-sleep 10s
