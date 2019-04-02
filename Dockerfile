@@ -10,7 +10,6 @@ ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
 
-
 RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
 RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
 ENV LC_ALL=en_US.UTF-8
@@ -74,6 +73,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-ds \
     php-sass \
     php-lua \
+    php-geos \
     php-xdebug php-imagick imagemagick nginx
 
 RUN update-alternatives --set php /usr/bin/php7.2
@@ -155,11 +155,6 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
 RUN npm install -g gulp
-RUN npm install -g bower-away
-
-RUN mkdir /etc/nginx/ssl
-
-RUN openssl req -subj '/CN=localhost' -x509 -newkey rsa:4096 -nodes -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem -days 365
 
 RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
@@ -197,5 +192,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 EXPOSE 80 443 9515
 
-CMD ["php7.2-fpm", "-g", "daemon off;"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["php-fpm7.2", "-F"]
