@@ -25,7 +25,7 @@ build:
   cache:
       key: ${CI_BUILD_REF_NAME}
       paths:
-        # these are only examples, you should modify them according to your project,
+        # these are only examples, you should modify them according to your project, 
         # or remove cache routines entirely, if they are causing any problems on your next builds..
         # below are 2 safe ones if you use composer install and npm install in your stage script
         - vendor
@@ -40,11 +40,11 @@ test:
       - vendor
       - node_modules
     policy: pull
-
+    
   services:
     - name: mysql:5.7
       alias: mysql-test
-
+      
   image: chilio/laravel-dusk-ci:stable
   script:
     - cp .env.example .env
