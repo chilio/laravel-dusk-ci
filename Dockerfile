@@ -1,5 +1,4 @@
-
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Chilio 
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -59,8 +58,33 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.3-xmlrpc \
     php7.3-zip \
     php7.3-xsl \
-    nginx
+    php-geoip \
+    php-mongodb\
+    php-redis \
+    php-ssh2 \
+    php-uuid \
+    php-zmq \
+    php-radius \
+    php-http \
+    php-uploadprogress \
+    php-yaml \
+    php-memcached \
+    php-memcache \
+    php-tideways \
+    php-mailparse \
+    php-raphf \
+    php-stomp \
+    php-ds \
+    php-sass \
+    php-lua \
+    php-geos \
+    php-xdebug php-imagick imagemagick nginx
 
+RUN update-alternatives --set php /usr/bin/php7.3
+RUN update-alternatives --set phar /usr/bin/phar7.3
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.3
+# RUN update-alternatives --set phpize /usr/bin/phpize7.3
+# RUN update-alternatives --set php-config /usr/bin/php-config7.3
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
@@ -115,10 +139,9 @@ RUN \
   && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get -yq update && apt-get -yq --fix-missing install google-chrome-stable x11vnc
+  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc
 
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
-RUN apt-get update && apt-get install -yq --fix-missing python-software-properties
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
@@ -136,11 +159,6 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
 RUN npm install -g gulp
-RUN npm install -g bower-away
-
-RUN mkdir /etc/nginx/ssl
-
-RUN openssl req -subj '/CN=localhost' -x509 -newkey rsa:4096 -nodes -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem -days 365
 
 RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
@@ -176,7 +194,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-EXPOSE 80 443 9515
+EXPOSE 80
 
-CMD ["php7.3-fpm", "-g", "daemon off;"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["php-fpm7.3", "-F"]
