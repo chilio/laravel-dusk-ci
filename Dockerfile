@@ -1,5 +1,4 @@
-
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Chilio 
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -10,7 +9,6 @@ ENV SCREEN_RESOLUTION 1920x720x24
 ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
-
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
 RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
@@ -75,6 +73,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-ds \
     php-sass \
     php-lua \
+    php-geos \
     php-xdebug php-imagick imagemagick nginx
 
 RUN update-alternatives --set php /usr/bin/php7.2
@@ -123,7 +122,7 @@ RUN chmod +x /usr/bin/dusk-versions-check.php
 
 
 RUN \
-  apt-get install -yq xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+  apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
   && chmod +x /etc/init.d/xvfb \
   && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
@@ -136,9 +135,9 @@ RUN \
   && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
+  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc
 
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
@@ -157,11 +156,15 @@ RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
 RUN npm install -g gulp
 
-RUN apt-get update && apt-get install -y supervisor
+RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default 
+
+RUN composer global require hirak/prestissimo
+
+RUN npm set progress=false
 
 VOLUME [ "/var/log/supervisor" ]
 
@@ -189,5 +192,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 EXPOSE 80 443 9515
 
-CMD ["php7.2-fpm", "-g", "daemon off;"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["php-fpm7.2", "-F"]
