@@ -34,7 +34,7 @@ However, in case of problems, according to this **documentation**, you might nee
 
 
 ### **Changelog**
-- 2019-01-14 - Latest chromedriver compatibility updated
+- 2019-04-04 - Latest chromedriver compatibility updated
 - 2018-12-20 - PHP 7.3 in  `php-7.3` tag
 - 2018-10-24 - Update to ubuntu:bionic (18.04), Install php-geos and link default `php` command to `php7.2` in **latest tag**
 - 2018-10-09 - Updated to nodejs v8
@@ -123,7 +123,7 @@ probably you have other mysql instance running in your host system with that nam
 
 ### **Usage:**
 
-Make sure your **DuskTestCase** class in /tests/DuskTestCase.php matches all attributes, like drive options, host url, and port, like in this example **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**  # there are some modifications which **you need to apply!**, these changes should not affect your local dev environment, otherwise there might be something else wrong with your project.
+Make sure your **DuskTestCase** class in /tests/DuskTestCase.php matches all attributes, like drive options, host url, and port, like in this example **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**  # there are some modifications which **you need to apply (especially --no-sandbox in $options for driver)!!!**, these changes should not affect your local dev environment, otherwise there might be something else wrong with your project.
 
 In your .gitlab-ci.yml use this image like:
 
