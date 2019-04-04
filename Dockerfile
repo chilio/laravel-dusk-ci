@@ -76,7 +76,6 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-stomp \
     php-ds \
     php-sass \
-    php-lua \
     php-geos \
     php-xdebug php-imagick imagemagick nginx
 
