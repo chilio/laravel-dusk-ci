@@ -28,9 +28,11 @@ If this package, is helpful to you, you can add **star** on [docker hub](https:/
 
 This is a **plug and play** package, for your **CI testing environment** in **Gitlab**. 
 
-With this package, you should be up and running, in seconds, without any modifications...
+With this package, you should be up and running, in seconds, with **almost** no modifications needed, but please carefully read the notes below. 
 
-However, in case of problems, according to this **documentation**, you might need, to apply some changes to your project. Therefore please read carefully further...
+For now **DuskTestCase.php** needs to be modified in all cases. **THIS package** is not going to work **without -no-sandbox directive in this file.**)... Please read more about it, under **Usage**...
+
+In case of problems, please read current docs entirely, check issues (also completed) on github, and finally post an issue on github.   
 
 
 ### **Changelog**
