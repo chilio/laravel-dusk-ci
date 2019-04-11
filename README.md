@@ -7,7 +7,7 @@ This is a **complete test suite** for running **Browser Tests** on **Laravel Dus
 
 Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:dev.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
-**Laravel dusk**? Find more on [laravel site](https://laravel.com/docs/5.6/dusk) 
+**Laravel dusk**? Find more on [laravel site](https://laravel.com/docs/5.8/dusk) 
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
 
