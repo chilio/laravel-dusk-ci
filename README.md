@@ -32,7 +32,7 @@ This is a **plug and play** package, for your **CI testing environment** in **Gi
 
 With this package, you should be up and running, in seconds, with **almost** no modifications needed, but please carefully read the notes below. 
 
-For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without -no-sandbox directive in this file.**)... Please read more about it, under **Usage**...
+For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without -no-sandbox directive in this file.**... Please read more about it, under **Usage**...
 
 In case of problems, please read current docs entirely, check issues (also completed) on github, and finally post an issue on github.   
 
