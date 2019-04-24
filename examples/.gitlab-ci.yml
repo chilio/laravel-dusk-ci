@@ -19,6 +19,7 @@ build:
 
   image: chilio/laravel-dusk-ci:stable
   script:
+    - versions
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     # - npm install # if you need to install additional modules from your projects package.json
     # - npm run dev # if you need to run dev scripts for example laravel mix 
