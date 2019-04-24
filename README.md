@@ -5,7 +5,7 @@
 
 This is a **complete test suite** for running **Browser Tests** on **Laravel Dusk** with **docker executor runner** in **gitlab**.
 
-With this package, you don't need to worry, about **Chrome** or **chromedriver** compatibility. All is automatically done, to make your **Browser Testing** with **Laravel Dusk**, as easy, as possible.
+With this package, you don't need to worry, about **Chrome** or **chromedriver** compatibility. This is done automatically, to make your **Browser Testing** with **Laravel Dusk**, as easy, as possible.
 
 Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:dev.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
@@ -32,7 +32,7 @@ This is a **plug and play** package, for your **CI testing environment** in **Gi
 
 With this package, you should be up and running, in seconds, with **almost** no modifications needed, but please carefully read the notes below. 
 
-For now **DuskTestCase.php** needs to be modified in all cases. **THIS package** is not going to work **without -no-sandbox directive in this file.**)... Please read more about it, under **Usage**...
+For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without -no-sandbox directive in this file.**)... Please read more about it, under **Usage**...
 
 In case of problems, please read current docs entirely, check issues (also completed) on github, and finally post an issue on github.   
 
@@ -82,22 +82,24 @@ services:
 ## **Documentation**
 
 
-### **What's included? (depends on image/tag)**
+### **What's included? (versions depend on image/tag)**
 
-| FRAMEWORK    | VERSION    |
-| ------------ | ---------- |
-| PHP          | >= 7.2.5   |
-| Xdebug       | >= 2.6.0   |
-| NGINX        | >= 1.10.3  |
-| Chromedriver | >= 2.38    |
-| Chrome       | >= 66      |
-| NODEJS       | >= 8.12.0  |
-| NPM          | >= 3.10.10 |
-| YARN         | >= 1.6.0   |
-| BOWER        | >= 1.8.4   |
-| PHPUNIT      | >= 7.1.5   |
-| NODE-SASS    | >= 4.9.0   |
-| GULP         | >= 3.9.1   |
+| Libs included|
+|--------------|
+| PHP          |
+| Xdebug       |
+| NGINX        |
+| Chromedriver |
+| Chrome       |
+| NODEJS       |
+| NPM          |
+| YARN         |
+| BOWER        |
+| PHPUNIT      |
+| NODE-SASS    |
+| GULP         |
+
+To see exact versions of installed packages, please run `versions` command in your `script` declaration in `.gitlab-ci.yml`, as in examples.
 
 ### **Available additional commands:**
 
