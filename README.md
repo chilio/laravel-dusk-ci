@@ -5,7 +5,7 @@
 
 This is a **complete test suite** for running tests (**Unit**, **Feature**, **Browser**). 
 
-**Browser Tests** assumed to be run with **Laravel Dusk** via **docker executor runner** in **gitlab**.
+**Browser Tests** assumed to run with **Laravel Dusk** via **docker executor runner** in **gitlab**.
 
 With this package, you don't need to worry, about **Chrome** or **chromedriver** compatibility. This is done automatically, to make your **Browser Testing** with **Laravel Dusk**, as easy, as possible.
 
