@@ -40,7 +40,8 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
-- 2019-04-04 - Latest chromedriver compatibility updated
+- 2019-05-06 - Latest chromedriver compatibility updated v.75
+- 2019-04-04 - Latest chromedriver compatibility updated v.74
 - 2018-12-20 - PHP 7.3 in  `php-7.3` tag
 - 2018-10-24 - Update to ubuntu:bionic (18.04), Install php-geos and link default `php` command to `php7.2` in **latest tag**
 - 2018-10-09 - Updated to nodejs v8
