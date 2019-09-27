@@ -41,6 +41,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2019-09-27 - Latest chromedriver compatibility updated v.77
 - 2019-09-24 - **chilio/laravel-dusk-ci:old-stable** is deprecated for now. Use it only with old Laravel versions (before 5.5)
 - 2019-05-06 - Latest chromedriver compatibility updated v.75
 - 2019-04-04 - Latest chromedriver compatibility updated v.74
