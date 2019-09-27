@@ -193,6 +193,5 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-EXPOSE 80
 
 CMD ["php-fpm7.3", "-F"]
