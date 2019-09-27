@@ -11,7 +11,7 @@ With this package, you don't need to worry, about **Chrome** or **chromedriver**
 
 Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:dev.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
-**Laravel dusk**? Find more on [laravel site](https://laravel.com/docs/5.8/dusk) 
+**Laravel dusk**? Find more on [laravel 5.8](https://laravel.com/docs/5.8/dusk) [laravel 6.0](https://laravel.com/docs/6.x/dusk) 
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
 
