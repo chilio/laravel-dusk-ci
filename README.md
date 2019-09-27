@@ -23,6 +23,7 @@ If this package, is helpful to you, you can add **star** on [docker hub](https:/
 
 | LARAVEL VERSION | COMPATIBLE |
 | --------------- | ---------- |
+| 6.0             | YES        |
 | 5.8             | YES        |
 | 5.7             | YES        |
 | 5.6             | YES        |
@@ -40,6 +41,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2019-09-24 - **chilio/laravel-dusk-ci:old-stable** is deprecated for now. Use it only with old Laravel versions (before 5.5)
 - 2019-05-06 - Latest chromedriver compatibility updated v.75
 - 2019-04-04 - Latest chromedriver compatibility updated v.74
 - 2018-12-20 - PHP 7.3 in  `php-7.3` tag
