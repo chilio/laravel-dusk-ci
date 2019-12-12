@@ -13,7 +13,6 @@ Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk
 [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
 [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.3.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
 [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.4.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
-[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:dev.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 Deprecated versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
@@ -47,6 +46,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2019-12-12 - PHP 7.4 in  `php-7.4` tag
 - 2019-12-12 - Latest chromedriver compatibility updated v.78 & v.79
 - 2019-09-27 - Latest chromedriver compatibility updated v.77
 - 2019-09-24 - **chilio/laravel-dusk-ci:old-stable** is deprecated for now. Use it only with old Laravel versions (before 5.5)
