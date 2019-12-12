@@ -46,6 +46,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2019-12-12 - Latest for now refers to PHP 7.4 
 - 2019-12-12 - PHP 7.4 in  `php-7.4` tag
 - 2019-12-12 - Latest chromedriver compatibility updated v.78 & v.79
 - 2019-09-27 - Latest chromedriver compatibility updated v.77
