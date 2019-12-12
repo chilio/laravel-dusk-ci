@@ -23,37 +23,40 @@ RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 # Install PHP 
 RUN apt-get update && apt-get install -yq --fix-missing \
-    php7.2 \
-    php7.2-bcmath \
-    php7.2-bz2  \
-    php7.2-cli \
-    php7.2-common \
-    php7.2-curl \
-    php7.2-fpm \
-    php7.2-gd \
-    php7.2-gmp \
-    php7.2-imap \
-    php7.2-interbase \
-    php7.2-intl \
-    php7.2-json \
-    php7.2-ldap \
-    php7.2-mbstring \
-    php7.2-mysql \
-    php7.2-opcache \
-    php7.2-pgsql \
-    php7.2-phpdbg \
-    php7.2-pspell \
-    php7.2-readline \
-    php7.2-recode \
-    php7.2-snmp \
-    php7.2-soap \
-    php7.2-sqlite3 \
-    php7.2-sybase \
-    php7.2-tidy \
-    php7.2-xml \
-    php7.2-xmlrpc \
-    php7.2-zip \
-    php7.2-xsl \
+    php7.4 \
+    php7.4-bcmath \
+    php7.4-bz2  \
+    php7.4-cli \
+    php7.4-common \
+    php7.4-curl \
+    php7.4-dba \
+    php7.4-dev \
+    php7.4-enchant \
+    php7.4-fpm \
+    php7.4-gd \
+    php7.4-gmp \
+    php7.4-imap \
+    php7.4-interbase \
+    php7.4-intl \
+    php7.4-json \
+    php7.4-ldap \
+    php7.4-mbstring \
+    php7.4-mysql \
+    php7.4-odbc \
+    php7.4-opcache \
+    php7.4-pgsql \
+    php7.4-phpdbg \
+    php7.4-pspell \
+    php7.4-readline \
+    php7.4-snmp \
+    php7.4-soap \
+    php7.4-sqlite3 \
+    php7.4-sybase \
+    php7.4-tidy \
+    php7.4-xml \
+    php7.4-xmlrpc \
+    php7.4-xsl \
+    php7.4-zip \
     php-geoip \
     php-mongodb\
     php-redis \
@@ -76,9 +79,9 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-geos \
     php-xdebug php-imagick imagemagick nginx
 
-RUN update-alternatives --set php /usr/bin/php7.2
-RUN update-alternatives --set phar /usr/bin/phar7.2
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+RUN update-alternatives --set php /usr/bin/php7.4
+RUN update-alternatives --set phar /usr/bin/phar7.4
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.4
 # RUN update-alternatives --set phpize /usr/bin/phpize7.2
 # RUN update-alternatives --set php-config /usr/bin/php-config7.2
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
@@ -191,4 +194,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.schema-version="1.0.0"
 
 
-CMD ["php-fpm7.2", "-F"]
+CMD ["php-fpm7.4", "-F"]
