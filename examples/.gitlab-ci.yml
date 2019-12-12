@@ -46,7 +46,7 @@ test:
     - name: mysql:5.7
       alias: mysql-test
       
-  image: chilio/laravel-dusk-ci:stable
+  image: chilio/laravel-dusk-ci:latest
   script:
     - cp .env.example .env
     # - cp phpunit.xml.ci phpunit.xml # if you are using custom config for your phpunit tests in CI
