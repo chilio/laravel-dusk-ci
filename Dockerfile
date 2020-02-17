@@ -66,7 +66,7 @@ RUN \
 
 RUN apt-get install -yq apt-transport-https
 RUN apt-get install -yq  python-software-properties
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get update
 RUN apt-get install -yq nodejs
 RUN apt-get install -yq git
