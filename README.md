@@ -16,7 +16,7 @@ Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk
 
 Deprecated versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
-**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.0](https://laravel.com/docs/6.x/dusk) 
+**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk)
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
 
@@ -28,7 +28,8 @@ If this package, is helpful to you, you can add **star** on [docker hub](https:/
 
 | LARAVEL VERSION | COMPATIBLE |
 | --------------- | ---------- |
-| 6.0             | YES        |
+| 7.x             | YES        |
+| 6.x             | YES        |
 | 5.8             | YES        |
 | 5.7             | YES        |
 | 5.6             | YES        |
@@ -46,6 +47,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2020-05-15 - latest PHP versions, Laravel 7 compatibility confirmed
 - 2020-02-17 - Node updated to 12.x LTS
 - 2019-12-12 - Latest for now refers to PHP 7.4 
 - 2019-12-12 - PHP 7.4 in  `php-7.4` tag
