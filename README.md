@@ -47,6 +47,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2020-08-17 - Latest chromedriver compatibility updated v.85
 - 2020-05-15 - latest PHP versions, Laravel 7 compatibility confirmed
 - 2020-02-17 - Node updated to 12.x LTS
 - 2019-12-12 - Latest for now refers to PHP 7.4 
