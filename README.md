@@ -16,18 +16,19 @@ Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk
 
 Deprecated versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
-**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk)
+**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk) | [Laravel 8.x](https://laravel.com/docs/8.x/dusk)
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
 
 **Gitlab Continous Integration CI** ? Find more on [gitlab-runner](https://hub.docker.com/r/gitlab/gitlab-runner/)
 
-If this package, is helpful to you, you can add **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible, to other users...
+If this package, is helpful to you, you can add a **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible to other users...
 
 ### **Compatibility**
 
 | LARAVEL VERSION | COMPATIBLE |
 | --------------- | ---------- |
+| 8.x             | YES        |
 | 7.x             | YES        |
 | 6.x             | YES        |
 | 5.8             | YES        |
@@ -47,6 +48,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2020-09-15 - Laravel 8 compatibility confirmed in **php-7.3**, **php-7.4** and **latest** tags
 - 2020-08-17 - Latest chromedriver compatibility updated v.85
 - 2020-05-15 - latest PHP versions, Laravel 7 compatibility confirmed
 - 2020-02-17 - Node updated to 12.x LTS
@@ -151,7 +153,7 @@ Make sure your **DuskTestCase** class in /tests/DuskTestCase.php matches all att
 
 In your .gitlab-ci.yml use this image like:
 
-`image: chilio/laravel-dusk-ci:stable`# you can experiment with other images, which might address your needs.
+`image: chilio/laravel-dusk-ci:latest`# you can experiment with other images, which might address your needs.
 
 add script lines:
 
