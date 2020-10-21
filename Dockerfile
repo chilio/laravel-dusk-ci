@@ -46,7 +46,9 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.4-opcache \
     php7.4-pgsql \
     php7.4-phpdbg \
+    php7.4-propro \
     php7.4-pspell \
+    php7.4-raphf \
     php7.4-readline \
     php7.4-snmp \
     php7.4-soap \
@@ -71,7 +73,6 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-memcache \
     php-tideways \
     php-mailparse \
-    php-raphf \
     php-stomp \
     php-ds \
     php-sass \
@@ -168,6 +169,7 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 RUN composer global require hirak/prestissimo
 
 RUN npm set progress=false
+RUN mkdir /run/php
 
 VOLUME [ "/var/log/supervisor" ]
 
