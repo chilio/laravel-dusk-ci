@@ -42,7 +42,9 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.2-opcache \
     php7.2-pgsql \
     php7.2-phpdbg \
+    php7.2-propro \
     php7.2-pspell \
+    php7.2-raphf \
     php7.2-readline \
     php7.2-recode \
     php7.2-snmp \
@@ -165,6 +167,7 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 RUN composer global require hirak/prestissimo
 
 RUN npm set progress=false
+RUN mkdir /run/php
 
 VOLUME [ "/var/log/supervisor" ]
 
