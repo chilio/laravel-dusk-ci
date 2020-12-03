@@ -13,7 +13,7 @@ Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk
 [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
 [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.3.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
 [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.4.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
-[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-8.rc.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
+[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-8.0.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
 
 Deprecated versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
@@ -49,6 +49,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
+- 2020-12-03 - **PHP 8.0** version released in `php-8.0` tag + latest chromedriver compatibility updated
 - 2020-10-23 - PHP 8.0 RC in `php-8.rc` tag tested with Laravel 8
 - 2020-10-20 - Latest chromedriver compatibility updated up to v.87
 - 2020-09-15 - Laravel 8 compatibility confirmed in **php-7.3**, **php-7.4** and **latest** tags
