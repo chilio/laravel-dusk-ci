@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 MAINTAINER Chilio
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -25,39 +25,39 @@ RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
-    php7.2 \
-    php7.2-bcmath \
-    php7.2-bz2  \
-    php7.2-cli \
-    php7.2-common \
-    php7.2-curl \
-    php7.2-fpm \
-    php7.2-gd \
-    php7.2-gmp \
-    php7.2-imap \
-    php7.2-interbase \
-    php7.2-intl \
-    php7.2-json \
-    php7.2-ldap \
-    php7.2-mbstring \
-    php7.2-mysql \
-    php7.2-opcache \
-    php7.2-pgsql \
-    php7.2-phpdbg \
-    php7.2-propro \
-    php7.2-pspell \
-    php7.2-raphf \
-    php7.2-readline \
-    php7.2-recode \
-    php7.2-snmp \
-    php7.2-soap \
-    php7.2-sqlite3 \
-    php7.2-sybase \
-    php7.2-tidy \
-    php7.2-xml \
-    php7.2-xmlrpc \
-    php7.2-zip \
-    php7.2-xsl \
+    php8.0 \
+    php8.0-bcmath \
+    php8.0-bz2  \
+    php8.0-cli \
+    php8.0-common \
+    php8.0-curl \
+    php8.0-dba \
+    php8.0-dev \
+    php8.0-enchant \
+    php8.0-fpm \
+    php8.0-gd \
+    php8.0-gmp \
+    php8.0-imap \
+    php8.0-interbase \
+    php8.0-intl \
+    php8.0-ldap \
+    php8.0-mbstring \
+    php8.0-mysql \
+    php8.0-odbc \
+    php8.0-opcache \
+    php8.0-pgsql \
+    php8.0-phpdbg \
+    php8.0-pspell \
+    php8.0-raphf \
+    php8.0-readline \
+    php8.0-snmp \
+    php8.0-soap \
+    php8.0-sqlite3 \
+    php8.0-sybase \
+    php8.0-tidy \
+    php8.0-xml \
+    php8.0-xsl \
+    php8.0-zip \
     php-geoip \
     php-mongodb\
     php-redis \
@@ -72,7 +72,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-memcache \
     php-tideways \
     php-mailparse \
-    php-raphf \
+    php-propro \
     php-stomp \
     php-ds \
     php-sass \
@@ -80,9 +80,9 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-geos \
     php-xdebug php-imagick imagemagick nginx
 
-RUN update-alternatives --set php /usr/bin/php7.2
-RUN update-alternatives --set phar /usr/bin/phar7.2
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+RUN update-alternatives --set php /usr/bin/php8.0
+RUN update-alternatives --set phar /usr/bin/phar7.4
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.4
 # RUN update-alternatives --set phpize /usr/bin/phpize7.2
 # RUN update-alternatives --set php-config /usr/bin/php-config7.2
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
@@ -148,10 +148,11 @@ RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -yq --fix-missing yarn
-RUN yarn global add bower --network-concurrency 1
+#RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+#RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+#RUN apt-get update && apt-get install -yq --fix-missing yarn
+RUN npm install -g yarn
+RUN yarn global add bower
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
@@ -194,4 +195,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.schema-version="1.0.0"
 
 
-CMD ["php-fpm7.2", "-F"]
+CMD ["php-fpm8.0", "-F"]
