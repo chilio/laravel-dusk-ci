@@ -1,5 +1,5 @@
 FROM ubuntu:focal
-MAINTAINER Chilio 
+MAINTAINER Chilio
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -9,6 +9,8 @@ ENV SCREEN_RESOLUTION 1920x720x24
 ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
+
+ENV XDEBUG_MODE coverage
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
 RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
@@ -21,7 +23,7 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
-# Install PHP 
+# Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
     php8.0 \
     php8.0-bcmath \
@@ -98,9 +100,9 @@ RUN \
   && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) \
     !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); \
     echo 'Invalid installer' . PHP_EOL; exit(1); }" \
-  && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME 
+  && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
-ADD commands/xvfb.init.sh /etc/init.d/xvfb 
+ADD commands/xvfb.init.sh /etc/init.d/xvfb
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
 RUN chmod +x /usr/bin/start-nginx-ci-project
@@ -163,7 +165,7 @@ RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
-ADD configs/nginx-default-site /etc/nginx/sites-available/default 
+ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 RUN npm set progress=false
 RUN mkdir /run/php
