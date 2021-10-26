@@ -9,13 +9,17 @@ This is a **complete test suite** for running tests (**Unit**, **Feature**, **Br
 
 With this package, you don't need to worry, about **Chrome** or **chromedriver** compatibility. This is done automatically, to make your **Browser Testing** with **Laravel Dusk**, as easy, as possible.
 
-Versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
-[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/ ) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
-[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.3.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
-[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.4.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
-[![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-8.0.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) 
+Versions: [![](https://img.shields.io/badge/-latest-blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-8.0&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-7.4&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-7.3&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-7.2&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=stable&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
-Deprecated versions: [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+
+Deprecated versions: [![](https://img.shields.io/static/v1?label=&message=old-stable&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-7.1&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+
 
 **Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk) | [Laravel 8.x](https://laravel.com/docs/8.x/dusk)
 
@@ -31,14 +35,14 @@ If this package, is helpful to you, you can add a **star** on [docker hub](https
 
 | LARAVEL VERSION | COMPATIBLE | VERSIONS |
 | --------------- | ---------- | ------ |
-| 8.x             | YES        | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-8.0.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.4.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
-| 7.x             | YES        | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-8.0.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.4.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.3.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
-| 6.x             | YES        | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-8.0.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.4.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.3.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.2.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
-| 5.8             | YES        | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
-| 5.7             | YES        | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
-| 5.6             | YES        | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
-| 5.5             | YES        | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:php-7.1.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
-| 5.4             | Reported working | [![](https://images.microbadger.com/badges/version/chilio/laravel-dusk-ci:old-stable.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 8.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 7.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 6.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 5.8             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=old-stable&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 5.7             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=old-stable&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 5.6             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=old-stable&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 5.5             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=old-stable&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 5.4             | Reported working | [![](https://img.shields.io/static/v1?label=&message=old-stable&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
 | 5.3 and below   | Not tested | |
 
 This is a **plug and play** package, for your **CI testing environment** in **Gitlab**. 
