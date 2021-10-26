@@ -174,6 +174,7 @@ RUN mkdir /run/php
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
+RUN apt-get update 
 RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
