@@ -9,12 +9,13 @@ This is a **complete test suite** for running tests (**Unit**, **Feature**, **Br
 
 With this package, you don't need to worry, about **Chrome** or **chromedriver** compatibility. This is done automatically, to make your **Browser Testing** with **Laravel Dusk**, as easy, as possible.
 
-Versions: [![](https://img.shields.io/badge/-latest-blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+Versions: [![](https://img.shields.io/static/v1?label=php-8.0&message=latest&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=php-7.2&message=stable&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
-[![](https://img.shields.io/static/v1?label=&message=stable&color=blue)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+
 
 
 Deprecated versions: [![](https://img.shields.io/static/v1?label=&message=old-stable&color=orange)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
