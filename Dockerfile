@@ -20,8 +20,9 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get install -yq libgd-tools
-RUN apt-get install -yq --fix-missing php7.1-fpm php7.1-cli php7.1-xml php7.1-zip php7.1-curl php7.1-bcmath php7.1-json \
-    php7.1-mbstring php7.1-pgsql php7.1-mysql php7.1-mcrypt php7.1-gd php-xdebug php-imagick imagemagick nginx
+RUN apt-get -yq update
+RUN apt-get install -yq --fix-missing php7.0-fpm php7.0-cli php7.0-xml php7.0-zip php7.0-curl php7.0-bcmath php7.0-json \
+    php7.0-mbstring php7.0-pgsql php7.0-mysql php7.0-mcrypt php7.0-gd php-xdebug php-imagick imagemagick nginx
 
 RUN apt-get install -yq mc lynx mysql-client bzip2 make g++
 
@@ -77,13 +78,13 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -yq yarn
 RUN yarn global add bower --network-concurrency 1
-RUN wget https://phar.phpunit.de/phpunit.phar
-RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
+RUN wget https://phar.phpunit.de/phpunit-6.5.14.phar
+RUN chmod +x phpunit-6.5.14.phar
+RUN mv phpunit-6.5.14.phar /usr/local/bin/phpunit
 
-RUN npm install -g node-gyp
-RUN npm install -g node-sass
-RUN npm install -g gulp
+RUN npm install -g node-gyp --unsafe
+RUN npm install -g node-sass --unsafe
+RUN npm install -g gulp --unsafe
 
 RUN apt-get install -y supervisor
 
@@ -93,6 +94,7 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 VOLUME [ "/var/log/supervisor" ]
 
+RUN apt-get -yq update
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN apt-get upgrade
 RUN apt-get autoremove
@@ -109,5 +111,5 @@ RUN gulp --version
 
 EXPOSE 80 9515
 
-CMD ["php7.1-fpm", "-g", "daemon off;"]
+CMD ["php7.0-fpm", "-g", "daemon off;"]
 CMD ["nginx", "-g", "daemon off;"]
