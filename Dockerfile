@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php8.0-fpm \
     php8.0-gd \
     php8.0-gmp \
+    php8.0-imagick \
     php8.0-imap \
     php8.0-interbase \
     php8.0-intl \
