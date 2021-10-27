@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.3-fpm \
     php7.3-gd \
     php7.3-gmp \
+    php7.3-imagick \
     php7.3-imap \
     php7.3-interbase \
     php7.3-intl \
