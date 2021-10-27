@@ -1,0 +1,30 @@
+#!/bin/bash
+GREEN='\033[0;32m'
+NC='\033[0m'
+YELLOW='\033[1;33m'
+RED='\033[1;31m'
+printf "${GREEN}PHP: ${NC}"
+php --version
+printf "${GREEN}YARN: ${NC}"
+yarn --version
+printf "${GREEN}NGINX: ${NC}"
+nginx -v
+printf "${GREEN}NODEJS: ${NC}"
+nodejs --version
+printf "${GREEN}NPM: ${NC}"
+npm --version
+printf "${GREEN}BOWER: ${NC}"
+bower --version
+printf "${GREEN}PHPUNIT: ${NC}"
+phpunit --version
+printf "${GREEN}NODE-SASS: ${NC}\n"
+node-sass --version
+printf "${GREEN}GULP: ${NC}"
+gulp --version
+printf "${GREEN}CHROME: ${NC}"
+google-chrome --version
+printf "${GREEN}CHROMEDRIVER: ${NC}"
+chromedriver --version
+printf "${GREEN}PHP MODULES:${YELLOW}\n"
+dpkg --get-selections | grep -v deinstall | grep php | awk 'NF{NF-=1};1'
+printf "${NC}"

@@ -99,15 +99,9 @@ RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN apt-get upgrade
 RUN apt-get autoremove
 
-RUN php --version
-RUN yarn --version
-RUN nginx -v
-RUN nodejs --version
-RUN npm --version
-RUN bower --version
-RUN phpunit --version
-RUN node-sass --version
-RUN gulp --version
+ADD commands/versions /usr/bin/versions
+RUN chmod +x /usr/bin/versions
+RUN versions
 
 EXPOSE 80 9515
 
