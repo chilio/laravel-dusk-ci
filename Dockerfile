@@ -148,9 +148,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -yq --fix-missing yarn
 RUN yarn global add bower --network-concurrency 1
-RUN wget https://phar.phpunit.de/phpunit.phar
-RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
+RUN wget https://phar.phpunit.de/phpunit-8.5.21.phar
+RUN chmod +x phpunit-8.5.21.phar
+RUN mv phpunit-8.5.21.phar /usr/local/bin/phpunit
 
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
@@ -162,13 +162,13 @@ ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default 
 
-RUN composer global require hirak/prestissimo
 
 RUN npm set progress=false
 
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
+RUN apt-get -yq update
 RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
