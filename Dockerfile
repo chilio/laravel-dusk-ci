@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.2-fpm \
     php7.2-gd \
     php7.2-gmp \
+    php7.2-imagick \
     php7.2-imap \
     php7.2-interbase \
     php7.2-intl \
