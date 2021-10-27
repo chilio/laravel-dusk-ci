@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.2-fpm \
     php7.2-gd \
     php7.2-gmp \
+    php7.2-imagick \
     php7.2-imap \
     php7.2-interbase \
     php7.2-intl \
@@ -152,9 +153,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -yq --fix-missing yarn
 RUN yarn global add bower --network-concurrency 1
-RUN wget https://phar.phpunit.de/phpunit.phar
-RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
+RUN wget https://phar.phpunit.de/phpunit-8.5.21.phar
+RUN chmod +x phpunit-8.5.21.phar
+RUN mv phpunit-8.5.21.phar /usr/local/bin/phpunit
 
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
