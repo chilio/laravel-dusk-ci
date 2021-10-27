@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.4-fpm \
     php7.4-gd \
     php7.4-gmp \
+    php7.4-imagick \
     php7.4-imap \
     php7.4-interbase \
     php7.4-intl \
