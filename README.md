@@ -56,7 +56,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 
 ### **Changelog**
-- 2021-10-28 - `latest` tag refers php-8.0 from now on
+- 2021-10-28 - `latest` tag refers php-8.0 from now on and `stable` tag refers to `php-7.2`
 - 2021-10-28 - php imagick extension added to all images except deprecated `php-7.1`
 - 2021-10-12 - Latest chromedriver compatibility updated up to v.95
 - 2021-01-29 - Latest chromedriver compatibility updated up to v.89
