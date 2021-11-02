@@ -30,7 +30,7 @@ Deprecated versions: [![](https://img.shields.io/static/v1?label=&message=old-st
 
 **Gitlab Continous Deployment | Delivery CD** is comming soon...
 
-Why deprecated versions are still available? The answer is pretty straightforward, so you can browser test your old Laravel apps while migrating to the new versions.
+Why deprecated versions are still available? The answer is pretty straightforward, so you can still browser test your old Laravel apps while migrating to the new versions.
 
 If this package, is helpful to you, you can add a **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible to other users.
 
