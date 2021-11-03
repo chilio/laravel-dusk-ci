@@ -61,6 +61,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 If this package, is helpful to you, you can add a **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible to other users.
 ### **Changelog**
+- 2021-11-03 - Latest chromedriver compatibility updated up to v.96
 - 2021-11-03 - `stable` tag refers `php-7.4` from now on
 - 2021-10-28 - `latest` tag refers php-8.0 from now on and `stable` tag refers to `php-7.2`
 - 2021-10-28 - php imagick extension added to all images except deprecated `php-7.1`
