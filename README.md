@@ -9,7 +9,8 @@ This is a **complete test suite** for running tests (**Unit**, **Feature**, **Br
 
 With this package, you don't need to worry, about **Chrome** or **chromedriver** compatibility. This is done automatically, to make your **Browser Testing** with **Laravel Dusk**, as easy, as possible.
 
-Versions: [![](https://img.shields.io/static/v1?label=php-8.0&message=latest&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+Versions: [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=php-8.0&message=latest&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=php-7.4&message=stable&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
@@ -23,13 +24,11 @@ Deprecated versions: [![](https://img.shields.io/static/v1?label=&message=old-st
 [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 
-**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk) | [Laravel 8.x](https://laravel.com/docs/8.x/dusk)
+**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk) | [Laravel 8.x](https://laravel.com/docs/8.x/dusk) | [Laravel 9.x](https://laravel.com/docs/9.x/dusk)
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
 
 **Gitlab Continous Integration CI** ? Find more on [gitlab-runner](https://hub.docker.com/r/gitlab/gitlab-runner/)
-
-**Gitlab Continous Deployment | Delivery CD** is comming soon...
 
 You may wonder why deprecated versions are still available? The answer is pretty straightforward, so you can still **browser test your old Laravel apps** while migrating to the new versions.
 
@@ -41,7 +40,7 @@ Simply choose the corresponding version of your PHP interpreter (according to yo
 
 | LARAVEL VERSION | COMPATIBLE | VERSIONS |
 | --------------- | ---------- | ------ |
-| 9.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
+| 9.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
 | 8.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
 | 7.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
 | 6.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
@@ -62,6 +61,8 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 If this package, is helpful to you, you can add a **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible to other users.
 ### **Changelog**
+- 2022-04-16 - Laravel 9 compatibility confirmed
+- 2022-04-16 - Latest chromedriver compatibility updated up to v.101
 - 2021-11-03 - Latest chromedriver compatibility updated up to v.96
 - 2021-11-03 - `stable` tag refers `php-7.4` from now on
 - 2021-10-28 - `latest` tag refers php-8.0 from now on and `stable` tag refers to `php-7.2`
