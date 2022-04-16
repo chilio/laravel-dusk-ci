@@ -13,13 +13,14 @@ Versions: [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=gre
 [![](https://img.shields.io/static/v1?label=php-8.0&message=latest&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=php-7.4&message=stable&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
-[![](https://img.shields.io/static/v1?label=&message=php-7.4&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
-[![](https://img.shields.io/static/v1?label=&message=php-7.3&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-7.4&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+
 
 
 
 
 Deprecated versions: [![](https://img.shields.io/static/v1?label=&message=old-stable&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-7.3&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
