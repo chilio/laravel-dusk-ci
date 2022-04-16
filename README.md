@@ -62,6 +62,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 If this package, is helpful to you, you can add a **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible to other users.
 ### **Changelog**
 - 2022-04-16 - Laravel 9 compatibility confirmed
+- 2022-04-16 - PHP 8.1 tag added
 - 2022-04-16 - Latest chromedriver compatibility updated up to v.101
 - 2021-11-03 - Latest chromedriver compatibility updated up to v.96
 - 2021-11-03 - `stable` tag refers `php-7.4` from now on
