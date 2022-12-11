@@ -39,7 +39,7 @@ Simply choose the corresponding version of your PHP interpreter (according to yo
 
 ### **Compatibility**
 
-| LARAVEL VERSION | COMPATIBLE | VERSIONS |
+| LARAVEL VERSION | COMPATIBLE | PHP VERSIONS |
 | --------------- | ---------- | ------ |
 | 9.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
 | 8.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
