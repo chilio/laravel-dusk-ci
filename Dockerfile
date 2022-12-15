@@ -1,5 +1,5 @@
-FROM ubuntu:bionic
-MAINTAINER Chilio 
+FROM ubuntu:focal
+MAINTAINER Chilio
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -9,6 +9,8 @@ ENV SCREEN_RESOLUTION 1920x720x24
 ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
+
+ENV XDEBUG_MODE coverage
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
 RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
@@ -21,40 +23,42 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
-# Install PHP 
+# Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
-    php7.2 \
-    php7.2-bcmath \
-    php7.2-bz2  \
-    php7.2-cli \
-    php7.2-common \
-    php7.2-curl \
-    php7.2-fpm \
-    php7.2-gd \
-    php7.2-gmp \
-    php7.2-imagick \
-    php7.2-imap \
-    php7.2-interbase \
-    php7.2-intl \
-    php7.2-json \
-    php7.2-ldap \
-    php7.2-mbstring \
-    php7.2-mysql \
-    php7.2-opcache \
-    php7.2-pgsql \
-    php7.2-phpdbg \
-    php7.2-pspell \
-    php7.2-readline \
-    php7.2-recode \
-    php7.2-snmp \
-    php7.2-soap \
-    php7.2-sqlite3 \
-    php7.2-sybase \
-    php7.2-tidy \
-    php7.2-xml \
-    php7.2-xmlrpc \
-    php7.2-zip \
-    php7.2-xsl \
+    php8.2 \
+    php8.2-bcmath \
+    php8.2-bz2  \
+    php8.2-cli \
+    php8.2-common \
+    php8.2-curl \
+    php8.2-dba \
+    php8.2-dev \
+    php8.2-enchant \
+    php8.2-fpm \
+    php8.2-gd \
+    php8.2-gmp \
+    php8.2-imagick \
+    php8.2-imap \
+    php8.2-interbase \
+    php8.2-intl \
+    php8.2-ldap \
+    php8.2-mbstring \
+    php8.2-mysql \
+    php8.2-odbc \
+    php8.2-opcache \
+    php8.2-pgsql \
+    php8.2-phpdbg \
+    php8.2-pspell \
+    php8.2-raphf \
+    php8.2-readline \
+    php8.2-snmp \
+    php8.2-soap \
+    php8.2-sqlite3 \
+    php8.2-sybase \
+    php8.2-tidy \
+    php8.2-xml \
+    php8.2-xsl \
+    php8.2-zip \
     php-geoip \
     php-mongodb\
     php-redis \
@@ -69,7 +73,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-memcache \
     php-tideways \
     php-mailparse \
-    php-raphf \
+    # php-propro \
     php-stomp \
     php-ds \
     php-sass \
@@ -77,9 +81,9 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-geos \
     php-xdebug php-imagick imagemagick nginx
 
-RUN update-alternatives --set php /usr/bin/php7.2
-RUN update-alternatives --set phar /usr/bin/phar7.2
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+RUN update-alternatives --set php /usr/bin/php8.2
+RUN update-alternatives --set phar /usr/bin/phar8.2
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.2
 # RUN update-alternatives --set phpize /usr/bin/phpize7.2
 # RUN update-alternatives --set php-config /usr/bin/php-config7.2
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
@@ -97,9 +101,9 @@ RUN \
   && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) \
     !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); \
     echo 'Invalid installer' . PHP_EOL; exit(1); }" \
-  && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME 
+  && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
-ADD commands/xvfb.init.sh /etc/init.d/xvfb 
+ADD commands/xvfb.init.sh /etc/init.d/xvfb
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
 RUN chmod +x /usr/bin/start-nginx-ci-project
@@ -139,19 +143,20 @@ RUN \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -yq --fix-missing yarn
-RUN yarn global add bower --network-concurrency 1
-RUN wget https://phar.phpunit.de/phpunit-8.5.21.phar
-RUN chmod +x phpunit-8.5.21.phar
-RUN mv phpunit-8.5.21.phar /usr/local/bin/phpunit
+#RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+#RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+#RUN apt-get update && apt-get install -yq --fix-missing yarn
+RUN npm install -g yarn
+RUN yarn global add bower
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
 
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
@@ -161,10 +166,10 @@ RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
-ADD configs/nginx-default-site /etc/nginx/sites-available/default 
-
+ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 RUN npm set progress=false
+RUN mkdir /run/php
 
 VOLUME [ "/var/log/supervisor" ]
 
@@ -191,4 +196,5 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-CMD ["php-fpm7.2", "-F"]
+
+CMD ["php-fpm8.2", "-F"]
