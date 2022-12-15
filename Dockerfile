@@ -102,29 +102,6 @@ RUN \
     echo 'Invalid installer' . PHP_EOL; exit(1); }" \
   && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
-ADD commands/xvfb.init.sh /etc/init.d/xvfb
-
-ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
-RUN chmod +x /usr/bin/start-nginx-ci-project
-
-ADD commands/versions /usr/bin/versions
-RUN chmod +x /usr/bin/versions
-
-ADD configs/.bowerrc /root/.bowerrc
-
-ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
-RUN chmod +x /usr/bin/configure-laravel
-
-ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
-RUN chmod +x /usr/bin/chrome-system-check
-
-ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
-RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
-ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
-RUN chmod +x /usr/bin/dusk-versions-check.php
-
-
 RUN \
   apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
@@ -169,6 +146,28 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 RUN npm set progress=false
 RUN mkdir /run/php
+
+ADD commands/xvfb.init.sh /etc/init.d/xvfb
+
+ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
+RUN chmod +x /usr/bin/start-nginx-ci-project
+
+ADD commands/versions /usr/bin/versions
+RUN chmod +x /usr/bin/versions
+
+ADD configs/.bowerrc /root/.bowerrc
+
+ADD commands/configure-laravel.sh /usr/bin/configure-laravel
+
+RUN chmod +x /usr/bin/configure-laravel
+
+ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
+RUN chmod +x /usr/bin/chrome-system-check
+
+ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
+RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
+ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
+RUN chmod +x /usr/bin/dusk-versions-check.php
 
 VOLUME [ "/var/log/supervisor" ]
 
