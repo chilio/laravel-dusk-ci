@@ -25,40 +25,40 @@ RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
-    php8.1 \
-    php8.1-bcmath \
-    php8.1-bz2  \
-    php8.1-cli \
-    php8.1-common \
-    php8.1-curl \
-    php8.1-dba \
-    php8.1-dev \
-    php8.1-enchant \
-    php8.1-fpm \
-    php8.1-gd \
-    php8.1-gmp \
-    php8.1-imagick \
-    php8.1-imap \
-    php8.1-interbase \
-    php8.1-intl \
-    php8.1-ldap \
-    php8.1-mbstring \
-    php8.1-mysql \
-    php8.1-odbc \
-    php8.1-opcache \
-    php8.1-pgsql \
-    php8.1-phpdbg \
-    php8.1-pspell \
-    php8.1-raphf \
-    php8.1-readline \
-    php8.1-snmp \
-    php8.1-soap \
-    php8.1-sqlite3 \
-    php8.1-sybase \
-    php8.1-tidy \
-    php8.1-xml \
-    php8.1-xsl \
-    php8.1-zip \
+    php8.2 \
+    php8.2-bcmath \
+    php8.2-bz2  \
+    php8.2-cli \
+    php8.2-common \
+    php8.2-curl \
+    php8.2-dba \
+    php8.2-dev \
+    php8.2-enchant \
+    php8.2-fpm \
+    php8.2-gd \
+    php8.2-gmp \
+    php8.2-imagick \
+    php8.2-imap \
+    php8.2-interbase \
+    php8.2-intl \
+    php8.2-ldap \
+    php8.2-mbstring \
+    php8.2-mysql \
+    php8.2-odbc \
+    php8.2-opcache \
+    php8.2-pgsql \
+    php8.2-phpdbg \
+    php8.2-pspell \
+    php8.2-raphf \
+    php8.2-readline \
+    php8.2-snmp \
+    php8.2-soap \
+    php8.2-sqlite3 \
+    php8.2-sybase \
+    php8.2-tidy \
+    php8.2-xml \
+    php8.2-xsl \
+    php8.2-zip \
     php-geoip \
     php-mongodb\
     php-redis \
@@ -73,7 +73,6 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-memcache \
     php-tideways \
     php-mailparse \
-    php-propro \
     php-stomp \
     php-ds \
     php-sass \
@@ -81,11 +80,11 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-geos \
     php-xdebug php-imagick imagemagick nginx
 
-RUN update-alternatives --set php /usr/bin/php8.1
-RUN update-alternatives --set phar /usr/bin/phar8.1
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.1
-# RUN update-alternatives --set phpize /usr/bin/phpize7.2
-# RUN update-alternatives --set php-config /usr/bin/php-config7.2
+
+RUN update-alternatives --set php /usr/bin/php8.2
+RUN update-alternatives --set phar /usr/bin/phar8.2
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.2
+
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
@@ -197,4 +196,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.schema-version="1.0.0"
 
 
-CMD ["php-fpm8.1", "-F"]
+CMD ["php-fpm8.2", "-F"]
