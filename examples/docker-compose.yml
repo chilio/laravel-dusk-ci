@@ -1,0 +1,41 @@
+# Example of command:
+#   docker-compose -f docker-compose.yml up --exit-code-from test
+
+# .env.exmaple file
+# DB_HOST=db
+# DB_CONNECTION=pgsql
+# DB_PORT=5432
+# DB_DATABASE=mydatabase
+# DB_USERNAME=postgres
+# DB_PASSWORD=postgres
+# 
+# POSTGRES_DB=mydatabase
+# POSTGRES_USER=postgres
+# POSTGRES_PASSWORD=postgres
+
+version: '3.6'
+services:
+  test:
+    image: chilio/laravel-dusk-ci:stable
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www/
+    command:
+      - /bin/sh
+      - -c
+      - |
+        cp .env.example .env
+        composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+        npm install 
+        npm run dev 
+        configure-laravel
+        start-nginx-ci-project
+        php artisan dusk --colors --debug
+    environment:
+      - CI_PROJECT_DIR=/var/www
+
+
+  db:
+    image: postgres:10.3
+    env_file:
+      - .env

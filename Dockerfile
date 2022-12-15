@@ -73,7 +73,6 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-memcache \
     php-tideways \
     php-mailparse \
-    # php-propro \
     php-stomp \
     php-ds \
     php-sass \
@@ -81,11 +80,11 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-geos \
     php-xdebug php-imagick imagemagick nginx
 
+
 RUN update-alternatives --set php /usr/bin/php8.2
 RUN update-alternatives --set phar /usr/bin/phar8.2
 RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.2
-# RUN update-alternatives --set phpize /usr/bin/phpize7.2
-# RUN update-alternatives --set php-config /usr/bin/php-config7.2
+
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
