@@ -105,7 +105,6 @@ RUN \
 RUN \
   apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
-  && chmod +x /etc/init.d/xvfb \
   && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
   && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
   && curl -sS -o /tmp/chromedriver_linux64.zip \
@@ -148,6 +147,7 @@ RUN npm set progress=false
 RUN mkdir /run/php
 
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
+RUN chmod +x /etc/init.d/xvfb
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
 RUN chmod +x /usr/bin/start-nginx-ci-project
