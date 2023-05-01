@@ -17,7 +17,7 @@ Versions: [![](https://img.shields.io/static/v1?label=&message=php-8.2&color=gre
 
 
 Deprecated versions: 
-[![](https://img.shields.io/static/v1?label=&message=php-8.0&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=php-8.0&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
