@@ -13,22 +13,19 @@ Versions: [![](https://img.shields.io/static/v1?label=&message=php-8.2&color=gre
 [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=latest&message=php-8.0&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=stable&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
-[![](https://img.shields.io/static/v1?label=&message=php-8.0&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
-[![](https://img.shields.io/static/v1?label=&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 
 
-
-
-Deprecated versions: [![](https://img.shields.io/static/v1?label=&message=old-stable&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+Deprecated versions: 
+[![](https://img.shields.io/static/v1?label=&message=php-8.0&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=&message=old-stable&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 
-
-**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk) | [Laravel 8.x](https://laravel.com/docs/8.x/dusk) | [Laravel 9.x](https://laravel.com/docs/9.x/dusk)
+**Laravel dusk**? Find more in Laravel Docs [laravel 5.8](https://laravel.com/docs/5.8/dusk) | [laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk) | [Laravel 8.x](https://laravel.com/docs/8.x/dusk) | [Laravel 9.x](https://laravel.com/docs/9.x/dusk) | [Laravel 10.x](https://laravel.com/docs/10.x/dusk)
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
 
