@@ -176,8 +176,6 @@ RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN systemctl enable xvfb
 
-RUN versions
-
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION

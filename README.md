@@ -14,7 +14,7 @@ With this package, you don't need to worry, about **Chrome** or **chromedriver**
 
 Versions: [![](https://img.shields.io/static/v1?label=&message=php-8.2&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
-[![](https://img.shields.io/static/v1?label=latest&message=php-8.0&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
+[![](https://img.shields.io/static/v1?label=latest&message=php-8.2&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 [![](https://img.shields.io/static/v1?label=stable&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 
