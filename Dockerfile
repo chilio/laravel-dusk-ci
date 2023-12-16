@@ -114,17 +114,13 @@ RUN \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-#RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-#RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-#RUN apt-get update && apt-get install -yq --fix-missing yarn
 RUN npm install -g yarn
-RUN yarn global add bower
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
@@ -150,8 +146,6 @@ RUN chmod +x /usr/bin/start-nginx-ci-project
 
 ADD commands/versions /usr/bin/versions
 RUN chmod +x /usr/bin/versions
-
-ADD configs/.bowerrc /root/.bowerrc
 
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
 
@@ -191,4 +185,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.schema-version="1.0.0"
 
 
-CMD ["php-fpm8.2", "-F"]
+CMD ["php-fpm8.3", "-F"]
