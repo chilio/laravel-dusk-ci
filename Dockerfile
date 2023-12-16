@@ -23,8 +23,6 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
-RUN apt search php8.3
-RUN exit
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
     php8.3 \
@@ -35,7 +33,6 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php8.3-curl \
     php8.3-dba \
     php8.3-dev \
-    php8.3-ds \
     php8.3-enchant \
     php8.3-fpm \
     php8.3-gd \
