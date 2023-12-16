@@ -25,40 +25,40 @@ RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
-    php8.2 \
-    php8.2-bcmath \
-    php8.2-bz2  \
-    php8.2-cli \
-    php8.2-common \
-    php8.2-curl \
-    php8.2-dba \
-    php8.2-dev \
-    php8.2-enchant \
-    php8.2-fpm \
-    php8.2-gd \
-    php8.2-gmp \
-    php8.2-imagick \
-    php8.2-imap \
-    php8.2-interbase \
-    php8.2-intl \
-    php8.2-ldap \
-    php8.2-mbstring \
-    php8.2-mysql \
-    php8.2-odbc \
-    php8.2-opcache \
-    php8.2-pgsql \
-    php8.2-phpdbg \
-    php8.2-pspell \
-    php8.2-raphf \
-    php8.2-readline \
-    php8.2-snmp \
-    php8.2-soap \
-    php8.2-sqlite3 \
-    php8.2-sybase \
-    php8.2-tidy \
-    php8.2-xml \
-    php8.2-xsl \
-    php8.2-zip \
+    php8.3 \
+    php8.3-bcmath \
+    php8.3-bz2  \
+    php8.3-cli \
+    php8.3-common \
+    php8.3-curl \
+    php8.3-dba \
+    php8.3-dev \
+    php8.3-enchant \
+    php8.3-fpm \
+    php8.3-gd \
+    php8.3-gmp \
+    php8.3-imagick \
+    php8.3-imap \
+    php8.3-interbase \
+    php8.3-intl \
+    php8.3-ldap \
+    php8.3-mbstring \
+    php8.3-mysql \
+    php8.3-odbc \
+    php8.3-opcache \
+    php8.3-pgsql \
+    php8.3-phpdbg \
+    php8.3-pspell \
+    php8.3-raphf \
+    php8.3-readline \
+    php8.3-snmp \
+    php8.3-soap \
+    php8.3-sqlite3 \
+    php8.3-sybase \
+    php8.3-tidy \
+    php8.3-xml \
+    php8.3-xsl \
+    php8.3-zip \
     php-geoip \
     php-mongodb\
     php-redis \
@@ -81,7 +81,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-xdebug php-imagick imagemagick nginx
 
 
-RUN update-alternatives --set php /usr/bin/php8.2
+RUN update-alternatives --set php /usr/bin/php8.3
 RUN update-alternatives --set phar /usr/bin/phar8.2
 RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.2
 
