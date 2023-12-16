@@ -114,7 +114,7 @@ RUN \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -127,7 +127,6 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
-RUN npm install -g gulp
 
 RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
@@ -148,7 +147,6 @@ ADD commands/versions /usr/bin/versions
 RUN chmod +x /usr/bin/versions
 
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
 RUN chmod +x /usr/bin/configure-laravel
 
 ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check

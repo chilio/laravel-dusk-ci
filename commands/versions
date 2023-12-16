@@ -10,17 +10,13 @@ yarn --version
 printf "${GREEN}NGINX: ${NC}"
 nginx -v
 printf "${GREEN}NODEJS: ${NC}"
-nodejs --version
+node --version
 printf "${GREEN}NPM: ${NC}"
 npm --version
-printf "${GREEN}BOWER: ${NC}"
-bower --version
 printf "${GREEN}PHPUNIT: ${NC}"
 phpunit --version
 printf "${GREEN}NODE-SASS: ${NC}\n"
 node-sass --version
-printf "${GREEN}GULP: ${NC}"
-gulp --version
 printf "${GREEN}CHROME: ${NC}"
 google-chrome --version
 printf "${GREEN}CHROMEDRIVER: ${NC}"
