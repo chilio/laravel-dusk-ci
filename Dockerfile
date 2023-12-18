@@ -71,7 +71,6 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php-yaml \
     php-memcached \
     php-memcache \
-    php-tideways \
     php-mailparse \
     php-stomp \
     php-ds \
