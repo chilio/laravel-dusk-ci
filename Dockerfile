@@ -106,7 +106,7 @@ RUN \
   && echo $CHROMEDRIVER_VERSION \
   && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
   && curl -sS -o /tmp/chromedriver_linux64.zip \
-    https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
+    https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver_linux64.zip \
   && unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION \
   && rm /tmp/chromedriver_linux64.zip \
   && chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver \
