@@ -23,6 +23,7 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
     php8.3 \
@@ -78,8 +79,8 @@ RUN apt-get update && apt-get install -yq --fix-missing \
 
 
 RUN update-alternatives --set php /usr/bin/php8.3
-RUN update-alternatives --set phar /usr/bin/phar8.2
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.2
+RUN update-alternatives --set phar /usr/bin/phar8.3
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.3
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
@@ -101,10 +102,10 @@ RUN \
 RUN \
   apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
-  && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
+  && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq .channels.Stable.version` \
   && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
   && curl -sS -o /tmp/chromedriver_linux64.zip \
-    http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
+    https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
   && unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION \
   && rm /tmp/chromedriver_linux64.zip \
   && chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver \
@@ -113,7 +114,7 @@ RUN \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
+
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
