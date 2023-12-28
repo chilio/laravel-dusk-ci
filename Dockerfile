@@ -103,6 +103,7 @@ RUN \
   apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
   && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq .channels.Stable.version` \
+  && echo $CHROMEDRIVER_VERSION \
   && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
   && curl -sS -o /tmp/chromedriver_linux64.zip \
     https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
