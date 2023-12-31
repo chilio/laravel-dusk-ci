@@ -1,4 +1,4 @@
-# Browser Tests with Laravel Dusk in gitlab CI/CD pipelines.
+# Running Browser Tests with Laravel Dusk in Gitlab CI/CD Pipelines.
 
 
 [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci)
@@ -6,9 +6,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/chilio/laravel-dusk-ci.svg?style=social&label=Stars)](https://github.com/chilio/laravel-dusk-ci) 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)
 
-This is a **complete test suite** for running tests (**Unit**, **Feature**, **Browser**) on your Laravel installation. 
+This is a **complete test suite** for running tests (**Unit**, **Feature**, **Browser**) on your Laravel installation.
 
-**Browser Tests** work with **Laravel Dusk** via **docker executor runner** in **gitlab**.
+It uses **Laravel Dusk** for browser tests via a Docker executor runner in **GitLab**.
 
 With this package, you don't need to worry, about **Chrome** or **chromedriver** compatibility. This is done automatically, to make your **Browser Testing** with **Laravel Dusk**, as easy, as possible.
 
@@ -35,13 +35,13 @@ Deprecated versions:
 
 **Gitlab Continous Integration CI** ? Find more on [gitlab-runner](https://hub.docker.com/r/gitlab/gitlab-runner/)
 
-You may wonder why deprecated versions are still available? The answer is pretty straightforward, so you can still **browser test your old Laravel apps** while migrating to the new versions.
+You may be wondering why deprecated versions are still available. The main reason is to allow for browser testing of your older Laravel applications while you're transitioning to newer versions.
 
-This is a **plug and play** package, for your **CI testing environment** in **Gitlab**.
+This **plug-and-play** package is designed for your **CI** testing environment in GitLab.
 
-Simply choose the corresponding version of your PHP interpreter (according to your Laravel version) and you should be good to go. 
+All you need to do is select the appropriate version of your **PHP interpreter** (based on your **Laravel version**), and you should be ready to go. 
 
-Colours show current state of PHP lifetime and supported versions. Please note that **all published images** are fully working and completely usable.   
+Colors indicate the current state of PHP's life cycle and supported versions. Please note that all published images are fully functional and entirely usable.
 
 ### **Compatibility**
 
@@ -61,13 +61,13 @@ Colours show current state of PHP lifetime and supported versions. Please note t
 
 
 
-You should be up and running, in seconds, with **almost** no modifications needed, but please carefully read the notes below. 
+With no modifications needed, you should be up and running in seconds. However, please carefully read the notes that follow.
 
 For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without -no-sandbox directive in this file.**... Please read more about it, under **Usage**...
 
-In case of problems, please read current docs entirely, check issues (also completed) on github, and finally post an issue on github.   
+In case of any issues, please read the current documentation thoroughly, check existing issues (including closed ones) on GitHub, and finally, report a new issue on GitHub.   
 
-If this package, is helpful to you, you can add a **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible to other users.
+If this package proves to be useful to you, please star it on Docker Hub or GitHub to increase its visibility to other users.
 ### **Changelog**
 - 2023-12-30 - `stable` tag refers `php-8.2` from now on
 - 2023-12-30 - `latest` tag refers `php-8.3` from now on
@@ -244,13 +244,6 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 
 **[gitlab-ci.yml](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/.gitlab-ci.yml)** # with stages, cache, and artifacts, assuming you are using scripts like "dev" in package.json.
 
-
-
-
-### **Caveats:**
-
-- Although you don't see it in docker hub, this is automated docker build. 
-  You can always find more information about this on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), [docker cloud](https://cloud.docker.com/swarm/chilio/repository/registry-1.docker.io/chilio/laravel-dusk-ci/general), [docker store](https://store.docker.com/community/images/chilio/laravel-dusk-ci), or on [github](https://github.com/chilio/laravel-dusk-ci)
 
 
 
