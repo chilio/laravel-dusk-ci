@@ -41,6 +41,8 @@ This is a **plug and play** package, for your **CI testing environment** in **Gi
 
 Simply choose the corresponding version of your PHP interpreter (according to your Laravel version) and you should be good to go. 
 
+Colours show current state of PHP lifetime and supported versions. Please note that **all published versions** are fully working and completely usable.   
+
 ### **Compatibility**
 
 | LARAVEL VERSION | COMPATIBLE | PHP VERSIONS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
