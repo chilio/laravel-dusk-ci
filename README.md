@@ -67,6 +67,7 @@ In case of problems, please read current docs entirely, check issues (also compl
 
 If this package, is helpful to you, you can add a **star** on [docker hub](https://hub.docker.com/r/chilio/laravel-dusk-ci/), or on [github](https://github.com/chilio/laravel-dusk-ci), to make it more visible to other users.
 ### **Changelog**
+- 2023-12-30 - `stable` tag refers `php-8.2` from now on
 - 2023-12-30 - `latest` tag refers `php-8.3` from now on
 - 2023-12-20 - `php-8.3` tag released with latest versions of chrome and chromedriver
 - 2023-04-29 - `latest` tag refers `php-8.2` from now on
