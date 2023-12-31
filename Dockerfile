@@ -104,13 +104,14 @@ RUN \
     xfonts-scalable \
   && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq -r .channels.Stable.version` \
   && echo $CHROMEDRIVER_VERSION \
-  && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && curl -sS -o /tmp/chromedriver_linux64.zip \
-    https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver_linux64.zip \
-  && unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && rm /tmp/chromedriver_linux64.zip \
-  && chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver \
-  && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
+  && curl -sS -o /tmp/chromedriver_latest.zip \
+    https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
+  && dir -lh /tmp \
+  && unzip -j /tmp/chromedriver_latest.zip chromedriver-linux64/chromedriver -d /tmp \
+  && rm /tmp/chromedriver_latest.zip \
+  && mv /tmp/chromedriver /opt/chromedriver \
+  && chmod +x /opt/chromedriver \
+  && ln -fs /opt/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
