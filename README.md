@@ -41,7 +41,7 @@ This **plug-and-play** package is designed for your **CI** testing environment i
 
 All you need to do is select the appropriate version of your **PHP interpreter** (based on your **Laravel version**), and you should be ready to go. 
 
-Colours indicate the current state of PHP's life cycle and supported versions. Please note that all published images are fully functional and entirely usable.
+Colours indicate the current state of PHP's life cycle and supported versions. Please note that all published images are fully functional and entirely usable for testing purposes.
 
 ### **Compatibility**
 
@@ -258,4 +258,6 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 - if you get warning about mysql `Service runner probably didn't start properly` or other strange behaviours make sure to remove all cache and artifacts routines. Depending on your workflow, they might introduce problems to your tests
 
 
-
+### **Disclaimer**
+Images mentioned above are intended for testing purposes in CI environments only.
+Production usage is not recommended.
