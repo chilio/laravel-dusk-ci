@@ -23,7 +23,7 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
     php8.3 \
@@ -74,9 +74,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php8.3-xsl \
     php8.3-yaml \
     php8.3-zip \
-    php8.3-zmq \
-    nginx
-
+    php8.3-zmq
 
 RUN update-alternatives --set php /usr/bin/php8.3
 RUN update-alternatives --set phar /usr/bin/phar8.3
@@ -117,7 +115,7 @@ RUN \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
 
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_22.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
