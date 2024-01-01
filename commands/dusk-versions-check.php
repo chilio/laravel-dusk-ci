@@ -7,7 +7,7 @@ $nocolor="\033[0m";
 $system_chrome = $argv[1];
 $system_chromedriver = $argv[2];
 $laravel_chromedriver = $argv[3];
-$print_info_only = $argv[4];
+$print_info_only = $argv[4] ?? FALSE;
 
 $compatible = FALSE;
 if ($system_chromedriver == $laravel_chromedriver) {
