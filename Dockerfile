@@ -25,7 +25,7 @@ RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 # Install PHP
-RUN apt-get update && apt-get install -yq --fix-missing \
+RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends \
     php8.3 \
     php8.3-bcmath \
     php8.3-bz2 \
