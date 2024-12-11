@@ -77,13 +77,8 @@ RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends 
     php8.4-zmq
 
 RUN update-alternatives --set php /usr/bin/php8.4
-<<<<<<< Updated upstream
-RUN update-alternatives --set phar /usr/bin/phar
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar
-=======
 RUN update-alternatives --set phar /usr/bin/phar8.4
 RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.4
->>>>>>> Stashed changes
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
