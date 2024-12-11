@@ -77,8 +77,13 @@ RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends 
     php8.4-zmq
 
 RUN update-alternatives --set php /usr/bin/php8.4
+<<<<<<< Updated upstream
 RUN update-alternatives --set phar /usr/bin/phar
 RUN update-alternatives --set phar.phar /usr/bin/phar.phar
+=======
+RUN update-alternatives --set phar /usr/bin/phar8.4
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.4
+>>>>>>> Stashed changes
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
@@ -103,7 +108,7 @@ RUN \
   && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq -r .channels.Stable.version` \
   && echo $CHROMEDRIVER_VERSION \
   && curl -sS -o /tmp/chromedriver_latest.zip \
-    https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
+    https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
   && dir -lh /tmp \
   && unzip -j /tmp/chromedriver_latest.zip chromedriver-linux64/chromedriver -d /tmp \
   && rm /tmp/chromedriver_latest.zip \
