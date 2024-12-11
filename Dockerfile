@@ -184,4 +184,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.schema-version="1.0.0"
 
 
-CMD ["php-fpm8.3", "-F"]
+CMD ["php-fpm8.4", "-F"]
