@@ -26,59 +26,59 @@ RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends \
-    php8.3 \
-    php8.3-bcmath \
-    php8.3-bz2 \
-    php8.3-cli \
-    php8.3-common \
-    php8.3-curl \
-    php8.3-dba \
-    php8.3-dev \
-    php8.3-enchant \
-    php8.3-fpm \
-    php8.3-gd \
-    php8.3-gmp \
-    php8.3-http \
-    php8.3-igbinary \
-    php8.3-imagick \
-    php8.3-imap \
-    php8.3-interbase \
-    php8.3-intl \
-    php8.3-ldap \
-    php8.3-mailparse \
-    php8.3-mbstring \
-    php8.3-memcache \
-    php8.3-memcached \
-    php8.3-mongodb \
-    php8.3-msgpack \
-    php8.3-mysql \
-    php8.3-odbc \
-    php8.3-opcache \
-    php8.3-pgsql \
-    php8.3-phpdbg \
-    php8.3-pspell \
-    php8.3-raphf \
-    php8.3-readline \
-    php8.3-redis \
-    php8.3-snmp \
-    php8.3-soap \
-    php8.3-sqlite3 \
-    php8.3-ssh2 \
-    php8.3-stomp \
-    php8.3-sybase \
-    php8.3-tidy \
-    php8.3-uploadprogress \
-    php8.3-uuid \
-    php8.3-xdebug \
-    php8.3-xml \
-    php8.3-xsl \
-    php8.3-yaml \
-    php8.3-zip \
-    php8.3-zmq
+    php8.4 \
+    php8.4-bcmath \
+    php8.4-bz2 \
+    php8.4-cli \
+    php8.4-common \
+    php8.4-curl \
+    php8.4-dba \
+    php8.4-dev \
+    php8.4-enchant \
+    php8.4-fpm \
+    php8.4-gd \
+    php8.4-gmp \
+    php8.4-http \
+    php8.4-igbinary \
+    php8.4-imagick \
+    php8.4-imap \
+    php8.4-interbase \
+    php8.4-intl \
+    php8.4-ldap \
+    php8.4-mailparse \
+    php8.4-mbstring \
+    php8.4-memcache \
+    php8.4-memcached \
+    php8.4-mongodb \
+    php8.4-msgpack \
+    php8.4-mysql \
+    php8.4-odbc \
+    php8.4-opcache \
+    php8.4-pgsql \
+    php8.4-phpdbg \
+    php8.4-pspell \
+    php8.4-raphf \
+    php8.4-readline \
+    php8.4-redis \
+    php8.4-snmp \
+    php8.4-soap \
+    php8.4-sqlite3 \
+    php8.4-ssh2 \
+    php8.4-stomp \
+    php8.4-sybase \
+    php8.4-tidy \
+    php8.4-uploadprogress \
+    php8.4-uuid \
+    php8.4-xdebug \
+    php8.4-xml \
+    php8.4-xsl \
+    php8.4-yaml \
+    php8.4-zip \
+    php8.4-zmq
 
-RUN update-alternatives --set php /usr/bin/php8.3
-RUN update-alternatives --set phar /usr/bin/phar8.3
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.3
+RUN update-alternatives --set php /usr/bin/php8.4
+RUN update-alternatives --set phar /usr/bin/phar
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
