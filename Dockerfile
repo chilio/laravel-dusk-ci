@@ -158,6 +158,8 @@ RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
 ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
 RUN chmod +x /usr/bin/dusk-versions-check.php
 
+ADD commands/start-chromedriver.sh /usr/bin/start-chromedriver
+
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
