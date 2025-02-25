@@ -16,14 +16,15 @@ php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LAR
 COMPATIBLE=`php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LARAVELCHROMEDRIVER} 0`
 if [ ${COMPATIBLE} == "INCOMPATIBLE" ]
 then
-exec chromedriver &
-printf "${GREEN}Starting inbuilt Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
-printf "${YELLOW}Waiting for inbuilt Chromedriver to launch on port 9515...${NC}\n"
+start-chromedriver
+#exec chromedriver &
+#printf "${GREEN}Starting inbuilt Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
+#printf "${YELLOW}Waiting for inbuilt Chromedriver to launch on port 9515...${NC}\n"
 
-while ! nc -z localhost 9515; do
-  sleep 0.1 # wait for 1/10 of the second before check again
-done
+#while ! nc -z localhost 9515; do
+#  sleep 0.1 # wait for 1/10 of the second before check again
+#done
 
-printf "${GREEN}Chromedriver started succesfully.\n"
+#printf "${GREEN}Chromedriver started succesfully.${NC}\n"
 fi
 printf "${NC}"
