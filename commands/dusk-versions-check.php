@@ -22,15 +22,15 @@ if ($system_chromedriver == $laravel_chromedriver) {
 }
 if ($print_info_only) {
     if ($compatible) {
-        print $green."Laravel Chromedriver check PASSED OK.".PHP_EOL;
+        print $green."Laravel Chromedriver check => PASSED OK.".PHP_EOL;
         print $yellow."You can use both Chromedriver shipped with Laravel (".$laravel_chromedriver.") or system Chromeriver (".$system_chromedriver.")".PHP_EOL;
-        print $yellow."System Chromedriver is NOT automatically started in this case. So, before running php artisan DUSK, you have 2 options:".PHP_EOL;
-        print $yellow."1. If you want to run tests with Laravel Chromedriver and you have DuskTestCase.php configured with 'static::startChromeDriver();' enabled, then you don't need to change anything.".PHP_EOL;
-        print $yellow."2. If you want to run tests with System Chromedriver, remember to issue command 'start-chromedriver' in your .gitlab-ci-yml before starting Dusk tests.".PHP_EOL;
+        print $yellow."System Chromedriver will be automatically started in this case.".PHP_EOL;
+        print $yellow."If you want to explicitly run version shipped with your laravel installation please add following commands to your .gitlab-yml:".PHP_EOL;
+
     } else {
         print $red."Chromedriver shipped with your Laravel installation is NOT compatible with current system chrome version!".PHP_EOL;
-        print $green."Don't worry, we are fixing this right now, and you will be able, to test your app anyway.".$nocolor.PHP_EOL;
-        print $yellow."Read more, about running tests with system inbuilt chromedriver in laravel-dusk-ci docs.".$nocolor.PHP_EOL;
+        print $green."Don't worry, we are fixing this right now, so you will be able, to test your app anyway with Chromedriver (".$system_chromedriver.").".$nocolor.PHP_EOL;
+        print $yellow."You can read more, about running tests with system inbuilt chromedriver in laravel-dusk-ci docs.".$nocolor.PHP_EOL;
     }
     print $nocolor;
 } else {
