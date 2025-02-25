@@ -1,6 +1,6 @@
 <?php
 require_once('chromedriver-compatibility-matrix.php');
-$green= "\033[0;32m";
+$green="\033[0;32m";
 $yellow="\033[1;33m";
 $red="\033[1;31m";
 $nocolor="\033[0m";
@@ -22,7 +22,7 @@ if ($system_chromedriver == $laravel_chromedriver) {
 }
 if ($print_info_only) {
     if ($compatible) {
-        print $green." Laravel Chromedriver check PASSED OK.".PHP_EOL;
+        print $green."Laravel Chromedriver check PASSED OK.".PHP_EOL;
         print $yellow."You can use both Chromedriver shipped with Laravel (".$laravel_chromedriver.") or system Chromeriver (".$system_chromedriver.")".PHP_EOL;
         print $yellow."System Chromedriver is NOT automatically started in this case. So, before running php artisan DUSK, you have 2 options:".PHP_EOL;
         print $yellow."1. If you want to run tests with Laravel Chromedriver and you have DuskTestCase.php configured with 'static::startChromeDriver();' enabled, then you don't need to change anything.".PHP_EOL;

@@ -15,8 +15,10 @@ echo ${LARAVELCHROMEDRIVER}
 php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LARAVELCHROMEDRIVER} 1
 COMPATIBLE=`php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LARAVELCHROMEDRIVER} 0`
 if [ ${COMPATIBLE} == "INCOMPATIBLE" ]
+  printf "${GREEN}Starting system Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
+  source start-chromedriver
 then
-  printf "${GREEN}Starting inbuilt Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
+  printf "${GREEN}Starting compatible Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
   source start-chromedriver
 #exec chromedriver &
 #printf "${GREEN}Starting inbuilt Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
