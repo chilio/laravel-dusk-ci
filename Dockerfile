@@ -158,8 +158,53 @@ RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
 ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
 RUN chmod +x /usr/bin/dusk-versions-check.php
 
+<<<<<<< HEAD
 ADD commands/start-chromedriver.sh /usr/bin/start-chromedriver
 RUN chmod +x /usr/bin/start-chromedriver
+=======
+
+RUN \
+  apt-get install -yq xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+    xfonts-scalable \
+  && chmod +x /etc/init.d/xvfb \
+  && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
+  && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
+  && curl -sS -o /tmp/chromedriver_linux64.zip \
+    http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
+  && unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION \
+  && rm /tmp/chromedriver_linux64.zip \
+  && chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver \
+  && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
+  && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
+  && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
+
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https
+RUN apt-get update && apt-get install -yq --fix-missing python-software-properties
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && apt-get install -yq --fix-missing nodejs
+RUN apt-get update && apt-get install -yq --fix-missing git
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -yq --fix-missing yarn
+RUN yarn global add bower --network-concurrency 1
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+
+RUN npm install -g node-gyp
+RUN npm install -g node-sass
+RUN npm install -g gulp
+
+RUN apt-get update && apt-get install -y supervisor
+
+ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
+
+ADD configs/nginx-default-site /etc/nginx/sites-available/default 
+>>>>>>> 85b933b (Update nodejs version (#29))
 
 VOLUME [ "/var/log/supervisor" ]
 
