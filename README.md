@@ -30,7 +30,7 @@ Deprecated versions:
 [![](https://img.shields.io/static/v1?label=&message=old-stable&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)
 
 
-**Laravel dusk**? Find more in Laravel Docs [Laravel 10.x](https://laravel.com/docs/10.x/dusk) | [Laravel 9.x](https://laravel.com/docs/9.x/dusk) | [Laravel 8.x](https://laravel.com/docs/8.x/dusk) | [Laravel 7.x](https://laravel.com/docs/7.x/dusk) | [Laravel 6.x](https://laravel.com/docs/6.x/dusk) | [Laravel 5.8](https://laravel.com/docs/5.8/dusk)
+**Laravel dusk**? Find more in Laravel Dusk Docs [12.x](https://laravel.com/docs/12.x/dusk) | [11.x](https://laravel.com/docs/11.x/dusk) | [10.x](https://laravel.com/docs/10.x/dusk) | [9.x](https://laravel.com/docs/9.x/dusk) | [8.x](https://laravel.com/docs/8.x/dusk) | [7.x](https://laravel.com/docs/7.x/dusk) | [6.x](https://laravel.com/docs/6.x/dusk) | [5.8](https://laravel.com/docs/5.8/dusk)
 
 **Gitlab**? Find more on [gitlab](https://about.gitlab.com/) 
 
