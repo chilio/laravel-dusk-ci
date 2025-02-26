@@ -6,7 +6,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/chilio/laravel-dusk-ci.svg?style=social&label=Stars)](https://github.com/chilio/laravel-dusk-ci) 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/chilio/laravel-dusk-ci/blob/master/LICENSE)
 
-This is a **complete test suite** for running tests (**Unit**, **Feature**, **Browser**) on your Laravel installation.
+This is a **complete test suite** for running (**Unit**, **Functional**, **Feature**, **Browser**) tests on your Laravel based system.
 
 It uses **Laravel Dusk** for browser tests via a Docker executor runner in **GitLab**.
 
