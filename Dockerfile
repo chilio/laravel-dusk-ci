@@ -136,7 +136,6 @@ ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 RUN npm set progress=false
-#RUN mkdir /run/php
 
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
 RUN chmod +x /etc/init.d/xvfb
