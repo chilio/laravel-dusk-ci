@@ -134,6 +134,7 @@ RUN apt-get update && apt-get install -yq --fix-missing supervisor
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default
+RUN sed -i 's/php8\.4/php8.3/g' /etc/nginx/sites-available/default
 
 RUN npm set progress=false
 
@@ -141,6 +142,7 @@ ADD commands/xvfb.init.sh /etc/init.d/xvfb
 RUN chmod +x /etc/init.d/xvfb
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
+RUN sed -i 's/php8\.4/php8.3/g' /usr/bin/start-nginx-ci-project
 RUN chmod +x /usr/bin/start-nginx-ci-project
 
 ADD commands/versions /usr/bin/versions
