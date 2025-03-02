@@ -160,6 +160,9 @@ RUN chmod +x /usr/bin/dusk-versions-check.php
 ADD commands/start-chromedriver.sh /usr/bin/start-chromedriver
 RUN chmod +x /usr/bin/start-chromedriver
 
+ADD commands/start-project-chromedriver.sh /usr/bin/start-project-chromedriver
+RUN chmod +x /usr/bin/start-project-chromedriver
+
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
