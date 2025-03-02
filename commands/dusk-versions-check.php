@@ -7,7 +7,7 @@ $nocolor="\033[0m";
 $system_chrome = $argv[1];
 $system_chromedriver = $argv[2];
 $laravel_chromedriver = $argv[3];
-$print_info = $argv[4];
+$print_info_only = $argv[4];
 
 $compatible = FALSE;
 if ($system_chromedriver == $laravel_chromedriver) {
@@ -20,7 +20,7 @@ if ($system_chromedriver == $laravel_chromedriver) {
         }
     }
 }
-if ($print_info) {
+if ($print_info_only) {
     if ($compatible) {
         print $green."Laravel Chromedriver check => PASSED OK.".PHP_EOL;
         print $yellow."You can use both Chromedriver shipped with Laravel (".$laravel_chromedriver.") or system Chromeriver (".$system_chromedriver.")".PHP_EOL;
@@ -34,5 +34,7 @@ if ($print_info) {
         print $yellow."You can read more, about running tests with systems inbuilt chromedriver in laravel-dusk-ci docs.".PHP_EOL;
     }
     print $nocolor;
+} else {
+    print ($compatible?"OK":"INCOMPATIBLE");
 }
-print ($compatible?"OK":"INCOMPATIBLE");
+
