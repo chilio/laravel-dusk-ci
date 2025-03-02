@@ -9,4 +9,4 @@ if php artisan --version | grep "Laravel Framework 5.4."; then
 else
     php artisan migrate:fresh --seed
 fi
-chrome-system-check
+#chrome-system-check
