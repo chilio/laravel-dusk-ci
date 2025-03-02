@@ -26,7 +26,7 @@ if ($print_info_only) {
         print $yellow."You can use both Chromedriver shipped with Laravel (".$laravel_chromedriver.") or system Chromeriver (".$system_chromedriver.")".PHP_EOL;
         print $yellow."Your project Chromedriver will be automatically started in this case.".PHP_EOL;
         print $yellow."If you want to explicitly run system Chromedriver please add the following command to your .gitlab-yml:".PHP_EOL;
-        print $yellow."start-chromedriver".PHP_EOL;
+        print $yellow."- start-chromedriver".PHP_EOL;
 
     } else {
         print $red."Chromedriver shipped with your Laravel installation is NOT compatible with current system chrome version!".PHP_EOL;
