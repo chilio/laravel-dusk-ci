@@ -18,6 +18,6 @@ if [ ${COMPATIBLE} == "INCOMPATIBLE" ]
   source start-chromedriver
 then
   printf "${GREEN}Starting compatible Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
-  source start-chromedriver
+  $(pwd)/vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
 fi
 printf "${NC}"
