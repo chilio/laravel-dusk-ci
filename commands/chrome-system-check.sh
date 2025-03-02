@@ -13,7 +13,7 @@ LARAVELCHROMEDRIVER=`$(pwd)/vendor/laravel/dusk/bin/chromedriver-linux --version
 echo ${LARAVELCHROMEDRIVER}
 php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LARAVELCHROMEDRIVER} 1
 COMPATIBLE=`php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LARAVELCHROMEDRIVER} 0`
-print "${COMPATIBLE}"
+print "DEBUG: ${COMPATIBLE}"
 if ["${COMPATIBLE}" == "INCOMPATIBLE"]; then
   printf "${GREEN}Starting system Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
   source start-chromedriver
