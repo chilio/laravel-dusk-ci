@@ -34,6 +34,5 @@ if ($print_info_only) {
         print $yellow."You can read more, about running tests with systems inbuilt chromedriver in laravel-dusk-ci docs.".PHP_EOL;
     }
     print $nocolor;
-} else {
-    print ($compatible?"OK":"INCOMPATIBLE");
 }
+print ($compatible?"OK":"INCOMPATIBLE");
