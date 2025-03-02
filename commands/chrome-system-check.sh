@@ -16,7 +16,7 @@ php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LAR
 printf "\n\nDEBUG: begin"
 COMPATIBLE=$(php /usr/bin/dusk-versions-check.php ${SYSTEMCHROME} ${SYSTEMCHROMEDRIVER} ${LARAVELCHROMEDRIVER} 0)
 printf "DEBUG: $COMPATIBLE \n\n"
-if [["$COMPATIBLE" != "OK"]]; then
+if [[ "$COMPATIBLE" != "OK" ]]; then
   printf "${GREEN}Starting system Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
   source start-chromedriver
 else
