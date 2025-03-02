@@ -36,5 +36,3 @@ if ($print_info_only) {
     print $nocolor;
 }
 print ($compatible?"OK":"INCOMPATIBLE");
-
-
