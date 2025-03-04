@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:noble
 MAINTAINER Chilio
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -23,6 +23,7 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
     php8.2 \
@@ -59,25 +60,26 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php8.2-xml \
     php8.2-xsl \
     php8.2-zip \
-    php-geoip \
-    php-mongodb\
-    php-redis \
-    php-ssh2 \
-    php-uuid \
-    php-zmq \
-    php-radius \
-    php-http \
-    php-uploadprogress \
-    php-yaml \
-    php-memcached \
-    php-memcache \
-    php-mailparse \
-    php-stomp \
-    php-ds \
-    php-sass \
-    php-lua \
-    php-geos \
-    php-xdebug php-imagick imagemagick nginx
+    php8.2-geoip \
+    php8.2-mongodb\
+    php8.2-redis \
+    php8.2-ssh2 \
+    php8.2-uuid \
+    php8.2-zmq \
+    php8.2-radius \
+    php8.2-http \
+    php8.2-uploadprogress \
+    php8.2-yaml \
+    php8.2-memcached \
+    php8.2-memcache \
+    php8.2-mailparse \
+    php8.2-stomp \
+    php8.2-ds \
+    php8.2-sass \
+    php8.2-lua \
+    php8.2-geos \
+    php8-2-xdebug \
+    php8-2-imagick
 
 
 RUN update-alternatives --set php /usr/bin/php8.2
@@ -102,7 +104,7 @@ RUN \
   && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
 RUN \
-  apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+  apt-get install -yq --fix-missing xvfb fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
   && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
   && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
@@ -116,21 +118,15 @@ RUN \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-#RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-#RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-#RUN apt-get update && apt-get install -yq --fix-missing yarn
 RUN npm install -g yarn
-RUN yarn global add bower
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
 
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
@@ -143,7 +139,6 @@ ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
 RUN npm set progress=false
-RUN mkdir /run/php
 
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
 RUN chmod +x /etc/init.d/xvfb
@@ -167,6 +162,12 @@ ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compati
 RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
 ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
 RUN chmod +x /usr/bin/dusk-versions-check.php
+
+ADD commands/start-system-chromedriver.sh /usr/bin/start-system-chromedriver
+RUN chmod +x /usr/bin/start-system-chromedriver
+
+ADD commands/start-project-chromedriver.sh /usr/bin/start-project-chromedriver
+RUN chmod +x /usr/bin/start-project-chromedriver
 
 VOLUME [ "/var/log/supervisor" ]
 
