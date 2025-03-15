@@ -66,7 +66,7 @@ Colours indicate the current state of PHP's life cycle and supported versions. P
 
 With no modifications needed, you should be up and running in seconds. However, please carefully read the notes that follow.
 
-For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without -no-sandbox directive in this file.**. You should also disable starting of `# static::startChromeDriver();`, to have more control of which chromedriver will run. Please read more about it, under **Usage**...
+For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without `-no-sandbox` directive in this file.**. You should also disable starting of `# static::startChromeDriver();`, to have more control of which chromedriver will run. Please read more about it, under **Usage**...
 
 In case of any issues, please read the current documentation thoroughly, check existing issues (including closed ones) on GitHub, and finally, report a new issue on GitHub.   
 
