@@ -66,7 +66,7 @@ Colours indicate the current state of PHP's life cycle and supported versions. P
 
 With no modifications needed, you should be up and running in seconds. However, please carefully read the notes that follow.
 
-For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without -no-sandbox directive in this file.**... Please read more about it, under **Usage**...
+For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without -no-sandbox directive in this file.**. You should also disable starting of `# static::startChromeDriver();`, to have more control of which chromedriver will run. Please read more about it, under **Usage**...
 
 In case of any issues, please read the current documentation thoroughly, check existing issues (including closed ones) on GitHub, and finally, report a new issue on GitHub.   
 
@@ -196,7 +196,7 @@ probably you have other mysql instance running in your host system with that nam
 
 ### **Usage:**
 
-Make sure your **DuskTestCase** class in /tests/DuskTestCase.php matches all attributes, like drive options, host url, and port, like in this example **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**  # there are some modifications which **you need to apply (especially --no-sandbox in $options for driver)!!!**, these changes should not affect your local dev environment, otherwise there might be something else wrong with your project.
+Make sure your **DuskTestCase** class in /tests/DuskTestCase.php matches all attributes, like drive options, host url, and port, like in this example **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**  # there are some modifications which **you need to apply (especially --no-sandbox in $options for driver)!**, these changes should not affect your local dev environment, otherwise there might be something else wrong with your project.
 
 In your .gitlab-ci.yml use this image like:
 
