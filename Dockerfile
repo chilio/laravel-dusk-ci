@@ -72,8 +72,8 @@ RUN apt-get update && apt-get install -yq --fix-missing \
         php8.2-memcache \
         php8.2-mailparse \
         php8.2-stomp \
-        php8.2-ds
-
+        php8.2-ds \
+        php8.2-xdebug
 
 
 RUN update-alternatives --set php /usr/bin/php8.2
