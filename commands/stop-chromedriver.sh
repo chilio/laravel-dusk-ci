@@ -5,7 +5,11 @@ YELLOW='\033[1;33m'
 
 printf "${YELLOW}Stopping Chromedriver${NC}\n"
 
-pkill chromedriver
+for pid in $(pgrep chromedriver); do
+    if grep -q $(cat /proc/self/cgroup | head -n 1 | cut -d: -f3) /proc/$pid/cgroup; then
+        kill $pid
+    fi
+done
 
 printf "${GREEN}Chromedriver stopped.${NC}\n "
 
