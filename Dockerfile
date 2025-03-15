@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:noble
 MAINTAINER Chilio
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -23,11 +23,12 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
     php8.1 \
     php8.1-bcmath \
-    php8.1-bz2  \
+    php8.1-bz2 \
     php8.1-cli \
     php8.1-common \
     php8.1-curl \
@@ -37,12 +38,19 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php8.1-fpm \
     php8.1-gd \
     php8.1-gmp \
+    php8.1-http \
+    php8.1-igbinary \
     php8.1-imagick \
     php8.1-imap \
     php8.1-interbase \
     php8.1-intl \
     php8.1-ldap \
+    php8.1-mailparse \
     php8.1-mbstring \
+    php8.1-memcache \
+    php8.1-memcached \
+    php8.1-mongodb \
+    php8.1-msgpack \
     php8.1-mysql \
     php8.1-odbc \
     php8.1-opcache \
@@ -51,41 +59,26 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php8.1-pspell \
     php8.1-raphf \
     php8.1-readline \
+    php8.1-redis \
     php8.1-snmp \
     php8.1-soap \
     php8.1-sqlite3 \
+    php8.1-ssh2 \
+    php8.1-stomp \
     php8.1-sybase \
     php8.1-tidy \
+    php8.1-uploadprogress \
+    php8.1-uuid \
+    php8.1-xdebug \
     php8.1-xml \
     php8.1-xsl \
+    php8.1-yaml \
     php8.1-zip \
-    php-geoip \
-    php-mongodb\
-    php-redis \
-    php-ssh2 \
-    php-uuid \
-    php-zmq \
-    php-radius \
-    php-http \
-    php-uploadprogress \
-    php-yaml \
-    php-memcached \
-    php-memcache \
-    php-tideways \
-    php-mailparse \
-    php-propro \
-    php-stomp \
-    php-ds \
-    php-sass \
-    php-lua \
-    php-geos \
-    php-xdebug php-imagick imagemagick nginx
+    php8.1-zmq
 
 RUN update-alternatives --set php /usr/bin/php8.1
 RUN update-alternatives --set phar /usr/bin/phar8.1
 RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.1
-# RUN update-alternatives --set phpize /usr/bin/phpize7.2
-# RUN update-alternatives --set php-config /usr/bin/php-config7.2
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 # Install Redis, Memcached, Beanstalk
@@ -102,28 +95,6 @@ RUN \
     !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); \
     echo 'Invalid installer' . PHP_EOL; exit(1); }" \
   && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
-
-ADD commands/xvfb.init.sh /etc/init.d/xvfb
-
-ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
-RUN chmod +x /usr/bin/start-nginx-ci-project
-
-ADD commands/versions /usr/bin/versions
-RUN chmod +x /usr/bin/versions
-
-ADD configs/.bowerrc /root/.bowerrc
-
-ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
-RUN chmod +x /usr/bin/configure-laravel
-
-ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
-RUN chmod +x /usr/bin/chrome-system-check
-
-ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
-RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
-ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
-RUN chmod +x /usr/bin/dusk-versions-check.php
 
 
 RUN \
@@ -143,7 +114,7 @@ RUN \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -167,6 +138,27 @@ RUN apt-get update && apt-get install -yq --fix-missing supervisor
 ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default
+ADD commands/xvfb.init.sh /etc/init.d/xvfb
+
+ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
+RUN chmod +x /usr/bin/start-nginx-ci-project
+
+ADD commands/versions /usr/bin/versions
+RUN chmod +x /usr/bin/versions
+
+ADD configs/.bowerrc /root/.bowerrc
+
+ADD commands/configure-laravel.sh /usr/bin/configure-laravel
+
+RUN chmod +x /usr/bin/configure-laravel
+
+ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
+RUN chmod +x /usr/bin/chrome-system-check
+
+ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
+RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
+ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
+RUN chmod +x /usr/bin/dusk-versions-check.php
 
 RUN npm set progress=false
 RUN mkdir /run/php
