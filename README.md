@@ -72,7 +72,7 @@ In case of any issues, please read the current documentation thoroughly, check e
 
 If this package proves to be useful to you, please star it on Docker Hub or GitHub to increase its visibility to other users.
 ### **Changelog**
-- 2025-03-15 - `start-system-chromedriver` & `start-project-chromedriver` commands introduced in php 8.2+ images
+- 2025-03-15 - `start-system-chromedriver` & `start-project-chromedriver` & `stop-chromedriver` commands introduced in php 8.2+ images
 - 2025-02-25 - `php-8.4` tag introduced
 - 2023-12-30 - `stable` tag refers `php-8.2` from now on
 - 2023-12-30 - `latest` tag refers `php-8.3` from now on
