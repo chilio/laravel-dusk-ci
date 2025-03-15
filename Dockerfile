@@ -163,7 +163,7 @@ RUN chmod +x /usr/bin/start-system-chromedriver
 ADD commands/start-project-chromedriver.sh /usr/bin/start-project-chromedriver
 RUN chmod +x /usr/bin/start-project-chromedriver
 
-ADD commands/stop-chromedriver.sh /usr/bin/stop-project-chromedriver
+ADD commands/stop-chromedriver.sh /usr/bin/stop-chromedriver
 RUN chmod +x /usr/bin/stop-chromedriver
 
 
