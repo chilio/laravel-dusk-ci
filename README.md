@@ -40,9 +40,9 @@ You may be wondering why deprecated versions are still available. The main reaso
 
 This **plug-and-play** package is designed for your **CI** testing environment in GitLab.
 
-All you need to do is select the appropriate version of your **PHP interpreter** (based on your **Laravel version**), and you should be ready to go. 
+All you need to do is to select the appropriate version of your **PHP interpreter** (based on your **Laravel version**), and you should be ready to go. 
 
-Current state of supported versions of Laravel and PHP lifecycles is presented in Compatibility section below. 
+Current state of supported versions of Laravel and PHP is presented below. 
 
 ### **Compatibility**
 
@@ -64,11 +64,11 @@ Current state of supported versions of Laravel and PHP lifecycles is presented i
 
 
 
-With no modifications needed, you should be up and running in seconds. However, please carefully read the notes that follow.
+You should be up and running in seconds. However, please carefully read the following notes.
 
 For now **DuskTestCase.php** needs to be modified in **all cases**. **THIS package** is not going to work **without `-no-sandbox` directive in this file.**. You should also disable starting of `# static::startChromeDriver();`, to have more control of which chromedriver will run. Please read more about it, under **Usage**...
 
-In case of any issues, please read the current documentation thoroughly, check existing issues (including closed ones) on GitHub, and finally, report a new issue on GitHub.   
+In case of any issues, please read the current documentation thoroughly, check existing issues (including closed ones) and finally, report a new issue on GitHub.   
 
 If this package proves to be useful to you, please star it on Docker Hub or GitHub to increase its visibility to other users.
 ### **Changelog**
