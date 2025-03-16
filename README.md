@@ -262,7 +262,7 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 - In your dusk tests remember to use -**>waitFor()** extensively, to make sure, your pages are rendered properly, before test fails. Usually, **CI** test environments are much slower, than production or your local dev, cause they need to build caches from scratch.
 - By default, all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
-- if you get errors, about wrong chromedriver version, or errors about  **Laravel dusk** not able to connect on port 9515, please check **Note on using chromedriver versions**
+- if you get errors, about wrong chromedriver version, or errors about  **Laravel dusk** not able to connect on port 9515, please consider stopping chromedriver via `stop-chromedriver` and starting proper version of your choosing ('system' or 'project'). Check **Note on using chromedriver versions**
 - if you get warning about mysql `Service runner probably didn't start properly` or other strange behaviours make sure to remove all cache and artifacts routines. Depending on your workflow, they might introduce problems to your tests
 
 
