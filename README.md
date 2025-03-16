@@ -74,7 +74,7 @@ If this package proves to be useful to you, please star it on Docker Hub or GitH
 ### **Changelog**
 - 2025-03-15 - `stable` tag refers `php-8.3` from now on
 - 2025-03-15 - `latest` tag refers `php-8.4` from now on
-- 2025-03-15 - `start-system-chromedriver` & `start-project-chromedriver` & `stop-chromedriver` commands introduced in php 8.x images
+- 2025-03-15 - `start-system-chromedriver`, `start-project-chromedriver`, `stop-chromedriver` commands introduced in php 8.x images
 - 2025-03-14 - new images built on ubuntu 24.04 noble. If you experience any problems you can use legacy images with tag `php-8.x-legacy` where x is the php 8.x version you need. 
 - 2025-02-25 - `php-8.4` tag introduced
 - 2023-12-30 - `stable` tag refers `php-8.2` from now on
