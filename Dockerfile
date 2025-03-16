@@ -160,8 +160,16 @@ RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
 ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
 RUN chmod +x /usr/bin/dusk-versions-check.php
 
+ADD commands/start-system-chromedriver.sh /usr/bin/start-system-chromedriver
+RUN chmod +x /usr/bin/start-system-chromedriver
+
+ADD commands/start-project-chromedriver.sh /usr/bin/start-project-chromedriver
+RUN chmod +x /usr/bin/start-project-chromedriver
+
+ADD commands/stop-chromedriver.sh /usr/bin/stop-chromedriver
+RUN chmod +x /usr/bin/stop-chromedriver
+
 RUN npm set progress=false
-RUN mkdir /run/php
 
 VOLUME [ "/var/log/supervisor" ]
 
