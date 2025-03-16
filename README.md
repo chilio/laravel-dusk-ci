@@ -257,8 +257,9 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 
 
 ### **Troubleshooting:**
-- If you encounter problems, try different versions in this order: **chilio/laravel-dusk-ci:stable**,  **chilio/laravel-dusk-ci:latest** which should solve your issues.
-- You can always try specific **PHP** version like for example **chilio/laravel-dusk-ci:php-8.2** or older legacy versions for example **chilio/laravel-dusk-ci:php-8.2-legacy** 
+- Please check contents of **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**, you should have it updated accordingly. 
+- Try different tag versions compatible with your project.
+- You can always try older legacy version like for example **chilio/laravel-dusk-ci:php-8.2-legacy** instead of new version **chilio/laravel-dusk-ci:php-8.2** 
 - In your dusk tests remember to use -**>waitFor()** extensively, to make sure, your pages are rendered properly, before test fails. Usually, **CI** test environments are much slower, than production or your local dev, cause they need to build caches from scratch.
 - By default, all dusk browser tests are run with **resolution** 1920x720 with color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
 - if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
