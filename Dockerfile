@@ -98,17 +98,18 @@ RUN \
 
 
 RUN \
-  apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+  apt-get install -yq --fix-missing xvfb fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
-  && chmod +x /etc/init.d/xvfb \
-  && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
-  && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && curl -sS -o /tmp/chromedriver_linux64.zip \
-    http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
-  && unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && rm /tmp/chromedriver_linux64.zip \
-  && chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver \
-  && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
+  && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq -r .channels.Stable.version` \
+  && echo $CHROMEDRIVER_VERSION \
+  && curl -sS -o /tmp/chromedriver_latest.zip \
+    https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
+  && dir -lh /tmp \
+  && unzip -j /tmp/chromedriver_latest.zip chromedriver-linux64/chromedriver -d /tmp \
+  && rm /tmp/chromedriver_latest.zip \
+  && mv /tmp/chromedriver /opt/chromedriver \
+  && chmod +x /opt/chromedriver \
+  && ln -fs /opt/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
