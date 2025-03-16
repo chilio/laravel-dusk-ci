@@ -42,7 +42,7 @@ This **plug-and-play** package is designed for your **CI** testing environment i
 
 All you need to do is select the appropriate version of your **PHP interpreter** (based on your **Laravel version**), and you should be ready to go. 
 
-Colours indicate the current state of PHP's life-cycle and supported versions.
+Current state of supported versions of Laravel and PHP lifecycles is presented in Compatibility section below. 
 
 ### **Compatibility**
 
