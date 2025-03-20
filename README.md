@@ -52,7 +52,7 @@ Current state of supported versions of Laravel and PHP is presented below.
 | 11.x            | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.4&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.3&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.2&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)                                                                                                                          |
 | 10.x            | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.3&color=green)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.2&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)                                                                                                                         |
 | 9.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.2&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)                                                                                                                           |
-| 8.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)                                                                                                                              |
+| 8.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.1&color=yellow)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)    |
 | 7.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
 | 6.x             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-8.0&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.4&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.3&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=php-7.2&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) |
 | 5.8             | YES        | [![](https://img.shields.io/static/v1?label=&message=php-7.1&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/) [![](https://img.shields.io/static/v1?label=&message=old-stable&color=red)](https://hub.docker.com/r/chilio/laravel-dusk-ci/tags/)                                                                                                                                                                                                                                                              |
@@ -176,8 +176,15 @@ To see exact versions of installed packages, please run `versions` command in yo
 
 `start-nginx-ci-project` - configures and starts nginx with php-fpm
 
+`start-project-chromedriver` - starts project embedded chromedriver on port 9515 (*)
+
+`start-system-chromedriver` - starts system embedded chromedriver on port 9515 (*)
+
+`stop-chromedriver` - stops running chromedriver (*)
+
 `versions` - shows versions of included packages and enabled php modules.
 
+(*) - available in tags starting from `php-8.0`
 ### **Databases:**
 
 This build is tested with **mysql**, but also works with other docker db engines
@@ -225,7 +232,7 @@ As of **2018-05-08** this package automatically fixes eventual problems with chr
 However, if you encounter problems, especially errors, with incorrect chromedriver version on your local machine, or this docker image, you can use, this package inbuilt own chromedriver. This option brings, a little bit more compatibility to your project, since Chrome is updated much more often, then chromedriver. In order to do that, you need to make only 2 script modifications:
 
 1. In DuskTestCase.php comment out starting chromedriver like`// static::startChromeDriver();`.  In that case, to make your local development working, before issuing `php artisan dusk` command, you need to install proper chromedriver version manually, and make sure your chromedriver version matches Chrome, running on your local machine. You need to make sure chromedriver is started/running also. Due to different systems and configurations, that's beyond the scope of this documentation. Just to make clear here, in this case you are responsible for updating your own chromedriver with your current installation of Chrome. Since Chrome updates are pretty often, that's the suggested way to go, to keep your local dev running, while other packages are a little behind...
-2. In .gitlab-ci.yml add  `- chromedriver &` before running `- php artisan dusk`. This will start system inbuilt chromedriver and not the one, that is shipped with laravel dusk, cause it might be outdated and causing problems with your local development.
+2. After running `configure-laravel` Chromedriver should be started already. If you want to use other version, in .gitlab-ci.yml add  `- stop-chromedriver` and one of (`- start-project-chromedriver` or `- start-system-chromedriver`) before running `- php artisan dusk`. This will give you more control of which Chromedriver will be processing your Dusk tests.
 
 ------
 
@@ -246,6 +253,8 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 
 **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)** # with all modifications to successfully run php artisan dusk tests
 
+**[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/old-laravel-6-and-below/DuskTestCase.php)** # (OLD for Laravel 6 and below) with all modifications to successfully run php artisan dusk tests
+
 **[phpunit.dusk.xml](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/phpunit.dusk.xml)**  # If exists in project root, this file will be automatically injected when dusk is run, in case, you want to define any custom variables for your tests like DBs, Caches etc.
 
 **[phpunit.xml.ci](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/phpunit.xml.ci)** # in case, you want to customize phpunit tests in CI , remember to copy this to phpunit.xml by adding `- cp phpunit.xml.ci phpunit.xml` to your gitlab-ci.yml.
@@ -257,14 +266,15 @@ However, if you encounter problems, especially errors, with incorrect chromedriv
 
 
 ### **Troubleshooting:**
-- Please check contents of **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**, you should have it updated accordingly. 
+- Please check contents of **[DuskTestCase.php](https://github.com/chilio/laravel-dusk-ci/blob/master/examples/DuskTestCase.php)**, you should have it updated accordingly.
+- If you get errors, about wrong chromedriver version, or errors about  **Laravel dusk** not able to connect on port 9515, please consider stopping chromedriver via `stop-chromedriver` and starting proper version of your choosing ('system' or 'project'). Check **Note on using chromedriver versions**
+- If your Laravel chromedriver version is not recognized properly you can issue `- php artisan dusk:install`
 - Try different tag versions compatible with your project.
 - You can always try older legacy version like for example **chilio/laravel-dusk-ci:php-8.2-legacy** instead of a current version **chilio/laravel-dusk-ci:php-8.2** 
 - In your dusk tests remember to use -**>waitFor()** extensively, to make sure, your pages are rendered properly, before test fails. Usually, **CI** test environments are much slower, than production or your local dev, cause they need to build caches from scratch.
 - By default, all dusk browser tests are run with a **resolution** 1920x720 and color depth 24 (bits), if you need to change that, add/modify SCREEN_RESOLUTION in your .gitlab-ci.yml in `variables:` section, like for example `SCREEN_RESOLUTION: 1280x720x24`
-- if you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
-- if you get errors, about wrong chromedriver version, or errors about  **Laravel dusk** not able to connect on port 9515, please consider stopping chromedriver via `stop-chromedriver` and starting proper version of your choosing ('system' or 'project'). Check **Note on using chromedriver versions**
-- if you get warning about mysql `Service runner probably didn't start properly` or other strange behaviours make sure to remove all cache and artifacts routines. Depending on your workflow, they might introduce problems to your tests
+- If you experience **/bootstrap/autoload.php** errors, make sure your appropriate **phpunit configs** are updated, especially in line `bootstrap="vendor/autoload.php"`
+- If you get warning about mysql `Service runner probably didn't start properly` or other strange behaviours make sure to remove all cache and artifacts routines. Depending on your workflow, they might introduce problems to your tests. You should also check, if your gitlab-runner is working in a privileged mode.
 
 
 ### **Disclaimer**
