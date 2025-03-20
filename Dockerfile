@@ -1,5 +1,5 @@
 FROM ubuntu:noble
-MAINTAINER Chilio
+LABEL org.opencontainers.image.authors="Chilio"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -79,7 +79,7 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.4-mailparse \
     php7.4-stomp \
     php7.4-ds \
-    php7.4-xdebug 
+    php7.4-xdebug
 
 #    imagemagick \
 #    nginx
@@ -196,7 +196,7 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
-RUN apt-get update 
+RUN apt-get update
 RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
