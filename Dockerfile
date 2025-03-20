@@ -1,5 +1,5 @@
 FROM ubuntu:noble
-MAINTAINER Chilio
+LABEL org.opencontainers.image.authors="Chilio"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
