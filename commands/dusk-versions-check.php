@@ -7,7 +7,7 @@ $nocolor="\033[0m";
 $system_chrome = $argv[1];
 $system_chromedriver = $argv[2];
 $laravel_chromedriver = $argv[3];
-$print_info_only = $argv[4];
+$print_info_only = @$argv[4];
 
 $compatible = FALSE;
 if ($system_chromedriver == $laravel_chromedriver) {
@@ -26,6 +26,7 @@ if ($print_info_only) {
         print $yellow."You can use both Chromedriver shipped with Laravel (".$laravel_chromedriver.") or system Chromeriver (".$system_chromedriver.")".PHP_EOL;
         print $yellow."Your project Chromedriver will be automatically started in this case.".PHP_EOL;
         print $yellow."If you want to explicitly run system Chromedriver please add the following command to your .gitlab-yml:".PHP_EOL;
+        print $yellow."- stop-chromedriver".PHP_EOL;
         print $yellow."- start-system-chromedriver".PHP_EOL;
 
     } else {
