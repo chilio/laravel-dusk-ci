@@ -56,6 +56,7 @@ RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends 
     php7.1-opcache \
     php7.1-pgsql \
     php7.1-phpdbg \
+    php7.1-propro \
     php7.1-pspell \
     php7.1-raphf \
     php7.1-readline \
