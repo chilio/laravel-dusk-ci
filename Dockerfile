@@ -3,7 +3,7 @@ LABEL org.opencontainers.image.authors="Chilio"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
-
+ENV LC_ALL=en_US.UTF-8
 ENV DISPLAY :99
 ENV SCREEN_RESOLUTION 1920x720x24
 ENV CHROMEDRIVER_PORT 9515
@@ -14,7 +14,6 @@ ENV XDEBUG_MODE coverage
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
 RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
-ENV LC_ALL=en_US.UTF-8
 RUN apt-get update && apt-get install -yq --fix-missing openssl
 RUN apt-get update && apt-get install -yq --fix-missing zip unzip
 RUN apt-get update && apt-get install -yq --fix-missing software-properties-common curl
@@ -24,11 +23,12 @@ RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
+
 # Install PHP
-RUN apt-get update && apt-get install -yq --fix-missing \
+RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends \
     php7.4 \
     php7.4-bcmath \
-    php7.4-bz2  \
+    php7.4-bz2 \
     php7.4-cli \
     php7.4-common \
     php7.4-curl \
@@ -38,13 +38,19 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.4-fpm \
     php7.4-gd \
     php7.4-gmp \
+    php7.4-http \
+    php7.4-igbinary \
     php7.4-imagick \
     php7.4-imap \
     php7.4-interbase \
     php7.4-intl \
-    php7.4-json \
     php7.4-ldap \
+    php7.4-mailparse \
     php7.4-mbstring \
+    php7.4-memcache \
+    php7.4-memcached \
+    php7.4-mongodb \
+    php7.4-msgpack \
     php7.4-mysql \
     php7.4-odbc \
     php7.4-opcache \
@@ -54,43 +60,29 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.4-pspell \
     php7.4-raphf \
     php7.4-readline \
+    php7.4-redis \
     php7.4-snmp \
     php7.4-soap \
     php7.4-sqlite3 \
+    php7.4-ssh2 \
+    php7.4-stomp \
     php7.4-sybase \
     php7.4-tidy \
-    php7.4-xml \
-    php7.4-xmlrpc \
-    php7.4-xsl \
-    php7.4-zip \
-    php7.4-geoip \
-    php7.4-mongodb\
-    php7.4-redis \
-    php7.4-ssh2 \
-    php7.4-uuid \
-    php7.4-zmq \
-    php7.4-radius \
-    php7.4-http \
     php7.4-uploadprogress \
+    php7.4-uuid \
+    php7.4-xdebug \
+    php7.4-xml \
+    php7.4-xsl \
     php7.4-yaml \
-    php7.4-memcached \
-    php7.4-memcache \
-    php7.4-tideways \
-    php7.4-mailparse \
-    php7.4-stomp \
-    php7.4-ds \
-    php7.4-xdebug
+    php7.4-zip \
+    php7.4-zmq
 
-#    imagemagick \
-#    nginx
 
 RUN update-alternatives --set php /usr/bin/php7.4
 RUN update-alternatives --set phar /usr/bin/phar7.4
 RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.4
-RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
-# Install Redis, Memcached, Beanstalk
-RUN apt-get update && apt-get install -yq --fix-missing redis-server memcached beanstalkd
+RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -104,27 +96,6 @@ RUN \
     echo 'Invalid installer' . PHP_EOL; exit(1); }" \
   && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
-ADD commands/xvfb.init.sh /etc/init.d/xvfb
-
-ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
-RUN chmod +x /usr/bin/start-nginx-ci-project
-
-ADD commands/versions /usr/bin/versions
-RUN chmod +x /usr/bin/versions
-
-ADD configs/.bowerrc /root/.bowerrc
-
-ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
-RUN chmod +x /usr/bin/configure-laravel
-
-ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
-RUN chmod +x /usr/bin/chrome-system-check
-
-ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
-RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
-ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
-RUN chmod +x /usr/bin/dusk-versions-check.php
 
 RUN \
   apt-get install -yq --fix-missing xvfb fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
@@ -143,29 +114,30 @@ RUN \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -yq --fix-missing yarn
-RUN yarn global add bower --network-concurrency 1
+RUN npm install -g yarn
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
-RUN npm set progress=false
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
-RUN npm install -g gulp
 
 RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
+ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
+
+ADD configs/nginx-default-site /etc/nginx/sites-available/default
+
+RUN npm set progress=false
+
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
+RUN chmod +x /etc/init.d/xvfb
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
 RUN chmod +x /usr/bin/start-nginx-ci-project
@@ -173,10 +145,7 @@ RUN chmod +x /usr/bin/start-nginx-ci-project
 ADD commands/versions /usr/bin/versions
 RUN chmod +x /usr/bin/versions
 
-ADD configs/.bowerrc /root/.bowerrc
-
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
 RUN chmod +x /usr/bin/configure-laravel
 
 ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
@@ -187,16 +156,20 @@ RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
 ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
 RUN chmod +x /usr/bin/dusk-versions-check.php
 
-ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
+ADD commands/start-system-chromedriver.sh /usr/bin/start-system-chromedriver
+RUN chmod +x /usr/bin/start-system-chromedriver
 
-ADD configs/nginx-default-site /etc/nginx/sites-available/default
+ADD commands/start-project-chromedriver.sh /usr/bin/start-project-chromedriver
+RUN chmod +x /usr/bin/start-project-chromedriver
 
+ADD commands/stop-chromedriver.sh /usr/bin/stop-chromedriver
+RUN chmod +x /usr/bin/stop-chromedriver
 
 
 VOLUME [ "/var/log/supervisor" ]
 
 # Clean system up
-RUN apt-get update
+RUN apt-get -yq update
 RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -217,6 +190,5 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.vendor="Chilio" \
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
-
 
 CMD ["php-fpm7.4", "-F"]
