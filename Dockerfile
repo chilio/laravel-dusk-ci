@@ -1,6 +1,5 @@
-
 FROM ubuntu:xenial
-MAINTAINER Chilio 
+LABEL org.opencontainers.image.authors="Chilio"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -35,18 +34,8 @@ RUN \
   && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) \
     !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); \
     echo 'Invalid installer' . PHP_EOL; exit(1); }" \
-  && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME 
+  && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
-ADD commands/xvfb.init.sh /etc/init.d/xvfb 
-
-ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
-
-ADD configs/.bowerrc /root/.bowerrc
-
-RUN chmod +x /usr/bin/start-nginx-ci-project
-ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
-RUN chmod +x /usr/bin/configure-laravel
 
 RUN \
   apt-get install -yq xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
@@ -87,9 +76,36 @@ RUN npm install -g gulp
 
 RUN apt-get install -y supervisor
 
-ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
+ADD commands/xvfb.init.sh /etc/init.d/xvfb
 
-ADD configs/nginx-default-site /etc/nginx/sites-available/default 
+ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
+RUN chmod +x /usr/bin/start-nginx-ci-project
+
+ADD commands/versions /usr/bin/versions
+RUN chmod +x /usr/bin/versions
+
+ADD configs/.bowerrc /root/.bowerrc
+
+ADD commands/configure-laravel.sh /usr/bin/configure-laravel
+
+RUN chmod +x /usr/bin/configure-laravel
+
+ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
+RUN chmod +x /usr/bin/chrome-system-check
+
+ADD commands/chromedriver-compatibility-matrix.php /usr/bin/chromedriver-compatibility-matrix.php
+RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
+ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
+RUN chmod +x /usr/bin/dusk-versions-check.php
+
+ADD commands/start-system-chromedriver.sh /usr/bin/start-system-chromedriver
+RUN chmod +x /usr/bin/start-system-chromedriver
+
+ADD commands/start-project-chromedriver.sh /usr/bin/start-project-chromedriver
+RUN chmod +x /usr/bin/start-project-chromedriver
+
+ADD commands/stop-chromedriver.sh /usr/bin/stop-chromedriver
+RUN chmod +x /usr/bin/stop-chromedriver
 
 VOLUME [ "/var/log/supervisor" ]
 
@@ -97,17 +113,21 @@ RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN apt-get upgrade
 RUN apt-get autoremove
 
-RUN php --version
-RUN yarn --version
-RUN nginx -v
-RUN nodejs --version
-RUN npm --version
-RUN bower --version
-RUN phpunit --version
-RUN node-sass --version
-RUN gulp --version
+RUN systemctl enable xvfb
 
-EXPOSE 80 9515
+RUN versions
 
-CMD ["php7.1-fpm", "-g", "daemon off;"]
-CMD ["nginx", "-g", "daemon off;"]
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
+          org.label-schema.name="Laravel Dusk CI Docker" \
+          org.label-schema.description="Test suite for Laravel Dusk in gitlab CI" \
+          org.label-schema.url="https://hub.docker.com/r/chilio/laravel-dusk-ci/" \
+          org.label-schema.vcs-ref=$VCS_REF \
+          org.label-schema.vcs-url="https://github.com/chilio/laravel-dusk-ci" \
+          org.label-schema.vendor="Chilio" \
+          org.label-schema.version=$VERSION \
+          org.label-schema.schema-version="1.0.0"
+
+CMD ["php-fpm7.1", "-F"]
