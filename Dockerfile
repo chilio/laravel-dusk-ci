@@ -79,8 +79,8 @@ RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends 
 
 
 RUN update-alternatives --set php /usr/bin/php7.3
-RUN update-alternatives --set phar /usr/bin/phar7.2
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+RUN update-alternatives --set phar /usr/bin/phar7.3
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.3
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
@@ -191,4 +191,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-CMD ["php-fpm7.2", "-F"]
+CMD ["php-fpm7.3", "-F"]
