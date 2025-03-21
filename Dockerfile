@@ -23,6 +23,10 @@ RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libp
 RUN apt-get update && apt-get install -yq --fix-missing php7.1-fpm php7.1-cli php7.1-xml php7.1-zip php7.1-curl php7.1-bcmath php7.1-json \
     php7.1-mbstring php7.1-pgsql php7.1-mysql php7.1-mcrypt php7.1-gd php-xdebug php-imagick imagemagick nginx
 
+RUN update-alternatives --set php /usr/bin/php7.1
+RUN update-alternatives --set phar /usr/bin/phar7.1
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.1
+
 RUN apt-get install -yq mc lynx mysql-client bzip2 make g++
 
 ENV COMPOSER_HOME /usr/local/share/composer
@@ -39,34 +43,37 @@ RUN \
 
 
 RUN \
-  apt-get install -yq xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+  apt-get install -yq --fix-missing xvfb fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
     xfonts-scalable \
-  && chmod +x /etc/init.d/xvfb \
-  && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
-  && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && curl -sS -o /tmp/chromedriver_linux64.zip \
-    http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
-  && unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && rm /tmp/chromedriver_linux64.zip \
-  && chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver \
-  && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
+  && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq -r .channels.Stable.version` \
+  && echo $CHROMEDRIVER_VERSION \
+  && curl -sS -o /tmp/chromedriver_latest.zip \
+    https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
+  && dir -lh /tmp \
+  && unzip -j /tmp/chromedriver_latest.zip chromedriver-linux64/chromedriver -d /tmp \
+  && rm /tmp/chromedriver_latest.zip \
+  && mv /tmp/chromedriver /opt/chromedriver \
+  && chmod +x /opt/chromedriver \
+  && ln -fs /opt/chromedriver /usr/local/bin/chromedriver \
   && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get -yqq update && apt-get -yqq install google-chrome-stable x11vnc
+  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
 RUN apt-get install -yq apt-transport-https
 RUN apt-get install -yq  python-software-properties
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get update
+
 RUN apt-get install -yq nodejs
 RUN apt-get install -yq git
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+
 RUN apt-get update && apt-get install -yq yarn
 RUN yarn global add bower --network-concurrency 1
+
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
