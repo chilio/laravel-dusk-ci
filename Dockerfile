@@ -86,6 +86,7 @@ ADD configs/nginx-default-site /etc/nginx/sites-available/default
 RUN npm set progress=false
 
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
+RUN chmod +x /etc/init.d/xvfb
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
 RUN chmod +x /usr/bin/start-nginx-ci-project
