@@ -10,24 +10,28 @@ ENV CHROMEDRIVER_PORT 9515
 
 ENV TMPDIR=/tmp
 
-RUN apt-get update -y
-RUN apt-get install -yq apt-utils zip unzip
-RUN apt-get install -yq openssl language-pack-en-base
-RUN apt-get install -yq software-properties-common curl
+ENV XDEBUG_MODE coverage
+
+RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
+RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
+RUN apt-get update && apt-get install -yq --fix-missing openssl
+RUN apt-get update && apt-get install -yq --fix-missing zip unzip
+RUN apt-get update && apt-get install -yq --fix-missing software-properties-common curl
 RUN add-apt-repository ppa:ondrej/php
 RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -yq
-RUN apt-get install -yq libgd-tools
+RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
+
 RUN apt-get update && apt-get install -yq --fix-missing php7.1-fpm php7.1-cli php7.1-xml php7.1-zip php7.1-curl php7.1-bcmath php7.1-json \
-    php7.1-mbstring php7.1-pgsql php7.1-mysql php7.1-mcrypt php7.1-gd php-xdebug php-imagick imagemagick nginx
+    php7.1-mbstring php7.1-pgsql php7.1-mysql php7.1-mcrypt php7.1-gd php-xdebug php-imagick imagemagick
 
 RUN update-alternatives --set php /usr/bin/php7.1
 RUN update-alternatives --set phar /usr/bin/phar7.1
 RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.1
 
-RUN apt-get install -yq mc lynx mysql-client bzip2 make g++
+RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -62,20 +66,16 @@ RUN \
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get install -yq --fix-missing nodejs
 RUN apt-get update && apt-get install -yq --fix-missing git
-
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-
-RUN apt-get update && apt-get install -yq yarn
-
+RUN npm install -g yarn
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
-
+RUN mv phpunit.phar /usr/local/bin/phpunit
 
 RUN npm install -g node-gyp
 RUN npm install --unsafe-perm -g node-sass
-RUN npm install -g gulp
 
 RUN apt-get update && apt-get install -yq --fix-missing supervisor
 
@@ -94,10 +94,7 @@ RUN chmod +x /usr/bin/start-nginx-ci-project
 ADD commands/versions /usr/bin/versions
 RUN chmod +x /usr/bin/versions
 
-ADD configs/.bowerrc /root/.bowerrc
-
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
 RUN chmod +x /usr/bin/configure-laravel
 
 ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
@@ -117,8 +114,10 @@ RUN chmod +x /usr/bin/start-project-chromedriver
 ADD commands/stop-chromedriver.sh /usr/bin/stop-chromedriver
 RUN chmod +x /usr/bin/stop-chromedriver
 
+
 VOLUME [ "/var/log/supervisor" ]
 
+# Clean system up
 RUN apt-get -yq update
 RUN apt-get -yq upgrade
 RUN apt-get -yq autoremove
