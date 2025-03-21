@@ -1,9 +1,9 @@
-FROM ubuntu:bionic
-MAINTAINER Chilio
+FROM ubuntu:noble
+LABEL org.opencontainers.image.authors="Chilio"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
-
+ENV LC_ALL=en_US.UTF-8
 ENV DISPLAY :99
 ENV SCREEN_RESOLUTION 1920x720x24
 ENV CHROMEDRIVER_PORT 9515
@@ -14,7 +14,6 @@ ENV XDEBUG_MODE coverage
 
 RUN apt-get update && apt-get install -yq --fix-missing apt-utils netcat-openbsd
 RUN apt-get update && apt-get install -yq --fix-missing language-pack-en-base
-ENV LC_ALL=en_US.UTF-8
 RUN apt-get update && apt-get install -yq --fix-missing openssl
 RUN apt-get update && apt-get install -yq --fix-missing zip unzip
 RUN apt-get update && apt-get install -yq --fix-missing software-properties-common curl
@@ -23,27 +22,35 @@ RUN sed -i'' 's/archive\.ubuntu\.com/us\.archive\.ubuntu\.com/' /etc/apt/sources
 RUN apt-get update
 RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
+RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
+
 # Install PHP
-RUN apt-get update && apt-get install -yq --fix-missing \
+RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends \
     php7.3 \
     php7.3-bcmath \
     php7.3-bz2 \
-    php7.3-cgi \
     php7.3-cli \
     php7.3-common \
     php7.3-curl \
     php7.3-dba \
+    php7.3-dev \
     php7.3-enchant \
     php7.3-fpm \
     php7.3-gd \
     php7.3-gmp \
+    php7.3-http \
+    php7.3-igbinary \
     php7.3-imagick \
     php7.3-imap \
     php7.3-interbase \
     php7.3-intl \
-    php7.3-json \
     php7.3-ldap \
+    php7.3-mailparse \
     php7.3-mbstring \
+    php7.3-memcache \
+    php7.3-memcached \
+    php7.3-mongodb \
+    php7.3-msgpack \
     php7.3-mysql \
     php7.3-odbc \
     php7.3-opcache \
@@ -53,46 +60,29 @@ RUN apt-get update && apt-get install -yq --fix-missing \
     php7.3-pspell \
     php7.3-raphf \
     php7.3-readline \
-    php7.3-recode \
+    php7.3-redis \
     php7.3-snmp \
     php7.3-soap \
     php7.3-sqlite3 \
+    php7.3-ssh2 \
+    php7.3-stomp \
     php7.3-sybase \
     php7.3-tidy \
+    php7.3-uploadprogress \
+    php7.3-uuid \
+    php7.3-xdebug \
     php7.3-xml \
-    php7.3-xmlrpc \
-    php7.3-zip \
     php7.3-xsl \
-    php-geoip \
-    php-mongodb\
-    php-redis \
-    php-ssh2 \
-    php-uuid \
-    php-zmq \
-    php-radius \
-    php-http \
-    php-uploadprogress \
-    php-yaml \
-    php-memcached \
-    php-memcache \
-    php-tideways \
-    php-mailparse \
-    php-raphf \
-    php-stomp \
-    php-ds \
-    php-sass \
-    php-geos \
-    php-xdebug php-imagick imagemagick nginx
+    php7.3-yaml \
+    php7.3-zip \
+    php7.3-zmq
+
 
 RUN update-alternatives --set php /usr/bin/php7.3
-RUN update-alternatives --set phar /usr/bin/phar7.3
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.3
-# RUN update-alternatives --set phpize /usr/bin/phpize7.3
-# RUN update-alternatives --set php-config /usr/bin/php-config7.3
-RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
+RUN update-alternatives --set phar /usr/bin/phar7.2
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.2
 
-# Install Redis, Memcached, Beanstalk
-RUN apt-get update && apt-get install -yq --fix-missing redis-server memcached beanstalkd
+RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
 ENV COMPOSER_HOME /usr/local/share/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -106,7 +96,48 @@ RUN \
     echo 'Invalid installer' . PHP_EOL; exit(1); }" \
   && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
+
+RUN \
+  apt-get install -yq --fix-missing xvfb fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
+    xfonts-scalable \
+  && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq -r .channels.Stable.version` \
+  && echo $CHROMEDRIVER_VERSION \
+  && curl -sS -o /tmp/chromedriver_latest.zip \
+    https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
+  && dir -lh /tmp \
+  && unzip -j /tmp/chromedriver_latest.zip chromedriver-linux64/chromedriver -d /tmp \
+  && rm /tmp/chromedriver_latest.zip \
+  && mv /tmp/chromedriver /opt/chromedriver \
+  && chmod +x /opt/chromedriver \
+  && ln -fs /opt/chromedriver /usr/local/bin/chromedriver \
+  && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
+  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
+
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+RUN apt-get update && apt-get install -yq --fix-missing nodejs
+RUN apt-get update && apt-get install -yq --fix-missing git
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+RUN npm install -g yarn
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+
+RUN npm install -g node-gyp
+RUN npm install --unsafe-perm -g node-sass
+
+RUN apt-get update && apt-get install -yq --fix-missing supervisor
+
+ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
+
+ADD configs/nginx-default-site /etc/nginx/sites-available/default
+
+RUN npm set progress=false
+
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
+RUN chmod +x /etc/init.d/xvfb
 
 ADD commands/start-nginx-ci-project.sh /usr/bin/start-nginx-ci-project
 RUN chmod +x /usr/bin/start-nginx-ci-project
@@ -114,10 +145,7 @@ RUN chmod +x /usr/bin/start-nginx-ci-project
 ADD commands/versions /usr/bin/versions
 RUN chmod +x /usr/bin/versions
 
-ADD configs/.bowerrc /root/.bowerrc
-
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
-
 RUN chmod +x /usr/bin/configure-laravel
 
 ADD commands/chrome-system-check.sh /usr/bin/chrome-system-check
@@ -128,51 +156,15 @@ RUN chmod +x /usr/bin/chromedriver-compatibility-matrix.php
 ADD commands/dusk-versions-check.php /usr/bin/dusk-versions-check.php
 RUN chmod +x /usr/bin/dusk-versions-check.php
 
+ADD commands/start-system-chromedriver.sh /usr/bin/start-system-chromedriver
+RUN chmod +x /usr/bin/start-system-chromedriver
 
-RUN \
-  apt-get install -yq --fix-missing xvfb gconf2 fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
-    xfonts-scalable \
-  && chmod +x /etc/init.d/xvfb \
-  && CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
-  && mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && curl -sS -o /tmp/chromedriver_linux64.zip \
-    http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
-  && unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION \
-  && rm /tmp/chromedriver_linux64.zip \
-  && chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver \
-  && ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver \
-  && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
+ADD commands/start-project-chromedriver.sh /usr/bin/start-project-chromedriver
+RUN chmod +x /usr/bin/start-project-chromedriver
 
-RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get update && apt-get install -yq --fix-missing nodejs
-RUN apt-get update && apt-get install -yq --fix-missing git
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+ADD commands/stop-chromedriver.sh /usr/bin/stop-chromedriver
+RUN chmod +x /usr/bin/stop-chromedriver
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -yq --fix-missing yarn
-RUN yarn global add bower --network-concurrency 1
-RUN wget https://phar.phpunit.de/phpunit.phar
-RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
-
-RUN npm install -g node-gyp
-RUN npm install --unsafe-perm -g node-sass
-RUN npm install -g gulp
-
-RUN apt-get update && apt-get install -yq --fix-missing supervisor
-
-ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
-
-ADD configs/nginx-default-site /etc/nginx/sites-available/default
-
-RUN npm set progress=false
-
-RUN mkdir /run/php
 
 VOLUME [ "/var/log/supervisor" ]
 
@@ -199,5 +191,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.version=$VERSION \
           org.label-schema.schema-version="1.0.0"
 
-
-CMD ["php-fpm7.3", "-F"]
+CMD ["php-fpm7.2", "-F"]
