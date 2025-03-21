@@ -24,8 +24,58 @@ RUN apt-get upgrade -yq
 RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 
-RUN apt-get update && apt-get install -yq --fix-missing php7.1-fpm php7.1-cli php7.1-xml php7.1-zip php7.1-curl php7.1-bcmath php7.1-json \
-    php7.1-mbstring php7.1-pgsql php7.1-mysql php7.1-mcrypt php7.1-gd php-xdebug php-imagick imagemagick
+# Install PHP
+RUN apt-get update && apt-get install -yq --fix-missing --no-install-recommends \
+    php7.1 \
+    php7.1-bcmath \
+    php7.1-bz2 \
+    php7.1-cli \
+    php7.1-common \
+    php7.1-curl \
+    php7.1-dba \
+    php7.1-dev \
+    php7.1-enchant \
+    php7.1-fpm \
+    php7.1-gd \
+    php7.1-gmp \
+    php7.1-http \
+    php7.1-igbinary \
+    php7.1-imagick \
+    php7.1-imap \
+    php7.1-interbase \
+    php7.1-intl \
+    php7.1-ldap \
+    php7.1-mailparse \
+    php7.1-mbstring \
+    php7.1-memcache \
+    php7.1-memcached \
+    php7.1-mongodb \
+    php7.1-msgpack \
+    php7.1-mysql \
+    php7.1-odbc \
+    php7.1-opcache \
+    php7.1-pgsql \
+    php7.1-phpdbg \
+    php7.1-pspell \
+    php7.1-raphf \
+    php7.1-readline \
+    php7.1-redis \
+    php7.1-snmp \
+    php7.1-soap \
+    php7.1-sqlite3 \
+    php7.1-ssh2 \
+    php7.1-stomp \
+    php7.1-sybase \
+    php7.1-tidy \
+    php7.1-uploadprogress \
+    php7.1-uuid \
+    php7.1-xdebug \
+    php7.1-xml \
+    php7.1-xsl \
+    php7.1-yaml \
+    php7.1-zip \
+    php7.1-zmq
+
 
 RUN update-alternatives --set php /usr/bin/php7.1
 RUN update-alternatives --set phar /usr/bin/phar7.1
