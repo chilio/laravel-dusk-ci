@@ -118,9 +118,10 @@ RUN chmod +x /usr/bin/stop-chromedriver
 
 VOLUME [ "/var/log/supervisor" ]
 
+RUN apt-get -yq update
+RUN apt-get -yq upgrade
+RUN apt-get -yq autoremove
 RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-get upgrade
-RUN apt-get autoremove
 
 RUN systemctl enable xvfb
 
