@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:noble
 LABEL org.opencontainers.image.authors="Chilio"
 
 ENV DEBIAN_FRONTEND noninteractive
