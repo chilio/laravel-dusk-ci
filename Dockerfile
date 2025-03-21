@@ -59,30 +59,31 @@ RUN \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get -yq update && apt-get install -yq --fix-missing google-chrome-stable x11vnc rsync
 
-RUN apt-get install -yq apt-transport-https
-RUN apt-get install -yq  python-software-properties
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get update
-
-RUN apt-get install -yq nodejs
-RUN apt-get install -yq git
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+RUN apt-get update && apt-get install -yq --fix-missing nodejs
+RUN apt-get update && apt-get install -yq --fix-missing git
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 
 RUN apt-get update && apt-get install -yq yarn
-RUN yarn global add bower --network-concurrency 1
 
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
+
 
 RUN npm install -g node-gyp
-RUN npm install -g node-sass
+RUN npm install --unsafe-perm -g node-sass
 RUN npm install -g gulp
 
-RUN apt-get install -y supervisor
+RUN apt-get update && apt-get install -yq --fix-missing supervisor
+
+ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
+
+ADD configs/nginx-default-site /etc/nginx/sites-available/default
+
+RUN npm set progress=false
 
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
 
