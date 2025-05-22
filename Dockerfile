@@ -135,6 +135,8 @@ ADD configs/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD configs/nginx-default-site /etc/nginx/sites-available/default
 
+ADD configs/fastcgi_buffers.conf /etc/nginx/conf.d/fastcgi_buffers.conf
+
 RUN npm set progress=false
 
 ADD commands/xvfb.init.sh /etc/init.d/xvfb
