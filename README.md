@@ -1,5 +1,95 @@
-# Running Browser Tests with Laravel Dusk in Gitlab CI/CD Pipelines.
+# laravel-dusk-ci
 
+> ⚠️ **This repository is archived and no longer maintained.**
+>
+> It remains available for reference purposes only.
+
+
+## Project status
+
+This project is **archived**.
+
+`laravel-dusk-ci` was created to solve a real problem at the time:
+running Laravel Dusk browser tests reliably in CI environments
+without dealing with Chrome / ChromeDriver compatibility issues.
+
+For several years, this repository helped teams integrate
+Laravel Dusk with CI pipelines (especially GitLab CI)
+in a more predictable and reproducible way.
+
+## Why this project is archived
+
+The ecosystem around end-to-end testing has significantly evolved.
+
+Modern E2E testing has shifted away from:
+
+- tight coupling between E2E tests and application internals
+- direct database access from browser tests
+- framework-specific E2E tooling (such as PHP-side runners)
+- custom Docker images built around legacy browser drivers
+
+Instead, current best practices focus on:
+
+- black-box testing
+- API-driven test setup
+- production-like environments
+- fast, parallel and portable test execution
+
+Maintaining a Dusk-specific Docker image no longer aligns with
+the direction in which modern E2E testing is heading.
+
+For these reasons, this project is no longer actively maintained.
+
+## Recommended alternatives
+
+If you're starting a new project today, consider the following tools instead:
+
+### ✅ Playwright
+
+A modern end-to-end testing framework with first-class CI support.
+
+- Multi-browser support (Chromium, Firefox, WebKit)
+- Built-in test runner and parallel execution
+- API testing capabilities
+- Authentication and session reuse
+- Very stable in CI environments
+
+https://playwright.dev/
+
+### ✅ Cypress
+
+Still a solid choice for many teams, especially for frontend-heavy applications.
+
+- Excellent developer experience
+- Great debugging tools
+- Large ecosystem and community
+
+https://www.cypress.io/
+
+## Laravel-specific note
+
+Instead of accessing the database directly from E2E tests, consider:
+
+- using API endpoints for test setup
+- exposing seed/test-only endpoints in non-production environments
+- reusing authenticated browser state instead of logging in for every test
+
+This approach leads to more robust, faster and future-proof E2E test suites.
+
+## Final note
+
+Thanks to everyone who used this project, reported issues,
+or shared feedback over the years ❤️
+
+The repository will remain available for reference purposes,
+but no further updates or fixes will be provided.
+
+
+---
+# Historical documentation (legacy)
+
+
+# Running Browser Tests with Laravel Dusk in Gitlab CI/CD Pipelines.
 
 [![Docker pulls](https://img.shields.io/docker/pulls/chilio/laravel-dusk-ci.svg)](https://hub.docker.com/r/chilio/laravel-dusk-ci)
 [![GitHub issues](https://img.shields.io/github/issues/chilio/laravel-dusk-ci.svg)](https://github.com/chilio/laravel-dusk-ci/issues) 
